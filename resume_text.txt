@@ -1,6 +1,6 @@
 STAN LEE NATIVIDAD
 Intelligent Systems Engineer
-Mandaluyong City 1550 | 09911532620 | leenatividad5@gmail.com | linkedin.com/in/stan-lee-natividad-83a327336
+Mandaluyong City 1550 | 09911532620 | leenatividad5@gmail.com | linkedin.com/in/stan-lee-natividad-83a327336 | gryphlee.github.io
 
 PROFILE
 Sovereign AI Architect and former Intelligence Officer specializing in Multi-Agent Operating Systems (MAOS) and industrial digital twins. Expert in engineering secure, air-gapped LLMs (QLoRA/GGUF) and edge-deployed physics simulations for critical infrastructure. Proven track record of bridging the IT/OT gap to transition legacy SCADA operations into autonomous, self-evolving cyber-physical ecosystems.
