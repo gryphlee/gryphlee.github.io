@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stan Lee Natividad - Resume</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #111827;
+            background: #ffffff;
+            line-height: 1.5;
+            font-size: 11px;
+            padding: 40px 50px;
+        }
+
+        header {
+            margin-bottom: 24px;
+            border-bottom: 2px solid #111827;
+            padding-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            font-weight: 600;
+            color: #4B5563;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 12px;
+            font-size: 10.5px;
+            color: #4B5563;
+            flex-wrap: wrap;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info span:not(:last-child)::after {
+            content: "•";
+            margin-left: 12px;
+            color: #9CA3AF;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #111827;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #E5E7EB;
+            padding-bottom: 4px;
+        }
+
+        .profile-text {
+            font-size: 11px;
+            text-align: justify;
+        }
+
+        .item {
+            margin-bottom: 12px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 4px;
+        }
+
+        .item-title {
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        .item-subtitle {
+            font-weight: 600;
+            color: #4B5563;
+            font-style: italic;
+        }
+
+        .item-date {
+            font-weight: 500;
+            color: #6B7280;
+            font-size: 10.5px;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 18px;
+        }
+
+        li {
+            margin-bottom: 4px;
+            text-align: justify;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            row-gap: 6px;
+            align-items: baseline;
+        }
+
+        .skill-category {
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .skill-list {
+            color: #374151;
+        }
+        
+        .highlight {
+            font-weight: 600;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>STAN LEE NATIVIDAD</h1>
+        <div class="subtitle">Intelligent Systems Engineer & Sovereign AI Architect</div>
+        <div class="contact-info">
+            <span>Mandaluyong City 1550</span>
+            <span>09911532620</span>
+            <span>leenatividad5@gmail.com</span>
+            <span>linkedin.com/in/stan-lee-natividad-83a327336</span>
+            <span class="highlight">gryphlee.github.io</span>
+        </div>
+    </header>
+
+    <section>
+        <h2>Profile</h2>
+        <p class="profile-text">Sovereign AI Architect and former Intelligence Officer specializing in Multi-Agent Operating Systems (MAOS) and industrial digital twins. Expert in engineering secure, air-gapped LLMs (QLoRA/GGUF) and edge-deployed physics simulations for critical infrastructure. Proven track record of bridging the IT/OT gap to transition legacy SCADA operations into autonomous, self-evolving cyber-physical ecosystems.</p>
+    </section>
+
+    <section>
+        <h2>Notable Architectures & Systems</h2>
+        
+        <div class="item">
+            <div class="item-title">M3CHA Agentic Operating System (MAOS)</div>
+            <ul>
+                <li>Architected a 9-module proprietary AI ecosystem for full-spectrum enterprise automation. Designed autonomous LangGraph pipelines for bidding, forecasting, and target influence mapping, eliminating manual administrative bottlenecks.</li>
+            </ul>
+        </div>
+
+        <div class="item">
+            <div class="item-title">M3CHA Coder & BDIM (Sovereign Local LLMs)</div>
+            <ul>
+                <li>Engineered and deployed two domain-specialized, air-gapped LLMs. Managed the end-to-end LLMOps pipeline from QLoRA fine-tuning and alignment stripping to GGUF quantization, guaranteeing 100% data sovereignty for enterprise clients.</li>
+            </ul>
+        </div>
+
+        <div class="item">
+            <div class="item-title">Industrial Digital Twin & Edge Simulation</div>
+            <ul>
+                <li>Developed a high-fidelity WebGL (Three.js) digital twin for Water Treatment SCADA facilities. Integrated Reduced Order Models (ROMs) and FMUs to execute real-time physics simulations and predictive anomaly detection directly on edge devices.</li>
+            </ul>
+        </div>
+
+        <div class="item">
+            <div class="item-title">Autonomous Procurement Intelligence Pipeline</div>
+            <ul>
+                <li>Engineered a resilient OpenClaw server infrastructure to autonomously scrape and classify PhilGEPS government bidding payloads. Built an algorithmic forecasting engine that instantly cross-references requirements against manufacturer databases.</li>
+            </ul>
+        </div>
+
+        <div class="item">
+            <div class="item-title">Deep Cover Cryptography & Covert Comms</div>
+            <ul>
+                <li>Built a deniable communication protocol disguised as a standard utility. Implemented client-side AES-256 encryption and steganography to embed classified payloads within text, bypassing automated deep-packet IT surveillance.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>Employment History</h2>
+        
+        <div class="item">
+            <div class="item-header">
+                <div class="item-title">Intelligent Systems Engineer <span class="item-subtitle">| Power4All (Pasig City)</span></div>
+                <div class="item-date">Jan 2026 — Present</div>
+            </div>
+            <ul>
+                <li>Spearheading Industry 4.0 initiatives by integrating autonomous AI with traditional engineering. Leading the end-to-end automation of industrial processes, AI-SCADA convergence, and the development of a company-wide Agentic OS to replace manual bottlenecks with intelligent workflows.</li>
+            </ul>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <div class="item-title">AI Systems & Infrastructure Architect <span class="item-subtitle">| Philippine Navy (Taguig)</span></div>
+                <div class="item-date">Nov 2025 — Jan 2026</div>
+            </div>
+            <ul>
+                <li>Architected the foundational AI infrastructure and secure systems framework. Designed high-availability, scalable, and air-gapped local AI environments for maritime domain awareness and tactical data processing, adhering strictly to military-grade security standards.</li>
+            </ul>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <div class="item-title">Enterprise AI Architect <span class="item-subtitle">| Green Attic Roofing (Chicago, USA)</span></div>
+                <div class="item-date">Oct 2025 — Nov 2025</div>
+            </div>
+            <ul>
+                <li>Engineered the digital backbone via scalable hyper-automation and AI-driven tools, transitioning legacy business processes into modern workflows that drastically reduced manual operational overhead.</li>
+            </ul>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <div class="item-title">AI Engineer <span class="item-subtitle">| Silicon Valley Associate (UAE)</span></div>
+                <div class="item-date">Aug 2025 — Sept 2025</div>
+            </div>
+            <ul>
+                <li>Engineered custom AI ecosystems leveraging Large Language Models. Partnered directly with the CEO to architect web applications that transformed administrative overhead into automated, intelligent agentic systems.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>Core Competencies</h2>
+        <div class="skills-grid">
+            <div class="skill-category">Sovereign AI & Local Models:</div>
+            <div class="skill-list">PyTorch, QLoRA Fine-Tuning, Model Quantization (GGUF), Local LLM Deployment</div>
+            
+            <div class="skill-category">Multi-Agent Systems:</div>
+            <div class="skill-list">LangGraph Orchestration, Stateful Agent Flows, Playwright CDP, AI Decision Engines</div>
+            
+            <div class="skill-category">Cyber-Physical & Industrial:</div>
+            <div class="skill-list">Digital Twins, Three.js/WebGL, Physics Simulation (FMU/ROM), AI-SCADA</div>
+            
+            <div class="skill-category">Backend & Infrastructure:</div>
+            <div class="skill-list">Python, FastAPI, Rust & Tauri, Qdrant Vector DBs, SQLite, On-Prem Edge Deployment</div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Education</h2>
+        <div class="item-header">
+            <div class="item-title">BS Electronics Engineering <span class="item-subtitle">| Rizal Technological University (Mandaluyong City)</span></div>
+            <div class="item-date">Aug 2022 — Present</div>
+        </div>
+    </section>
+
+</body>
+</html>
