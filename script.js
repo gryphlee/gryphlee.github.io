@@ -717,7 +717,7 @@ const projectDatabase = {
         repo: "#"
     },
     "Water Treatment Plant Digital Twin": {
-        images: ["images/m3cha-digital-twin.mp4", "images/digital1.png", "images/digital2.png", "images/digital3.png", "images/digital4.png", "images/digital5.png", "images/digital6.png", "images/digital7.png", "images/digital8.png", "images/digital9.png", "images/digital10.png"],
+        images: ["images/digitalthumb.png", "images/digital1.png", "images/digital2.png", "images/digital3.png", "images/digital4.png", "images/digital5.png", "images/digital6.png", "images/digital7.png", "images/digital8.png", "images/digital9.png", "images/digital10.png"],
         longDesc: `
             <div style="line-height:1.8;">
                 <p style="font-size:1.1rem; margin-bottom:1.75rem; opacity:0.9;">
@@ -749,12 +749,12 @@ const projectDatabase = {
         repo: "#"
     },
     "PowerTwin Project": {
-        images: ["images/powertwin-demo.mp4", "images/PowerTwin.png", "images/PowerTwin-2.png", "images/PowerTwin-3.png", "images/PowerTwin-4.png", "images/PowerTwin-5.png"],
+        images: ["images/PowerTwin.png", "images/PowerTwin-2.png", "images/PowerTwin-3.png", "images/PowerTwin-4.png", "images/PowerTwin-5.png"],
         longDesc: "PowerTwin is an advanced Digital Twin ecosystem designed to simulate physical assets in real-time. It leverages predictive AI algorithms to forecast maintenance needs, simulate dynamic system conditions to avoid catastrophic failures, and integrates a specialized diagnostic chatbot. This architecture guarantees a zero-downtime operational environment for mission-critical industrial infrastructure.",
         repo: "https://github.com/gryphlee/powertwin-project"
     },
     "Intelligent CNC Milling Lab": {
-        images: ["images/cnc-demo.mp4", "images/cnc1.png", "images/cnc2.png"],
+        images: ["images/cnc1.png", "images/cnc2.png"],
         longDesc: "Real-time digital simulation of a CNC machine featuring live G-Code tracking, dynamic tool position monitoring, and integrated AI vibration warnings. This system bridges the IT/OT gap by predicting anomalous behaviors.",
         repo: "#"
     },
