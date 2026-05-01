@@ -3,941 +3,1054 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stan Lee Natividad | Full-Stack AI Engineer</title>
-    <meta name="description" content="Portfolio of Stan Lee Natividad, a Full-Stack AI Engineer passionate about building real-world AI solutions.">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0a0a0a;
-            color: #ffffff;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        .site-header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.85);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 1000;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #00f0ff;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #00f0ff;
-        }
-
-        .nav-toggle {
-            display: none;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-        }
-        
-        .hero .container {
-            z-index: 1;
-        }
-
-        .hero-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(0, 240, 255, 0.1) 0%, transparent 70%);
-            animation: pulse 4s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #ffffff, #00f0ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: #00f0ff;
-            margin-bottom: 1rem;
-        }
-
-        .hero-text {
-            font-size: 1.1rem;
-            color: #cccccc;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 32px;
-            background: linear-gradient(135deg, #00f0ff, #0066ff);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.3);
-        }
-
-        /* Content Sections */
-        .content-section {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #ffffff;
-        }
-        
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background: #00f0ff;
-            margin: 10px auto 0;
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-image {
-            width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            background: #1a1a1a;
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-            color: #cccccc;
-            font-size: 1.1rem;
-        }
-
-        /* Skills Section */
-        .skills-section {
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            list-style: none;
-        }
-
-        .skills-grid li {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s, background 0.3s;
-        }
-
-        .skills-grid li:hover {
-            transform: translateY(-5px);
-            background: rgba(0, 240, 255, 0.1);
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.2);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            background: #1a1a1a;
-        }
-
-        .project-content {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .project-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: #ffffff;
-        }
-
-        .project-description {
-            color: #cccccc;
-            margin-bottom: 1rem;
-            line-height: 1.5;
-            flex-grow: 1;
-        }
-
-        .project-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            list-style: none;
-        }
-
-        .project-stack li {
-            background: rgba(0, 240, 255, 0.2);
-            color: #00f0ff;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-        
-        .project-link {
-            color: #00f0ff;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .project-link:hover {
-            color: #ffffff;
-        }
-
-        /* Experience Section */
-        .experience-section {
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .experience-timeline {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .experience-timeline::before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, #00f0ff, #0066ff);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 3rem;
-            padding-left: 60px;
-        }
-        
-        .timeline-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: 11px;
-            top: 5px;
-            width: 20px;
-            height: 20px;
-            background: #00f0ff;
-            border-radius: 50%;
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
-        }
-
-        .experience-title {
-            font-size: 1.3rem;
-            color: #ffffff;
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-company {
-            color: #00f0ff;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-description {
-            color: #cccccc;
-            line-height: 1.6;
-        }
-
-        /* Certifications Section */
-        .certifications-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .cert-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .cert-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .cert-link-wrapper {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .cert-image {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            background: #1a1a1a;
-        }
-
-        .cert-info {
-            padding: 1rem;
-        }
-
-        .cert-title {
-            font-size: 1.1rem;
-            color: #ffffff;
-            margin-bottom: 0.5rem;
-        }
-
-        .cert-issuer {
-            color: #00f0ff;
-            font-size: 0.9rem;
-        }
-
-        /* Footer */
-        .site-footer {
-            background: #000000;
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .social-links svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        .social-links a {
-            color: #ffffff;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: #00f0ff;
-        }
-
-        .copyright {
-            color: #666666;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .nav-links {
-                display: none;
-            }
-            .nav-toggle {
-                display: block;
-            }
-            .projects-grid, .certifications-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <title>Stan Lee Natividad | Intelligent Systems Engineer</title>
+    <meta name="description" content="Portfolio of Stan Lee Natividad — Intelligent Systems Engineer specializing in Industry 4.0, Agentic AI, and Hyper-Automation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=76">
+    <script src="script.js?v=76" defer></script>
 </head>
 <body>
 
-    <header class="site-header">
+    <canvas id="particle-canvas"></canvas>
+
+    <header class="site-header" id="site-header">
         <div class="container">
             <div class="header-content">
-                <a href="#home" class="logo">Stan Lee Natividad</a>
+                <a href="#home" class="logo">SLN<span class="logo-dot">.</span></a>
                 <nav class="main-nav">
-                    <ul class="nav-links">
-                        <li><a href="#about">About</a></li>
+                    <ul class="nav-links" id="nav-links">
+                        <li style="position: relative;">
+                            <a href="#about">About</a>
+                            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme" style="position: absolute; top: 120%; left: 50%; transform: translateX(-50%); background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 5px;">
+                                <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                    <path class="moon-path" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                </svg>
+                            </button>
+                        </li>
                         <li><a href="#skills">Skills</a></li>
                         <li><a href="#projects">Projects</a></li>
                         <li><a href="#experience">Experience</a></li>
-                        <li><a href="#certifications">Certifications</a></li>
+                        <li><a href="#certifications">Certs</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </nav>
+                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span class="hamburger"></span>
+                </button>
             </div>
         </div>
     </header>
 
     <main>
-        <section id="home" class="hero">
-            <div class="container">
-                <h1 class="hero-title">Stan Lee Natividad</h1>
-                <p class="hero-subtitle">Full-Stack Artificial Intelligence Engineer</p>
-                <p class="hero-text">Passionate about building real-world AI solutions—from chatbots and automation workflows to full-stack RAG applications.</p>
-                <a href="#projects" class="btn">View My Work</a>
+        <section id="home" class="hero spatial-hero">
+            <div class="hero-bg-mesh"></div>
+            <div class="container spatial-grid">
+                
+                <!-- Left: Kinetic Typography Command -->
+                <div class="hero-kinetic-text">
+                    <span class="sys-badge">
+                        <span class="badge-pulse"></span>
+                        SYS.ARCHITECT // 2026
+                    </span>
+                    <h1 class="hero-title serif-elegant" style="font-family: 'Playfair Display', serif; font-size: clamp(4rem, 8vw, 7rem); font-weight: 800; line-height: 0.95; letter-spacing: -2px; margin-bottom: 2rem; color: var(--text);">
+                        STAN<br>
+                        LEE<br>
+                        NATIVIDAD
+                    </h1>
+                    <p class="hero-text-new">
+                        Architecting autonomous AI ecosystems — from Multi-Agent RAG systems and Digital Twin simulations to AI-SCADA convergence.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary btn-lg" style="text-transform: none; font-weight: 600;">View My Work</a>
+                        <a href="Stan_Lee_Natividad_-_Intelligent_Systems_Engineer.pdf" class="btn btn-outline btn-lg" style="text-transform: none; font-weight: 600;" download>Download CV</a>
+                    </div>
+                </div>
+
+                <!-- Right: Command Center HUD -->
+                <div class="hero-hud-panel glass-card">
+                    <div class="hud-header">
+                        <div class="status-indicator">
+                            <span class="status-dot"></span> SYSTEM: ONLINE // AVAILABLE
+                        </div>
+                    </div>
+                    
+                    <div class="hud-body">
+                        <div class="terminal-box">
+                            <span class="terminal-prefix">> EXEC:</span>
+                            <span class="hero-subtitle" id="typed-text"></span><span class="typed-cursor">|</span>
+                        </div>
+                        <div class="agent-telemetry" id="agent-telemetry">
+                            <!-- Live Mock logs go here -->
+                        </div>
+                    </div>
+
+                    <div class="hud-footer">
+                        <div class="hud-stats-grid">
+                            <div class="hud-stat">
+                                <span class="stat-number" data-target="3">0</span><span class="stat-suffix">+</span>
+                                <span class="stat-label">Enterprise<br>Clients</span>
+                            </div>
+                            <div class="hud-stat">
+                                <span class="stat-number" data-target="10">0</span><span class="stat-suffix">+</span>
+                                <span class="stat-label">AI System<br>Projects</span>
+                            </div>
+                            <div class="hud-stat">
+                                <span class="stat-number" data-target="24">0</span><span class="stat-suffix">+</span>
+                                <span class="stat-label">Tech<br>Certifications</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="hero-glow"></div>
         </section>
 
-        <section id="about" class="about-section content-section">
+        <section id="about" class="content-section about-section">
             <div class="container">
                 <h2 class="section-title">About Me</h2>
-                <div class="about-content">
-                    <img class="about-image" src="https://placehold.co/400x400/1a1a1a/ffffff?text=SN" alt="A professional headshot of Stan Lee Natividad">
-                    <div class="about-text">
-                        <p>A Full-Stack AI Engineer skilled in fine-tuning LLMs, advanced RAG architectures, and workflow automation using n8n/Make. I have a strong foundation in neural networks, system integration, and cloud deployment, with projects spanning healthcare, elections, and CNC automation.</p>
-                        <p>My goal is to leverage these skills to create practical, high-impact applications that solve complex problems and drive innovation.</p>
+                <div class="bento-grid">
+                    <!-- Row 1: Bio (2 cols) + Photo (1 col) -->
+                    <div class="bento-card bento-span-2">
+                        <div class="bento-card-content">
+                            <h3 style="margin-bottom: 1rem; color: var(--accent);">Architecting Autonomous AI</h3>
+                            <p class="about-lead">AI Systems Architect at the forefront of <strong>Industry 4.0</strong>, specializing in Hyper-Agentic Automation and end-to-end orchestration of Agentic OS frameworks.</p>
+                            <p style="margin-top: 1rem;">Expert in architecting Multi-Agent RAG systems and Digital Twin simulations to optimize large-scale industrial plants and mission-critical infrastructure. Proven capability in training and deploying Sovereign AI local models to ensure data sovereignty and security.</p>
+                            <p style="margin-top: 1rem;">Currently pursuing <strong>BS Electronics Engineering</strong> at Rizal Technological University while leading Industry 4.0 initiatives at Power4All. My current focus involves actively engineering and integrating autonomous AI solutions into scalable <strong>solar energy</strong>, <strong>solid waste management</strong>, and <strong>water treatment plant</strong> systems.</p>
+                        </div>
+                    </div>
+
+                    <div class="bento-card">
+                        <div class="bento-card-content" style="align-items: center; justify-content: center;">
+                            <div class="about-image-wrapper">
+                                <img class="about-image profile-pic-dark" src="images/pic2.jpeg" alt="Stan Lee Natividad">
+                                <img class="about-image profile-pic-light" src="images/pic3.jpeg" alt="Stan Lee Natividad">
+                                <div class="about-image-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Title (1 col) + Core Focus (2 cols) -->
+                    <div class="bento-card" style="display: flex; align-items: center; justify-content: center; text-align: center;">
+                        <div class="bento-card-content" style="align-items: center; justify-content: center;">
+                            <p style="font-family: 'Playfair Display', serif; font-size: 1.3rem; font-style: italic; line-height: 1.6; color: var(--text); letter-spacing: 0.5px;">"I don't build software.<br>I architect intelligence."</p>
+                            <div style="width: 40px; height: 1px; background: var(--accent); margin: 1.2rem auto;"></div>
+                            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 2px; color: var(--text-muted); text-transform: uppercase;">Intelligent Systems Engineer</span>
+                            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 1.5px; color: var(--text-muted); text-transform: uppercase; margin-top: 0.3rem; opacity: 0.6;">Former Intelligence Officer</span>
+                        </div>
+                    </div>
+
+                    <div class="bento-card bento-span-2">
+                        <div class="bento-card-content justify-center" style="justify-content: center;">
+                            <h3 style="margin-bottom: 1rem;">Core Focus</h3>
+                            <div class="about-tags" style="margin-top: 0;">
+                                <span class="tag">Sovereign AI Architecture</span>
+                                <span class="tag">Multi-Agent Operating Systems (MAOS)</span>
+                                <span class="tag">Digital Twins & Cyber-Physical Systems</span>
+                                <span class="tag">Critical Infrastructure AI</span>
+                                <span class="tag">OSINT & Target Intelligence</span>
+                                <span class="tag">HUMINT Integration</span>
+                                <span class="tag">Covert Comms & Cryptography</span>
+                                <span class="tag">Autonomous Industrial Systems</span>
+                                <span class="tag">Edge ML Inference</span>
+                                <span class="tag">AI-SCADA Convergence</span>
+                                <span class="tag">Adversarial Decision Engines</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="skills" class="skills-section content-section">
+        <section id="skills" class="content-section skills-section">
             <div class="container">
-                <h2 class="section-title">Technical Skills</h2>
-                <ul class="skills-grid">
-                    <li>LangChain</li><li>n8n Automation</li><li>Python</li><li>TensorFlow</li><li>MERN Stack</li><li>Next.js</li><li>RAG Architectures</li><li>Fine-Tuning LLMs</li><li>Vector Search</li><li>Google Cloud / Vertex AI</li><li>AWS</li><li>SaaS Development</li>
+                <h2 class="section-title">Technical Arsenal</h2>
+                <div class="skills-filter" id="skills-filter">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="ai">AI / LLM</button>
+                    <button class="filter-btn" data-filter="industrial">Industrial</button>
+                    <button class="filter-btn" data-filter="automation">Automation</button>
+                    <button class="filter-btn" data-filter="dev">Development</button>
+                </div>
+                <ul class="skills-grid" id="skills-grid">
+                    <li data-category="ai"><span class="skill-name">LLM Orchestration</span><span class="skill-level expert">Expert</span></li>
+                    <li data-category="ai"><span class="skill-name">Multi-Agent Systems</span><span class="skill-level expert">Expert</span></li>
+                    <li data-category="ai"><span class="skill-name">Agentic AI Architecture</span><span class="skill-level expert">Expert</span></li>
+                    <li data-category="ai"><span class="skill-name">LLM Fine-Tuning (LoRA)</span><span class="skill-level expert">Expert</span></li>
+                    <li data-category="ai"><span class="skill-name">Model Quantization</span><span class="skill-level expert">Expert</span></li>
+                    <li data-category="ai"><span class="skill-name">Function Calling & Tools</span><span class="skill-level expert">Expert</span></li>
+                    <li data-category="ai"><span class="skill-name">RAG Architectures</span><span class="skill-level expert">Expert</span></li>
+                    <li data-category="ai"><span class="skill-name">Local AI & Sovereign Models</span><span class="skill-level expert">Expert</span></li>
+                    <li data-category="ai"><span class="skill-name">Machine Learning</span><span class="skill-level experienced">Experienced</span></li>
+                    <li data-category="ai"><span class="skill-name">PyTorch / Deep Learning</span><span class="skill-level expert">Expert</span></li>
+                    <li data-category="industrial"><span class="skill-name">Industry 4.0</span><span class="skill-level experienced">Experienced</span></li>
+                    <li data-category="industrial"><span class="skill-name">Digital Twin Dev</span><span class="skill-level expert">Expert</span></li>
+                    <li data-category="industrial"><span class="skill-name">Physics Simulation (FMU/ROM)</span><span class="skill-level expert">Expert</span></li>
+                    <li data-category="industrial"><span class="skill-name">Three.js / WebGL</span><span class="skill-level expert">Expert</span></li>
+                    <li data-category="industrial"><span class="skill-name">AI-SCADA Convergence</span><span class="skill-level experienced">Experienced</span></li>
+                    <li data-category="industrial"><span class="skill-name">Systems & Infrastructure</span><span class="skill-level experienced">Experienced</span></li>
+                    <li data-category="automation"><span class="skill-name">n8n Automation</span><span class="skill-level expert">Expert</span></li>
+                    <li data-category="automation"><span class="skill-name">LangGraph Orchestration</span><span class="skill-level expert">Expert</span></li>
+                    <li data-category="automation"><span class="skill-name">Stateful Agent Flows</span><span class="skill-level expert">Expert</span></li>
+                    <li data-category="automation"><span class="skill-name">Playwright CDP / OSINT</span><span class="skill-level expert">Expert</span></li>
+                    <li data-category="dev"><span class="skill-name">Python & FastAPI</span><span class="skill-level expert">Expert</span></li>
+                    <li data-category="dev"><span class="skill-name">Rust & Tauri Dev</span><span class="skill-level expert">Expert</span></li>
+                    <li data-category="dev"><span class="skill-name">Vector DBs (Qdrant)</span><span class="skill-level expert">Expert</span></li>
+                    <li data-category="dev"><span class="skill-name">On-Prem Edge Deployment</span><span class="skill-level expert">Expert</span></li>
+                    <li data-category="dev"><span class="skill-name">Cybersecurity / Crypto</span><span class="skill-level expert">Expert</span></li>
+                    <li data-category="dev"><span class="skill-name">SQLite Data Modeling</span><span class="skill-level expert">Expert</span></li>
                 </ul>
             </div>
         </section>
 
-        id="projects" class="projects-section content-section">
+        <section id="projects" class="content-section projects-section">
             <div class="container">
                 <h2 class="section-title">Projects</h2>
-                <div class="projects-grid">
-                    <article class="project-card">
-                        <a href="https://github.com/gryphlee/Build-and-Deploy-HR-Copilot-AI-Agents-for-the-Workplace" target="_blank" rel="noopener noreferrer">
-                           <img class="project-image" src="images/project-hr-copilot..jpg" alt="HR Copilot Project Image">
-                        </a>
+                <div class="projects-filter" id="projects-filter">
+                    <button class="filter-btn active" data-filter="main">Main</button>
+                    <button class="filter-btn" data-filter="machine-learning">Machine Learning</button>
+                    <button class="filter-btn" data-filter="data-science">Data Science</button>
+                    <button class="filter-btn" data-filter="ai">AI</button>
+                    <button class="filter-btn" data-filter="quantum-computing">Quantum Computing</button>
+                    <button class="filter-btn" data-filter="digital-twin">Digital Twin</button>
+                    <button class="filter-btn" data-filter="system-architecture">System Architecture</button>
+                    <button class="filter-btn" data-filter="n8n">n8n</button>
+                    <button class="filter-btn" data-filter="llm-ops">Large Language Model Operations</button>
+                    <button class="filter-btn" data-filter="maos">Multi Agentic Operating System</button>
+                </div>
+                <div class="projects-grid" id="projects-grid">
+                    <article class="project-card featured" data-category="main llm-ops ai">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/llm2.jpg" alt="M3CHA Coder" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info &amp; Preview</button>
+                            </div>
+                        </div>
                         <div class="project-content">
-                            <h3 class="project-title">HR Copilot - AI Agent for Recruitment</h3>
-                            <p class="project-description">HR Copilot AI Agent 🚀 Overview This project is a smart, internal HR assistant built to answer employee questions based on a company-specific knowledge base.</p>
-                            <ul class="project-stack"><li>MERN Stack</li><li>OpenAI</li><li>n8n</li></ul>
-                            <a href="https://github.com/gryphlee/Build-and-Deploy-HR-Copilot-AI-Agents-for-the-Workplace" class="project-link" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+                            <h3 class="project-title">M3CHA Coder</h3>
+                            <p class="project-description" style="margin-bottom:12px;">Custom 14B sovereign LLM built via QLoRA merge of Qwen and DeepSeek base models using Unsloth. Trained for architectural reasoning and agentic code generation with guardrail removal for unrestricted sovereign deployment.</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>QLoRA</li><li>Unsloth</li><li>Qwen</li><li>DeepSeek</li><li>GGUF</li></ul>
                         </div>
                     </article>
-                    <article class="project-card">
-                        <a href="https://github.com/gryphlee/MedBot-Pro" target="_blank" rel="noopener noreferrer">
-                           <img class="project-image" src="images/project-medbot..jpg" alt="MedBot Pro Project Image">
-                        </a>
+                    <article class="project-card featured" data-category="main llm-ops ai">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/llm10.jpg" alt="M3CHA BDIM" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info &amp; Preview</button>
+                            </div>
+                        </div>
                         <div class="project-content">
-                            <h3 class="project-title">MedBot Pro - AI-Powered Healthcare Chatbot</h3>
+                            <h3 class="project-title">M3CHA BDIM</h3>
+                            <p class="project-description" style="margin-bottom:12px;">Sovereign business intelligence LLM fine-tuned for market analysis, procurement strategy, lead qualification, and executive decision support — without cloud dependency.</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>QLoRA</li><li>Unsloth</li><li>RAG</li><li>GGUF</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="main maos ai system-architecture">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/m1.png" alt="M3CHA Centralized Database" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info &amp; Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">M3CHA Centralized Database</h3>
+                            <p class="project-description" style="margin-bottom:12px;">Multi-departmental centralized data hub powering the M3CHA Agentic OS — unifying BD, HR, SCM, CS, and Design into a single sovereign intelligence command layer.</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>FastAPI</li><li>LangGraph</li><li>Qdrant</li><li>Next.js</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="main maos ai n8n">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/m2.png" alt="M3CHA Sales & Pipeline Intelligence" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info &amp; Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">M3CHA Sales &amp; Pipeline Intelligence</h3>
+                            <p class="project-description" style="margin-bottom:12px;">Autonomous PhilGEPS procurement intelligence engine — scrapes, scores, and routes live government tender opportunities in Solar, Water, and Solid Waste to the BD pipeline in real-time.</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>PhilGEPS API</li><li>LangGraph</li><li>n8n</li><li>SQLite</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="main maos ai">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/m4.png" alt="M3CHA Knowledge Base" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info &amp; Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">M3CHA Knowledge Base</h3>
+                            <p class="project-description" style="margin-bottom:12px;">Paste a Google Drive folder link — M3CHA auto-syncs, chunks, and indexes all documents (PDF, DOCX, XLSX, images) into Qdrant for instant RAG-ready sovereign knowledge retrieval.</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>Qdrant</li><li>Google Drive API</li><li>RAG</li><li>LangChain</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="main maos ai">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/m5.png" alt="M3CHA Bid Pipeline Kanban" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info &amp; Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">M3CHA Bid Pipeline Kanban</h3>
+                            <p class="project-description" style="margin-bottom:12px;">WhatsApp-native bid tracking — message the M3CHA Claw AI agent directly on WhatsApp to move bids across pipeline stages, check status, and get instant procurement updates without opening a dashboard.</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>WhatsApp API</li><li>LangGraph</li><li>FastAPI</li><li>Supabase</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="main maos ai llm-ops">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/m6.png" alt="M3CHA Decision" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info &amp; Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">M3CHA Decision</h3>
+                            <p class="project-description" style="margin-bottom:12px;">Dual-LLM debate engine — Gemini 2.5 Flash and GPT-4.1 compete in parallel on the same query, then a GPT-4.1-mini Judge AI evaluates both responses and selects the highest-quality answer.</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>Gemini 2.5 Flash</li><li>GPT-4.1</li><li>LangGraph</li><li>Async AI</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="main maos ai">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/m7.png" alt="M3CHA Sales Cycle Forecasts" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info &amp; Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">M3CHA Sales Cycle Forecasts</h3>
+                            <p class="project-description" style="margin-bottom:12px;">Annual Procurement Plan (APP) pipeline engine — uses Gemini 2.5 Flash Vision to perform OCR on government procurement documents, extracting budgets and target quarters, with a Qwen 3.5 397B Cloud fallback for complex JSON structuring.</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>Gemini 2.5 Flash</li><li>Qwen 3.5 397B</li><li>Ollama</li><li>SQLite</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="main maos ai">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/m8.png" alt="M3CHA Signal Intelligence" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info &amp; Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">M3CHA Signal Intelligence</h3>
+                            <p class="project-description" style="margin-bottom:12px;">OSINT-grade industry intelligence engine — aggregates real-time news across 6 business channels (AI, Water, Solar, BD, PH, Global) via Perplexity Sonar Pro, cached every 30 minutes, delivered as structured JSON briefings with citations.</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>Perplexity Sonar Pro</li><li>OSINT</li><li>LangGraph</li><li>FastAPI</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="main maos ai">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/m9.png" alt="M3CHA Customer Database" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info &amp; Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">M3CHA Customer Database</h3>
+                            <p class="project-description" style="margin-bottom:12px;">Customer Intelligence & Influence Mapping Engine — uses Perplexity Sonar Pro to autonomously build live organizational charts, map key decision-makers, and track contact history across target accounts to expose relationship gaps and optimize win probability.</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>Perplexity Sonar Pro</li><li>OSINT</li><li>LangGraph</li><li>FastAPI</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="n8n ai">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/ai-tender-intelligence-workflow.png" alt="Agentic Tender Intelligence System" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info & Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Agentic Tender Intelligence System</h3>
+                            <p class="project-description" style="margin-bottom:12px;">Advanced n8n AI orchestration workflow utilizing Multi-Agent Supervisor architecture to automate government tender discovery and market intelligence.</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>n8n</li><li>GPT-4o</li><li>LangChain</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="system-architecture">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/arch_high_level.png" alt="High-Level Architecture" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; height:100%; gap:8px;">
+                                <button data-src="system_architecture/3d_viewer.html?scene=high_level&isolated=true" class="overlay-btn arch-preview-btn">🌐 3D Preview</button>
+                                <button data-src="system_architecture/flowchart_viewer.html?scene=high_level&isolated=true" class="overlay-btn arch-preview-btn">📐 2D Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">High-Level Architecture</h3>
+                            <p class="project-description" style="margin-bottom:12px;">Full system overview: clients, frontend, backend, LangGraph engine, data layer, external APIs, and infrastructure.</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>Architecture</li><li>Interactive</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="system-architecture">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/arch_request_lifecycle.png" alt="Request Lifecycle" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; height:100%; gap:8px;">
+                                <button data-src="system_architecture/3d_viewer.html?scene=request_lifecycle&isolated=true" class="overlay-btn arch-preview-btn">🌐 3D Preview</button>
+                                <button data-src="system_architecture/flowchart_viewer.html?scene=request_lifecycle&isolated=true" class="overlay-btn arch-preview-btn">📐 2D Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Request Lifecycle</h3>
+                            <p class="project-description" style="margin-bottom:12px;">End-to-end journey of a user message: from browser input through routing, agent execution, and streamed response.</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>Architecture</li><li>Interactive</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="system-architecture">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/arch_langgraph.png" alt="LangGraph Orchestration" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; height:100%; gap:8px;">
+                                <button data-src="system_architecture/3d_viewer.html?scene=langgraph&isolated=true" class="overlay-btn arch-preview-btn">🌐 3D Preview</button>
+                                <button data-src="system_architecture/flowchart_viewer.html?scene=langgraph&isolated=true" class="overlay-btn arch-preview-btn">📐 2D Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">LangGraph Orchestration</h3>
+                            <p class="project-description" style="margin-bottom:12px;">State machine with 22 specialized agent nodes, semantic routing, and the BDE validation pipeline.</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>Architecture</li><li>Interactive</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="system-architecture">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/arch_semantic_router.png" alt="Semantic Router" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; height:100%; gap:8px;">
+                                <button data-src="system_architecture/3d_viewer.html?scene=semantic_router&isolated=true" class="overlay-btn arch-preview-btn">🌐 3D Preview</button>
+                                <button data-src="system_architecture/flowchart_viewer.html?scene=semantic_router&isolated=true" class="overlay-btn arch-preview-btn">📐 2D Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Semantic Router</h3>
+                            <p class="project-description" style="margin-bottom:12px;">Classification architecture: Gemini Flash function calling with regex fallback and route promotion rules.</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>Architecture</li><li>Interactive</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="system-architecture">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/arch_rag_pipeline.png" alt="RAG Pipeline" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; height:100%; gap:8px;">
+                                <button data-src="system_architecture/3d_viewer.html?scene=rag_pipeline&isolated=true" class="overlay-btn arch-preview-btn">🌐 3D Preview</button>
+                                <button data-src="system_architecture/flowchart_viewer.html?scene=rag_pipeline&isolated=true" class="overlay-btn arch-preview-btn">📐 2D Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">RAG Pipeline</h3>
+                            <p class="project-description" style="margin-bottom:12px;">Dual-path ingestion (text chunking + vision processing) and retrieval pipeline with filtered Qdrant ANN search.</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>Architecture</li><li>Interactive</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="system-architecture">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/arch_memory.png" alt="Agentic Memory" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; height:100%; gap:8px;">
+                                <button data-src="system_architecture/3d_viewer.html?scene=memory&isolated=true" class="overlay-btn arch-preview-btn">🌐 3D Preview</button>
+                                <button data-src="system_architecture/flowchart_viewer.html?scene=memory&isolated=true" class="overlay-btn arch-preview-btn">📐 2D Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Agentic Memory</h3>
+                            <p class="project-description" style="margin-bottom:12px;">Three-layer memory: flat files, episodic vectors in Qdrant, and a JSON knowledge graph with working buffer.</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>Architecture</li><li>Interactive</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="system-architecture">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/arch_mcp_bridge.png" alt="MCP Bridge — HITL" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; height:100%; gap:8px;">
+                                <button data-src="system_architecture/3d_viewer.html?scene=mcp_bridge&isolated=true" class="overlay-btn arch-preview-btn">🌐 3D Preview</button>
+                                <button data-src="system_architecture/flowchart_viewer.html?scene=mcp_bridge&isolated=true" class="overlay-btn arch-preview-btn">📐 2D Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">MCP Bridge — HITL</h3>
+                            <p class="project-description" style="margin-bottom:12px;">Human-in-the-loop approval flow: trust levels from SAFE (auto-execute) to CRITICAL (require approval).</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>Architecture</li><li>Interactive</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="system-architecture">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/arch_backend.png" alt="Backend Clean Architecture" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; height:100%; gap:8px;">
+                                <button data-src="system_architecture/3d_viewer.html?scene=backend&isolated=true" class="overlay-btn arch-preview-btn">🌐 3D Preview</button>
+                                <button data-src="system_architecture/flowchart_viewer.html?scene=backend&isolated=true" class="overlay-btn arch-preview-btn">📐 2D Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Backend Clean Architecture</h3>
+                            <p class="project-description" style="margin-bottom:12px;">Four-layer architecture: API routes, service layer, data models, and core infrastructure with Supabase.</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>Architecture</li><li>Interactive</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="system-architecture">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/arch_sse_streaming.png" alt="SSE Streaming" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; height:100%; gap:8px;">
+                                <button data-src="system_architecture/3d_viewer.html?scene=sse_streaming&isolated=true" class="overlay-btn arch-preview-btn">🌐 3D Preview</button>
+                                <button data-src="system_architecture/flowchart_viewer.html?scene=sse_streaming&isolated=true" class="overlay-btn arch-preview-btn">📐 2D Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">SSE Streaming</h3>
+                            <p class="project-description" style="margin-bottom:12px;">Server-Sent Events architecture: fast-path streaming (Gemini direct) vs LangGraph path with simulated streaming.</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>Architecture</li><li>Interactive</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="system-architecture">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/arch_frontend.png" alt="Frontend Components" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; height:100%; gap:8px;">
+                                <button data-src="system_architecture/3d_viewer.html?scene=frontend&isolated=true" class="overlay-btn arch-preview-btn">🌐 3D Preview</button>
+                                <button data-src="system_architecture/flowchart_viewer.html?scene=frontend&isolated=true" class="overlay-btn arch-preview-btn">📐 2D Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Frontend Components</h3>
+                            <p class="project-description" style="margin-bottom:12px;">Next.js App Router component tree: pages, message rendering, custom hooks, and localStorage state.</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>Architecture</li><li>Interactive</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="system-architecture">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/arch_multichannel.png" alt="Multi-Channel Bots" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; height:100%; gap:8px;">
+                                <button data-src="system_architecture/3d_viewer.html?scene=multichannel&isolated=true" class="overlay-btn arch-preview-btn">🌐 3D Preview</button>
+                                <button data-src="system_architecture/flowchart_viewer.html?scene=multichannel&isolated=true" class="overlay-btn arch-preview-btn">📐 2D Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Multi-Channel Bots</h3>
+                            <p class="project-description" style="margin-bottom:12px;">Seven bot integrations (Telegram, Viber, WhatsApp, etc.) all routing through the shared LangGraph core.</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>Architecture</li><li>Interactive</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="system-architecture">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/arch_n8n.png" alt="n8n Automation Layer" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; height:100%; gap:8px;">
+                                <button data-src="system_architecture/3d_viewer.html?scene=n8n&isolated=true" class="overlay-btn arch-preview-btn">🌐 3D Preview</button>
+                                <button data-src="system_architecture/flowchart_viewer.html?scene=n8n&isolated=true" class="overlay-btn arch-preview-btn">📐 2D Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">n8n Automation Layer</h3>
+                            <p class="project-description" style="margin-bottom:12px;">Workflow automation: cron triggers, webhooks, tender scanning, doc ingestion, and email building.</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>Architecture</li><li>Interactive</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="system-architecture">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/arch_deployment.png" alt="Deployment Topology" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; height:100%; gap:8px;">
+                                <button data-src="system_architecture/3d_viewer.html?scene=deployment&isolated=true" class="overlay-btn arch-preview-btn">🌐 3D Preview</button>
+                                <button data-src="system_architecture/flowchart_viewer.html?scene=deployment&isolated=true" class="overlay-btn arch-preview-btn">📐 2D Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Deployment Topology</h3>
+                            <p class="project-description" style="margin-bottom:12px;">Host topology: Docker containers (Qdrant, n8n), PM2 processes (backend, frontend), and cloud services.</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>Architecture</li><li>Interactive</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="system-architecture">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/arch_security.png" alt="Security Architecture" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; height:100%; gap:8px;">
+                                <button data-src="system_architecture/3d_viewer.html?scene=security&isolated=true" class="overlay-btn arch-preview-btn">🌐 3D Preview</button>
+                                <button data-src="system_architecture/flowchart_viewer.html?scene=security&isolated=true" class="overlay-btn arch-preview-btn">📐 2D Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Security Architecture</h3>
+                            <p class="project-description" style="margin-bottom:12px;">Authentication (bcrypt + JWT), role-based access control (admin/user), and MCP trust levels.</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>Architecture</li><li>Interactive</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="system-architecture">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/arch_observability.png" alt="Observability Stack" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; height:100%; gap:8px;">
+                                <button data-src="system_architecture/3d_viewer.html?scene=observability&isolated=true" class="overlay-btn arch-preview-btn">🌐 3D Preview</button>
+                                <button data-src="system_architecture/flowchart_viewer.html?scene=observability&isolated=true" class="overlay-btn arch-preview-btn">📐 2D Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Observability Stack</h3>
+                            <p class="project-description" style="margin-bottom:12px;">Tracing (Phoenix, LangSmith), structured logging (route, request, agent), and monitoring (health, PM2).</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>Architecture</li><li>Interactive</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="system-architecture">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/arch_npu.png" alt="NPU Acceleration" style="object-fit:cover; object-position:center;">
+                            <div class="project-overlay" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; height:100%; gap:8px;">
+                                <button data-src="system_architecture/3d_viewer.html?scene=npu&isolated=true" class="overlay-btn arch-preview-btn">🌐 3D Preview</button>
+                                <button data-src="system_architecture/flowchart_viewer.html?scene=npu&isolated=true" class="overlay-btn arch-preview-btn">📐 2D Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">NPU Acceleration</h3>
+                            <p class="project-description" style="margin-bottom:12px;">Neural Processing Unit acceleration: hardware detection, quantized local inference, hybrid cloud fallback, and KV c...</p>
+                            <ul class="project-stack" style="margin-top:auto;"><li>Architecture</li><li>Interactive</li></ul>
+                        </div>
+                    </article>
+                    
+                    <article class="project-card featured" data-category="main digital-twin">
+                        <div class="project-image-wrapper">
+                            <video src="images/m3cha-digital-twin.mp4" class="project-image" autoplay muted loop playsinline style="object-fit:cover; object-position:center; width: 100%; aspect-ratio: 16/9;"></video>
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info & Preview</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Water Treatment Plant Digital Twin</h3>
+                            <p class="project-description">Browser-based, high-performance Industrial Digital Twin. Features custom WebGL 3D rendering, edge-based ML inference pipelines (Reduced Order Models), physics-driven simulation engines (FMUs), and live MQTT IoT telemetry for anomaly detection.</p>
+                            <ul class="project-stack"><li>Three.js / WebGL</li><li>Vite + TS</li><li>Physics (FMU)</li><li>AI Edge (ROM)</li></ul>
+                        </div>
+                        
+                        <div class="modal-gallery-data" style="display: none;">
+                            <img src="images/digital1.png" alt="Digital Twin 1">
+                            <img src="images/digital2.png" alt="Digital Twin 2">
+                            <img src="images/digital3.png" alt="Digital Twin 3">
+                            <img src="images/digital4.png" alt="Digital Twin 4">
+                            <img src="images/digital5.png" alt="Digital Twin 5">
+                            <img src="images/digital6.png" alt="Digital Twin 6">
+                            <img src="images/digital7.png" alt="Digital Twin 7">
+                            <img src="images/digital8.png" alt="Digital Twin 8">
+                            <img src="images/digital9.png" alt="Digital Twin 9">
+                            <img src="images/digital10.png" alt="Digital Twin 10">
+                        </div>
+                    </article>
+
+<article class="project-card featured" data-category="digital-twin">
+                        <div class="project-image-wrapper">
+                            <video autoplay loop muted playsinline class="project-image" src="images/powertwin-demo.mp4"></video>
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info & Preview</button>
+                                <a href="https://github.com/gryphlee/powertwin-project" target="_blank" rel="noopener noreferrer" class="overlay-btn repo-link">🔗 GitHub</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">PowerTwin Project</h3>
+                            <p class="project-description">Advanced AI-driven Digital Twin architecture featuring predictive maintenance, dynamic system simulation, and an integrated diagnostic chatbot.</p>
+                            <ul class="project-stack"><li>Python</li><li>Digital Twin</li><li>Predictive AI</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="digital-twin">
+                        <div class="project-image-wrapper">
+                            <video autoplay loop muted playsinline class="project-image" src="images/cnc-demo.mp4" poster="images/cnc1.png"></video>
+                            <img class="project-image img-secondary" src="images/cnc2.png" alt="Intelligent CNC Milling Lab Technical View">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info & Preview</button>
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="overlay-btn repo-link">🔗 GitHub</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Intelligent CNC Milling Lab</h3>
+                            <p class="project-description">Real-time digital simulation of a CNC machine featuring live G-Code tracking, dynamic tool position monitoring, and integrated AI vibration warnings.</p>
+                            <ul class="project-stack"><li>Streamlit</li><li>Digital Twin</li><li>AI Integration</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="ai">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/project-hr-copilot..jpg" alt="HR Copilot">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info & Preview</button>
+                                <a href="https://github.com/gryphlee/Build-and-Deploy-HR-Copilot-AI-Agents-for-the-Workplace" target="_blank" rel="noopener noreferrer" class="overlay-btn repo-link">🔗 GitHub</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">HR Copilot — AI Agent for Recruitment</h3>
+                            <p class="project-description">Smart internal HR assistant built to answer employee questions based on a company-specific knowledge base using RAG and agentic workflows.</p>
+                            <ul class="project-stack"><li>MERN Stack</li><li>OpenAI</li><li>n8n</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="ai">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/project-lora-prime.png" alt="LORA-Prime: Active C2 Dashboard">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info & Preview</button>
+                                <a href="#" class="overlay-btn repo-link">🔗 Private Repo</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">LORA-Prime: Active C2 Dashboard</h3>
+                            <p class="project-description">AI-Native General Staff dashboard for tactical operations, featuring live adversarial threat modeling and proactive Command & Control handoffs.</p>
+                            <ul class="project-stack"><li>Streamlit</li><li>Geospatial AI</li><li>C2 Systems</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card" data-category="ai quantum-computing">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/quantum1.jpg" alt="Quantum Bio-Digital Simulator">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info & Preview</button>
+                                <a href="https://github.com/gryphlee/Quantum-Bio-Digital-Simulator" target="_blank" rel="noopener noreferrer" class="overlay-btn repo-link">🔗 GitHub</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Quantum Bio-Digital Simulator</h3>
+                            <p class="project-description">Advanced digital twin modeling human physiology, testing medical interventions via AI predictions, and integrating conceptual Quantum Computing analysis.</p>
+                            <ul class="project-stack"><li>Python (Streamlit)</li><li>Machine Learning</li><li>Quantum Analytics</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card" data-category="ai digital-twin quantum-computing">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/quant1.jpeg" alt="Quantum Earth Digital Twin v2.3">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info & Preview</button>
+                                <a href="https://github.com/gryphlee/Quantum-Earth-Digital-Twin" target="_blank" rel="noopener noreferrer" class="overlay-btn repo-link">🔗 GitHub</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Quantum Earth Digital Twin v2.3</h3>
+                            <p class="project-description">Global digital twin modeling climate anomaly tracking with interactive 3D geospatial rendering and authentic IBM Qiskit quantum risk simulation.</p>
+                            <ul class="project-stack"><li>Three.js</li><li>Qiskit</li><li>Scikit-learn</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card" data-category="machine-learning data-science">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/int-orig.jpeg" alt="AI Student Intervention System">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info & Preview</button>
+                                <a href="https://github.com/gryphlee/student-predictor-streamlit-legacy" target="_blank" rel="noopener noreferrer" class="overlay-btn repo-link">🔗 GitHub</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">AI Student Intervention System</h3>
+                            <p class="project-description">Dynamic AI risk predictor analyzing student performance metrics to forecast at-risk behaviors and plan automated interventions.</p>
+                            <ul class="project-stack"><li>Machine Learning</li><li>Predictive Modeling</li><li>Education AI</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card" data-category="machine-learning data-science">
+                        <div class="project-image-wrapper">
+                            <video autoplay loop muted playsinline class="project-image" src="images/ph-demo.mp4" poster="images/ph1.png"></video>
+                            <img class="project-image img-secondary" src="images/ph2.png" alt="Philippine Seismic Intelligence View 2">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info & Preview</button>
+                                <a href="https://github.com/gryphlee/Philippine-Earthquake-Intelligence-Platform" target="_blank" rel="noopener noreferrer" class="overlay-btn repo-link">🔗 GitHub</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Philippine Seismic Intelligence</h3>
+                            <p class="project-description">Advanced machine learning dashboard predicting seismic hazard probabilities and mapping geospatial earthquake distributions nationwide.</p>
+                            <ul class="project-stack"><li>Machine Learning</li><li>Geospatial AI</li><li>Streamlit</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card" data-category="ai">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/project-medbot..jpg" alt="MedBot Pro">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info & Preview</button>
+                                <a href="https://github.com/gryphlee/MedBot-Pro" target="_blank" rel="noopener noreferrer" class="overlay-btn repo-link">🔗 GitHub</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">MedBot Pro — Healthcare Chatbot</h3>
                             <p class="project-description">Automates symptom triage, specialist matching, appointment booking, and emergency escalation for healthcare providers.</p>
                             <ul class="project-stack"><li>Jotform</li><li>Airtable</li><li>n8n</li><li>GPT</li></ul>
-                            <a href="https://github.com/gryphlee/MedBot-Pro" class="project-link" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
                         </div>
                     </article>
-                    <article class="project-card">
-                        <a href="https://github.com/gryphlee/comselec-chatbot" target="_blank" rel="noopener noreferrer">
-                           <img class="project-image" src="images/project-comselec ai system..jpg" alt="COMSELEC AI System Project Image">
-                        </a>
+                    <article class="project-card" data-category="ai">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/project-comselec ai system..jpg" alt="COMSELEC AI">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info & Preview</button>
+                                <a href="https://github.com/gryphlee/comselec-chatbot" target="_blank" rel="noopener noreferrer" class="overlay-btn repo-link">🔗 GitHub</a>
+                            </div>
+                        </div>
                         <div class="project-content">
-                            <h3 class="project-title">COMSELEC AI Chatbot - Elections Automation</h3>
-                            <p class="project-description">A system for candidate registration & voter verification using OCR and biometric ID matching to digitize elections.</p>
+                            <h3 class="project-title">COMSELEC AI — Elections Automation</h3>
+                            <p class="project-description">Candidate registration & voter verification using OCR and biometric ID matching to digitize elections.</p>
                             <ul class="project-stack"><li>Jotform</li><li>Airtable</li><li>n8n</li><li>OCR</li></ul>
-                            <a href="https://github.com/gryphlee/comselec-chatbot" class="project-link" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
                         </div>
                     </article>
-                    <article class="project-card">
-                        <a href="https://github.com/gryphlee/breast-cancer-XAI" target="_blank" rel="noopener noreferrer">
-                           <img class="project-image" src="images/project-breast-cancer-xai..jpg" alt="Breast Cancer XAI Project Image">
-                        </a>
+                    <article class="project-card" data-category="ai">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/project-breast-cancer-xai..jpg" alt="Breast Cancer XAI">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info & Preview</button>
+                                <a href="https://github.com/gryphlee/breast-cancer-XAI" target="_blank" rel="noopener noreferrer" class="overlay-btn repo-link">🔗 GitHub</a>
+                            </div>
+                        </div>
                         <div class="project-content">
-                            <h3 class="project-title">Explainable AI for Breast Cancer Detection</h3>
-                            <p class="project-description">Applying Explainable AI (XAI) techniques to a deep learning model to make diagnostic insights more transparent.</p>
+                            <h3 class="project-title">Explainable AI for Breast Cancer</h3>
+                            <p class="project-description">Applying XAI techniques to deep learning for transparent diagnostic insights in medical imaging.</p>
                             <ul class="project-stack"><li>Python</li><li>TensorFlow</li><li>XAI</li></ul>
-                            <a href="https://github.com/gryphlee/breast-cancer-XAI" class="project-link" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
                         </div>
                     </article>
-                    <article class="project-card">
-                        <a href="https://github.com/gryphlee/sales-forecasting-project" target="_blank" rel="noopener noreferrer">
-                           <img class="project-image" src="images/project-sales-forecasting-project..jpg" alt="Sales Forecasting Project Image">
-                        </a>
+                    <article class="project-card" data-category="machine-learning">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/project-brain-tumor-segmentation-unet..jpg" alt="Brain Tumor Segmentation">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info & Preview</button>
+                                <a href="https://github.com/gryphlee/brain-tumor-segmentation-unet" target="_blank" rel="noopener noreferrer" class="overlay-btn repo-link">🔗 GitHub</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Brain Tumor Segmentation — U-Net</h3>
+                            <p class="project-description">Deep learning U-Net architecture for semantic segmentation of brain tumors in medical imaging.</p>
+                            <ul class="project-stack"><li>TensorFlow</li><li>Keras</li><li>U-Net</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card" data-category="machine-learning data-science">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/project-pneumonia-detection-cnn..jpg" alt="Pneumonia Detection">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info & Preview</button>
+                                <a href="https://github.com/gryphlee/pneumonia-detection-cnn" target="_blank" rel="noopener noreferrer" class="overlay-btn repo-link">🔗 GitHub</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Pneumonia Detection — CNN</h3>
+                            <p class="project-description">CNN model trained to detect pneumonia from chest X-ray images with high accuracy.</p>
+                            <ul class="project-stack"><li>CNN</li><li>TensorFlow</li><li>Keras</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card" data-category="n8n">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/project-intelligent-sales-operations-system..jpg" alt="Sales Operations">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info & Preview</button>
+                                <a href="https://github.com/gryphlee/Intelligent-Sales-Operations-System" target="_blank" rel="noopener noreferrer" class="overlay-btn repo-link">🔗 GitHub</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Intelligent Sales Operations</h3>
+                            <p class="project-description">AI-driven system optimizing sales processes from lead scoring to performance analytics.</p>
+                            <ul class="project-stack"><li>Python</li><li>AI/ML</li><li>CRM APIs</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card" data-category="machine-learning data-science">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/project-sales-forecasting-project..jpg" alt="Sales Forecasting">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info & Preview</button>
+                                <a href="https://github.com/gryphlee/sales-forecasting-project" target="_blank" rel="noopener noreferrer" class="overlay-btn repo-link">🔗 GitHub</a>
+                            </div>
+                        </div>
                         <div class="project-content">
                             <h3 class="project-title">Sales Forecasting System</h3>
-                            <p class="project-description">A predictive model that forecasts future sales trends based on historical data to optimize inventory and strategy.</p>
+                            <p class="project-description">Predictive model forecasting future sales trends based on historical data.</p>
                             <ul class="project-stack"><li>Python</li><li>Pandas</li><li>Scikit-learn</li></ul>
-                            <a href="https://github.com/gryphlee/sales-forecasting-project" class="project-link" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
                         </div>
                     </article>
-                    <article class="project-card">
-                        <a href="https://github.com/gryphlee/movie-sentiment-analysis" target="_blank" rel="noopener noreferrer">
-                           <img class="project-image" src="images/project-movie-sentiment-analysis..jpg" alt="Movie Sentiment Analysis Project Image">
-                        </a>
+                    <article class="project-card" data-category="ai">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/project-movie-sentiment-analysis..jpg" alt="Sentiment Analysis">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info & Preview</button>
+                                <a href="https://github.com/gryphlee/movie-sentiment-analysis" target="_blank" rel="noopener noreferrer" class="overlay-btn repo-link">🔗 GitHub</a>
+                            </div>
+                        </div>
                         <div class="project-content">
                             <h3 class="project-title">Movie Sentiment Analysis</h3>
-                            <p class="project-description">An NLP model that analyzes movie reviews to determine whether the expressed sentiment is positive or negative.</p>
+                            <p class="project-description">NLP model analyzing movie reviews to classify positive or negative sentiment.</p>
                             <ul class="project-stack"><li>Python</li><li>NLTK</li><li>NLP</li></ul>
-                            <a href="https://github.com/gryphlee/movie-sentiment-analysis" class="project-link" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
                         </div>
                     </article>
-                    <article class="project-card">
-                        <a href="https://github.com/gryphlee/heart-disease-prediction" target="_blank" rel="noopener noreferrer">
-                           <img class="project-image" src="images/project-heart-disease-prediction..jpg" alt="Heart Disease Prediction Project Image">
-                        </a>
-                        <div class="project-content"><section 
-                            <h3 class="project-title">Heart Disease Prediction Model</h3>
-                            <p class="project-description">A machine learning model that predicts the likelihood of heart disease in patients based on various health metrics.</p>
+                    <article class="project-card" data-category="machine-learning data-science">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/project-heart-disease-prediction..jpg" alt="Heart Disease Prediction">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info & Preview</button>
+                                <a href="https://github.com/gryphlee/heart-disease-prediction" target="_blank" rel="noopener noreferrer" class="overlay-btn repo-link">🔗 GitHub</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Heart Disease Prediction</h3>
+                            <p class="project-description">ML model predicting heart disease likelihood based on health metrics.</p>
                             <ul class="project-stack"><li>Python</li><li>Scikit-learn</li><li>Pandas</li></ul>
-                            <a href="https://github.com/gryphlee/heart-disease-prediction" class="project-link" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
                         </div>
                     </article>
-                    <article class="project-card">
-                        <a href="https://github.com/gryphlee/brain-tumor-segmentation-unet" target="_blank" rel="noopener noreferrer">
-                           <img class="project-image" src="images/project-brain-tumor-segmentation-unet..jpg" alt="Brain Tumor Segmentation Project Image">
-                        </a>
-                        <div class="project-content">
-                            <h3 class="project-title">Brain Tumor Segmentation with U-Net</h3>
-                            <p class="project-description">A deep learning project utilizing the U-Net architecture for semantic segmentation of brain tumors in medical imaging.</p>
-                            <ul class="project-stack"><li>TensorFlow</li><li>Keras</li><li>U-Net</li></ul>
-                            <a href="https://github.com/gryphlee/brain-tumor-segmentation-unet" class="project-link" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+                    <article class="project-card" data-category="machine-learning data-science">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/project-customer-segmentation-project..jpg" alt="Customer Segmentation">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info & Preview</button>
+                                <a href="https://github.com/gryphlee/customer-segmentation-project" target="_blank" rel="noopener noreferrer" class="overlay-btn repo-link">🔗 GitHub</a>
+                            </div>
                         </div>
-                    </article>
-                    <article class="project-card">
-                        <a href="https://github.com/gryphlee/customer-segmentation-project" target="_blank" rel="noopener noreferrer">
-                           <img class="project-image" src="images/project-customer-segmentation-project..jpg" alt="Customer Segmentation Project Image">
-                        </a>
                         <div class="project-content">
-                            <h3 class="project-title">Customer Segmentation Project</h3>
-                            <p class="project-description">An unsupervised learning model to group customers into distinct segments based on behavior for targeted marketing.</p>
+                            <h3 class="project-title">Customer Segmentation</h3>
+                            <p class="project-description">Unsupervised learning to group customers into segments for targeted marketing.</p>
                             <ul class="project-stack"><li>Python</li><li>K-Means</li><li>PCA</li></ul>
-                            <a href="https://github.com/gryphlee/customer-segmentation-project" class="project-link" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
                         </div>
                     </article>
-                    <article class="project-card">
-                        <a href="https://github.com/gryphlee/telco-churn-prediction" target="_blank" rel="noopener noreferrer">
-                           <img class="project-image" src="images/project-telco-churn-prediction..jpg" alt="Telco Churn Prediction Project Image">
-                        </a>
+                    <article class="project-card" data-category="machine-learning data-science">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/project-telco-churn-prediction..jpg" alt="Telco Churn">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info & Preview</button>
+                                <a href="https://github.com/gryphlee/telco-churn-prediction" target="_blank" rel="noopener noreferrer" class="overlay-btn repo-link">🔗 GitHub</a>
+                            </div>
+                        </div>
                         <div class="project-content">
-                            <h3 class="project-title">Telco Customer Churn Prediction</h3>
-                            <p class="project-description">A model to predict which telecommunications customers are likely to churn, enabling proactive retention strategies.</p>
+                            <h3 class="project-title">Telco Churn Prediction</h3>
+                            <p class="project-description">Predict which telecom customers are likely to churn for proactive retention.</p>
                             <ul class="project-stack"><li>Python</li><li>Scikit-learn</li><li>XGBoost</li></ul>
-                            <a href="https://github.com/gryphlee/telco-churn-prediction" class="project-link" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
                         </div>
                     </article>
-                    <article class="project-card">
-                        <a href="https://github.com/gryphlee/Intelligent-Sales-Operations-System" target="_blank" rel="noopener noreferrer">
-                           <img class="project-image" src="images/project-intelligent-sales-operations-system..jpg" alt="Intelligent Sales Operations System Project Image">
-                        </a>
-                        <div class="project-content">
-                            <h3 class="project-title">Intelligent Sales Operations System</h3>
-                            <p class="project-description">An integrated system that leverages AI to optimize sales processes, from lead scoring to performance analytics.</p>
-                            <ul class="project-stack"><li>Python</li><li>AI/ML</li><li>CRM APIs</li></ul>
-                            <a href="https://github.com/gryphlee/Intelligent-Sales-Operations-System" class="project-link" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+                    <article class="project-card" data-category="ai">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/project-bpo-ticket-analyzer..jpg" alt="BPO Ticket Analyzer">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info & Preview</button>
+                                <a href="https://github.com/gryphlee/bpo-ticket-analyzer" target="_blank" rel="noopener noreferrer" class="overlay-btn repo-link">🔗 GitHub</a>
+                            </div>
                         </div>
-                    </article>
-                    <article class="project-card">
-                        <a href="https://github.com/gryphlee/bpo-ticket-analyzer" target="_blank" rel="noopener noreferrer">
-                           <img class="project-image" src="images/project-bpo-ticket-analyzer..jpg" alt="BPO Ticket Analyzer Project Image">
-                        </a>
                         <div class="project-content">
                             <h3 class="project-title">BPO Ticket Analyzer</h3>
-                            <p class="project-description">An NLP tool to automatically classify and analyze BPO support tickets, identifying trends and prioritizing urgent issues.</p>
+                            <p class="project-description">NLP tool to classify and analyze BPO support tickets, identifying trends automatically.</p>
                             <ul class="project-stack"><li>NLP</li><li>Python</li><li>Text Classification</li></ul>
-                            <a href="https://github.com/gryphlee/bpo-ticket-analyzer" class="project-link" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
-                        </div>
-                    </article>
-                    <article class="project-card">
-                        <a href="https://github.com/gryphlee/pneumonia-detection-cnn" target="_blank" rel="noopener noreferrer">
-                           <img class="project-image" src="images/project-pneumonia-detection-cnn..jpg" alt="Pneumonia Detection CNN Project Image">
-                        </a>
-                        <div class="project-content">
-                            <h3 class="project-title">Pneumonia Detection from X-Rays (CNN)</h3>
-                            <p class="project-description">A Convolutional Neural Network (CNN) model trained to detect signs of pneumonia from chest X-ray images.</p>
-                            <ul class="project-stack"><li>CNN</li><li>TensorFlow</li><li>Keras</li></ul>
-                            <a href="https://github.com/gryphlee/pneumonia-detection-cnn" class="project-link" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
-                       
                         </div>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section id="experience" class="experience-section content-section">
-             <div class="container">
+        <section id="experience" class="content-section experience-section">
+            <div class="container">
                 <h2 class="section-title">Experience</h2>
                 <div class="experience-timeline">
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3 class="experience-title">Freelance AI & Automation Engineer</h3>
-                            <p class="experience-company">Freelance | Aug 2024 - Current</p>
-                            <p class="experience-description">Built AI-powered chatbots and RAG applications for clients; integrated workflow automations via n8n and Make.com, cutting manual work by up to 60%.</p>
+                        <div class="timeline-content glass-card">
+                            <span class="timeline-date">Jan 2026 — Present</span>
+                            <h3 class="experience-title">Intelligent Systems Engineer</h3>
+                            <p class="experience-company">Power4All · Pasig City</p>
+                            <p class="experience-description">Spearheading Industry 4.0 initiatives — leading end-to-end automation of industrial processes, AI-integrated SCADA and Water Treatment optimization, and developing a company-wide Agentic OS.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3 class="experience-title">Secretary, Commission on Student Elections</h3>
-                            <p class="experience-company">School Organization | Aug 2024 - Jul 2025</p>
-                            <p class="experience-description">Managed election-related documentation, assisted in planning, and coordinated communication among officers, candidates, and students.</p>
+                        <div class="timeline-content glass-card">
+                            <span class="timeline-date">Nov 2025 — Jan 2026</span>
+                            <h3 class="experience-title">AI Systems & Infrastructure Architect</h3>
+                            <p class="experience-company">Philippine Navy · Taguig</p>
+                            <p class="experience-description">Architected foundational AI infrastructure and secure systems framework. Designed high-availability, scalable environments for mission-critical AI deployments with military-grade security.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3 class="experience-title">AI Solutions Developer - SaaS Projects</h3>
-                            <p class="experience-company">Freelance | Apr 2024 - Aug 2024</p>
-                            <p class="experience-description">Created AI SaaS chatbot templates with MERN + Supabase; built HR Copilot and a Generative AI Marketing Assistant using Vertex AI + n8n.</p>
+                        <div class="timeline-content glass-card">
+                            <span class="timeline-date">Oct 2025 — Nov 2025</span>
+                            <h3 class="experience-title">Enterprise AI Architect</h3>
+                            <p class="experience-company">Green Attic Roofing · Chicago, IL, USA</p>
+                            <p class="experience-description">Engineered the digital backbone for a US enterprise — implementing scalable hyper-automation and AI-driven operational tools, transitioning legacy processes into modern automated workflows.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3 class="experience-title">AutoCAD Projects Designer</h3>
-                            <p class="experience-company">Freelance | Apr 2024 - Aug 2024</p>
-                            <p class="experience-description">Designed technical drawings and planned layouts for academic and freelance engineering assignments with strong attention to detail.</p>
+                        <div class="timeline-content glass-card">
+                            <span class="timeline-date">Aug 2025 — Sept 2025</span>
+                            <h3 class="experience-title">AI Engineer</h3>
+                            <p class="experience-company">Silicon Valley Associates · UAE</p>
+                            <p class="experience-description">Engineered custom AI ecosystems for a UAE-based consultancy — architecting AI-driven web applications that transformed administrative overhead into automated, intelligent workflows.</p>
                         </div>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3 class="experience-title">Automation Consultant</h3>
-                            <p class="experience-company">Commission on Student Elections | Jan 2024 - Feb 2024</p>
-                            <p class="experience-description">Digitized election workflows with Jotform, Airtable, and n8n pipelines, automating voter registration and candidate validation.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="certifications" class="certifications-section content-section">
-            <div class="container">
-                <h2 class="section-title">Certifications</h2>
-                <div class="certifications-grid">
-                    <article class="cert-card">
-                        <a href="images/cert-AI in Marketing..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                            <img src="images/cert-AI in Marketing..jpg" alt="AI in Marketing Certificate" class="cert-image">
-                            <div class="cert-info"><h3 class="cert-title">AI in Marketing</h3><p class="cert-issuer">Simplilearn</p></div>
-                        </a>
-                    </article>
-                    <article class="cert-card">
-                        <a href="images/cert-Build a Chatbot Using LangChain..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                            <img src="images/cert-Build a Chatbot Using LangChain..jpg" alt="LangChain Chatbot Certificate" class="cert-image">
-                            <div class="cert-info"><h3 class="cert-title">Build a Chatbot Using LangChain</h3><p class="cert-issuer">Simplilearn</p></div>
-                        </a>
-                    </article>
-                    <article class="cert-card">
-                        <a href="images/cert-Artificial Intelligence..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                            <img src="images/cert-Artificial Intelligence..jpg" alt="AI Certificate" class="cert-image">
-                            <div class="cert-info"><h3 class="cert-title">Artificial Intelligence</h3><p class="cert-issuer">Simplilearn</p></div>
-                        </a>
-                    </article>
-                    <article class="cert-card">
-                        <a href="images/cert-Build a Custom GPT with OpenAI..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                            <img src="images/cert-Build a Custom GPT with OpenAI..jpg" alt="Custom GPT Certificate" class="cert-image">
-                            <div class="cert-info"><h3 class="cert-title">Build a Custom GPT with OpenAI</h3><p class="cert-issuer">Simplilearn</p></div>
-                        </a>
-                    </article>
-                    <article class="cert-card">
-                        <a href="images/cert-Introduction to Generative AI Studio..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                            <img src="images/cert-Introduction to Generative AI Studio..jpg" alt="Generative AI Studio Certificate" class="cert-image">
-                            <div class="cert-info"><h3 class="cert-title">Intro to Generative AI Studio</h3><p class="cert-issuer">Simplilearn</p></div>
-                        </a>
-                    </article>
-                    
-                    <article class="cert-card">
-                        <a href="images/cert-Prompt Engineering with ChatGPT..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                            <img src="images/cert-Prompt Engineering with ChatGPT..jpg" alt="Prompt Engineering Certificate" class="cert-image">
-                            <div class="cert-info"><h3 class="cert-title">Prompt Engineering with ChatGPT</h3><p class="cert-issuer">Simplilearn</p></div>
-                        </a>
-                    </article>
-                    <article class="cert-card">
-                        <a href="images/cert-AI Agents for Beginners..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                            <img src="images/cert-AI Agents for Beginners..jpg" alt="AI Agents Certificate" class="cert-image">
-                            <div class="cert-info"><h3 class="cert-title">AI Agents for Beginners</h3><p class="cert-issuer">Simplilearn</p></div>
-                        </a>
-                    </article>
-                    <article class="cert-card">
-                        <a href="images/cert-Gemini in Gmail.jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                            <img src="images/cert-Gemini in Gmail..jpg" alt="Gemini in Gmail Certificate" class="cert-image">
-                            <div class="cert-info"><h3 class="cert-title">Gemini in Gmail</h3><p class="cert-issuer">Simplilearn</p></div>
-                         </a>
-                    </article>
-                    <article class="cert-card">
-                        <a href="images/cert-Introduction to Image Generation.jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                            <img src="images/cert-Introduction to Image Generation.jpg" alt="Introduction to Image Generation Certificate" class="cert-image">
-                            <div class="cert-info"><h3 class="cert-title">Introduction to Image Generation</h3><p class="cert-issuer">Simplilearn</p></div>
-                       </a>
-                    </article>
-                    <article class="cert-card">
-                        <a href="images/cert-AI Agent Engineering Certification.png" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                            <img src="images/cert-AI Agent Engineering Certification.png" alt="AI Agent Engineering Certification" class="cert-image">
-                            <div class="cert-info"><h3 class="cert-title">AI Agent Engineering Certification</h3><p class="cert-issuer">Smythos</p></div>
-                        </a>
-                        </article>
-                        <article class="cert-card">
-                         <a href="images/cert-Software Engineering with Knowledge Graphs and RetrievalAugmented Generation (RAG).jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                            <img src="images/cert-Software Engineering with Knowledge Graphs and RetrievalAugmented Generation (RAG)..jpg" alt="Software Engineering with RAG Certificate" class="cert-image">
-                            <div class="cert-info"><h3 class="cert-title">Software Engineering with RAG</h3><p class="cert-issuer">Simplilearn</p></div>
-                          </a>
-                    </article>
-                    <article class="cert-card">
-                <a href="images/cert-Healthcare Digitization and Automation Basics.jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                    <img src="images/cert-Healthcare Digitization and Automation Basics.jpg" alt="Healthcare Digitization and Automation Basics Certificate" class="cert-image">
-                    <div class="cert-info"><h3 class="cert-title">Healthcare Digitization and Automation Basics</h3><p class="cert-issuer">Jotform</p></div>
-                </a>
-                </article>
-                    <article class="cert-card">
-                        <a href="images/cert-Advanced Vector Search & RAG Integration with LLMs.jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                            <img src="images/cert-Advanced Vector Search & RAG Integration with LLMs..jpg" alt="Advanced Vector Search Certificate" class="cert-image">
-                            <div class="cert-info"><h3 class="cert-title">Advanced Vector Search & RAG</h3><p class="cert-issuer">Complete AI Training</p></div>
-                        </a>
-                    </article>
-                    <article class="cert-card">
-                        <a href="images/cert-Build AI SaaS Chatbots with MERN Stack.jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                            <img src="images/cert-Build AI SaaS Chatbots with MERN Stack..jpg" alt="AI SaaS with MERN Certificate" class="cert-image">
-                            <div class="cert-info"><h3 class="cert-title">Build AI SaaS Chatbots with MERN</h3><p class="cert-issuer">Complete AI Training</p></div>
-                        </a>
-                    </article>
-                    <article class="cert-card">
-                        <a href="images/cert-Build and Deploy HR Copilot AI Agents for the Workplace..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                            <img src="images/cert-Build and Deploy HR Copilot AI Agents for the Workplace..jpg" alt="HR Copilot Certificate" class="cert-image">
-                            <div class="cert-info"><h3 class="cert-title">Deploy HR Copilot AI Agents</h3><p class="cert-issuer">Complete AI Training</p></div>
-                        </a>
-                     </article>
-                     <article class="cert-card">
-                         <a href="images/cert-Building and Deploying AI Applications with Windsurf.jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                            <img src="images/cert-Building and Deploying AI Applications with Windsurf.jpg" alt="Building and Deploying AI Applications with Windsurf Certificate" class="cert-image">
-                            <div class="cert-info"><h3 class="cert-title">Building and Deploying AI Applications with Windsurf</h3><p class="cert-issuer">Complete AI Training</p></div>
-                         </a>
-                         </article>
-                    <article class="cert-card">
-                        <a href="images/cert-Build RAG Applications with Python and LangChain for AI Solutions..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                            <img src="images/cert-Build RAG Applications with Python and LangChain for AI Solutions..jpg" alt="RAG Apps with Python Certificate" class="cert-image">
-                            <div class="cert-info"><h3 class="cert-title">Build RAG Apps with Python</h3><p class="cert-issuer">Complete AI Training</p></div>
-                        </a>
-                    </article>
-                    <article class="cert-card">
-                        <a href="images/cert-Full-Stack Next.js with Supabase & React(2)..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                            <img src="images/cert-Full-Stack Next.js with Supabase & React(2)..jpg" alt="Full-Stack Next.js Certificate" class="cert-image">
-                            <div class="cert-info"><h3 class="cert-title">Full-Stack AI Chat Apps with Next.js</h3><p class="cert-issuer">Complete AI Training</p></div>
-                        </a>
-                    </article>
-                    <article class="cert-card">
-                         <a href="images/cert-DeepSeek R1 Architecture, GRPO & KL Divergence Expertise..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                             <img src="images/cert-DeepSeek R1 Architecture, GRPO & KL Divergence Expertise..jpg" alt="DeepSeek R1 Architecture Certificate" class="cert-image">
-                             <div class="cert-info"><h3 class="cert-title">DeepSeek R1 Architecture, GRPO & KL Divergence</h3><p class="cert-issuer">Complete AI Training</p></div>
-                         </a>
-                    </article>
-                    <article class="cert-card">
-                        <a href="images/cert-Fine-Tuning LLMs for Generative AI Solutions.jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                            <img src="images/cert-Fine-Tuning LLMs for Generative AI Solutions.jpg" alt="Fine-Tuning LLMs Certificate" class="cert-image">
-                            <div class="cert-info"><h3 class="cert-title">Fine-Tuning LLMs for Generative AI</h3><p class="cert-issuer">Complete AI Training</p></div>
-                       </a>
-            </article>
-            <article class="cert-card">
-                <a href="images/cert-Generative AI Developer - Gemini Pro, OpenAI, Llama & Tools.jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                    <img src="images/cert-Generative AI Developer - Gemini Pro, OpenAI, Llama & Tools.jpg" alt="Generative AI Developer Certificate" class="cert-image">
-                    <div class="cert-info"><h3 class="cert-title">Generative AI Developer</h3><p class="cert-issuer">Complete AI Training</p></div>
-                </a>
-            </article>
-                    <article class="cert-card">
-                        <a href="images/cert-Make.com CRM Automation & Scalable Sales System Builder..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                            <img src="images/cert-Make.com CRM Automation & Scalable Sales System Builder..jpg" alt="Make.com CRM Automation Certificate" class="cert-image">
-                            <div class="cert-info"><h3 class="cert-title">Make.com CRM Automation</h3><p class="cert-issuer">Complete AI Training</p></div>
-                        </a>
-                        </article>
-                    <article class="cert-card">
-                         <a href="images/cert-N8n Automation & AI Agent Developer - Beginner to Pro..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                              <img src="images/cert-N8n Automation & AI Agent Developer - Beginner to Pro..jpg" alt="N8n Automation & AI Agent Developer Certificate" class="cert-image">
-                              <div class="cert-info"><h3 class="cert-title">N8n Automation & AI Agent Developer</h3><p class="cert-issuer">Complete AI Training</p></div>
-                        </a>
-                        </article>
-                    <article class="cert-card">
-                        <a href="images/cert-N8N Workflow Automation with AI Agents, JSON, and Logic..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                            <img src="images/cert-N8N Workflow Automation with AI Agents, JSON, and Logic..jpg" alt="N8N Workflow Automation Certificate" class="cert-image">
-                            <div class="cert-info"><h3 class="cert-title">N8N Workflow Automation</h3><p class="cert-issuer">Complete AI Training</p></div>
-                        </a>
-                    </article>
-                    <article class="cert-card">
-                        <a href="images/cert-Proficient in Every N8N Javascript Function and Their Application..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                            <img src="images/cert-Proficient in Every N8N JavaScript Function and Their Application..jpg" alt="N8N JavaScript Certificate" class="cert-image">
-                            <div class="cert-info"><h3 class="cert-title">Proficient in N8N JavaScript</h3><p class="cert-issuer">Complete AI Training</p></div>
-                        </a>
-            </article>
-            <article class="cert-card">
-                <a href="images/cert-Quantum Computing Foundations - Math & Theory for Beginners.jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                    <img src="images/cert-Quantum Computing Foundations - Math & Theory for Beginners.jpg" alt="Quantum Computing Foundations Certificate" class="cert-image">
-                    <div class="cert-info"><h3 class="cert-title">Quantum Computing Foundations</h3><p class="cert-issuer">Complete AI Training</p></div>
-                </a>
-            </article>
-            <article class="cert-card">
-                <a href="images/cert-cisco-ai-customer-reviews..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                    <img src="images/cert-cisco-ai-customer-reviews..jpg" alt="AI at Work: Analyze Customer Reviews Certificate" class="cert-image">
-                    <div class="cert-info"><h3 class="cert-title">AI at Work: Analyze Customer Reviews</h3><p class="cert-issuer">Cisco</p></div>
-                </a>
-            </article>
-                    <article class="cert-card">
-                        <a href="images/cert-Claude Code in Action.jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                            <img src="images/cert-Claude Code in Action.jpg" alt="Claude Code in Action Certificate" class="cert-image">
-                            <div class="cert-info"><h3 class="cert-title">Claude Code in Action</h3><p class="cert-issuer">Anthropic</p></div>
-                        </a>
-                    </article>
-                    <article class="cert-card">
-                        <a href="#" class="cert-link-wrapper">
-                            <img src="https://placehold.co/600x400/1a1a1a/00f0ff?text=Cert" alt="Certificate for AI and ML Engineer (AWS Scholars)" class="cert-image">
-                            <div class="cert-info"><h3 class="cert-title">AI and ML Engineer (AWS Scholars)</h3><p class="cert-issuer">AWS</p></div>
-                        </a>
-                   </article>
-            <article class="cert-card">
-                        <a href="images/cert-DeepSeek R1 Architecture, GRPO & KL Divergence Expertise..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                            <img src="images/cert-DeepSeek R1 Architecture, GRPO & KL Divergence Expertise..jpg" alt="DeepSeek R1 Architecture Certificate" class="cert-image">
-                            <div class="cert-info"><h3 class="cert-title">DeepSeek R1 Architecture, GRPO & KL Divergence</h3><p class="cert-issuer">Complete AI Training</p></div>
-                        </a>
-                  </article>
-            <article class="cert-card">
-                <a href="images/cert-Jotform Foundations Badge_ Introduction to Jotform.png" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                    <img src="images/cert-Jotform Foundations Badge_ Introduction to Jotform.png" alt="Jotform Foundations Badge: Introduction to Jotform" class="cert-image">
-                    <div class="cert-info"><h3 class="cert-title">Jotform Foundations: Intro</h3><p class="cert-issuer">Jotform</p></div>
-               </a>
-            </article>
-            <article class="cert-card">
-                <a href="images/cert-Certified ML & Neural Networks Engineer_ No-Library Mastery.jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                    <img src="images/cert-Certified ML & Neural Networks Engineer_ No-Library Mastery..jpg" alt="Certified ML & Neural Networks Engineer Certificate" class="cert-image">
-                    <div class="cert-info"><h3 class="cert-title">Certified ML & Neural Networks Engineer</h3><p class="cert-issuer">Complete AI Training</p></div>
-                </a>
-            </article>
-                    
-                    <article class="cert-card">
-                        <a href="#" class="cert-link-wrapper">
-                            <img src="https://placehold.co/600x400/1a1a1a/00f0ff?text=Cert" alt="Certificate for MERN Stack Development Bootcamp" class="cert-image">
-                            <div class="cert-info"><h3 class="cert-title">MERN Stack Development Bootcamp</h3><p class="cert-issuer">Complete AI Training</p></div>
-                       </a>
-            </article>
-            <article class="cert-card">
-                <a href="images/cert-Full-Stack Next.js with Supabase & React.jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper">
-                    <img src="images/cert-Full-Stack Next.js with Supabase & React.jpg" alt="Full-Stack Next.js with Supabase & React Certificate" class="cert-image">
-                    <div class="cert-info"><h3 class="cert-title">Full-Stack Next.js with Supabase & React</h3><p class="cert-issuer">Complete AI Training</p></div>
-                </a>
-            </article>
-                    
-                    
-                    
-                    
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="contact-section content-section">
+        <section id="certifications" class="content-section certifications-section">
             <div class="container">
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="hero-text">I'm currently open to new opportunities and collaborations. Feel free to reach out via email or connect with me on social media.</p>
-                <a href="mailto:leenatividad5@gmail.com" class="btn">Say Hello</a>
+                <h2 class="section-title">Certifications <span class="cert-count">30+</span></h2>
+                <div class="certifications-grid" id="certs-grid">
+                    <article class="cert-card"><a href="images/cert-AI Agent Engineering Certification.png" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-AI Agent Engineering Certification.png" alt="AI Agent Engineering" class="cert-image"><div class="cert-info"><h3 class="cert-title">AI Agent Engineering</h3><p class="cert-issuer">SmythOS</p></div></a></article>
+                    <article class="cert-card"><a href="images/cert-DeepSeek R1 Architecture, GRPO & KL Divergence Expertise..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-DeepSeek R1 Architecture, GRPO & KL Divergence Expertise..jpg" alt="DeepSeek R1" class="cert-image"><div class="cert-info"><h3 class="cert-title">DeepSeek R1 Architecture</h3><p class="cert-issuer">Complete AI Training</p></div></a></article>
+                    <article class="cert-card"><a href="images/cert-Advanced Vector Search & RAG Integration with LLMs..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-Advanced Vector Search & RAG Integration with LLMs..jpg" alt="Advanced RAG" class="cert-image"><div class="cert-info"><h3 class="cert-title">Advanced Vector Search & RAG</h3><p class="cert-issuer">Complete AI Training</p></div></a></article>
+                    <article class="cert-card"><a href="images/cert-N8n Automation & AI Agent Developer - Beginner to Pro..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-N8n Automation & AI Agent Developer - Beginner to Pro..jpg" alt="N8n Automation" class="cert-image"><div class="cert-info"><h3 class="cert-title">N8n Automation & AI Agents</h3><p class="cert-issuer">Complete AI Training</p></div></a></article>
+                    <article class="cert-card"><a href="images/cert-Fine-Tuning LLMs for Generative AI Solutions.jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-Fine-Tuning LLMs for Generative AI Solutions.jpg" alt="Fine-Tuning LLMs" class="cert-image"><div class="cert-info"><h3 class="cert-title">Fine-Tuning LLMs for Gen AI</h3><p class="cert-issuer">Complete AI Training</p></div></a></article>
+                    <article class="cert-card"><a href="images/cert-Claude Code in Action.jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-Claude Code in Action.jpg" alt="Claude Code" class="cert-image"><div class="cert-info"><h3 class="cert-title">Claude Code in Action</h3><p class="cert-issuer">Anthropic</p></div></a></article>
+
+                    <!-- Hidden Certs -->
+                    <article class="cert-card hidden-cert"><a href="images/cert-AI Agents for Beginners..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-AI Agents for Beginners..jpg" alt="AI Agents" class="cert-image"><div class="cert-info"><h3 class="cert-title">AI Agents for Beginners</h3><p class="cert-issuer">Simplilearn</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-AI in Marketing..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-AI in Marketing..jpg" alt="AI in Marketing" class="cert-image"><div class="cert-info"><h3 class="cert-title">AI in Marketing</h3><p class="cert-issuer">Simplilearn</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-Artificial Intelligence..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-Artificial Intelligence..jpg" alt="Artificial Intelligence" class="cert-image"><div class="cert-info"><h3 class="cert-title">Artificial Intelligence</h3><p class="cert-issuer">Simplilearn</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-Build AI SaaS Chatbots with MERN Stack..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-Build AI SaaS Chatbots with MERN Stack..jpg" alt="AI SaaS Chatbots" class="cert-image"><div class="cert-info"><h3 class="cert-title">AI SaaS Chatbots with MERN</h3><p class="cert-issuer">Complete AI Training</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-Build RAG Applications with Python and LangChain for AI Solutions..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-Build RAG Applications with Python and LangChain for AI Solutions..jpg" alt="RAG Python" class="cert-image"><div class="cert-info"><h3 class="cert-title">RAG Apps with Python</h3><p class="cert-issuer">Complete AI Training</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-Build a Chatbot Using LangChain..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-Build a Chatbot Using LangChain..jpg" alt="Chatbot LangChain" class="cert-image"><div class="cert-info"><h3 class="cert-title">Chatbot with LangChain</h3><p class="cert-issuer">Simplilearn</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-Build a Custom GPT with OpenAI..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-Build a Custom GPT with OpenAI..jpg" alt="Custom GPT" class="cert-image"><div class="cert-info"><h3 class="cert-title">Custom GPT with OpenAI</h3><p class="cert-issuer">Coursera</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-Build and Deploy HR Copilot AI Agents for the Workplace..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-Build and Deploy HR Copilot AI Agents for the Workplace..jpg" alt="HR Copilot" class="cert-image"><div class="cert-info"><h3 class="cert-title">HR Copilot AI Agents</h3><p class="cert-issuer">Complete AI Training</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-Building and Deploying AI Applications with Windsurf.jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-Building and Deploying AI Applications with Windsurf.jpg" alt="Windsurf" class="cert-image"><div class="cert-info"><h3 class="cert-title">AI Apps with Windsurf</h3><p class="cert-issuer">Complete AI Training</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-Full-Stack Next.js with Supabase & React.jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-Full-Stack Next.js with Supabase & React.jpg" alt="Next.js" class="cert-image"><div class="cert-info"><h3 class="cert-title">Full-Stack Next.js</h3><p class="cert-issuer">Complete AI Training</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-Fundamentals of DevOps on AWS..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-Fundamentals of DevOps on AWS..jpg" alt="DevOps AWS" class="cert-image"><div class="cert-info"><h3 class="cert-title">DevOps on AWS</h3><p class="cert-issuer">AWS</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-Gemini in Gmail..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-Gemini in Gmail..jpg" alt="Gemini Gmail" class="cert-image"><div class="cert-info"><h3 class="cert-title">Gemini in Gmail</h3><p class="cert-issuer">Google Cloud</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-Generative AI Developer – Gemini Pro, OpenAI, Llama & Tools..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-Generative AI Developer – Gemini Pro, OpenAI, Llama & Tools..jpg" alt="Generative AI Dev" class="cert-image"><div class="cert-info"><h3 class="cert-title">Generative AI Developer</h3><p class="cert-issuer">Complete AI Training</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-Healthcare Digitization and Automation Basics.jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-Healthcare Digitization and Automation Basics.jpg" alt="Healthcare Auto" class="cert-image"><div class="cert-info"><h3 class="cert-title">Healthcare Digitization</h3><p class="cert-issuer">Jotform</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-Introduction to Generative AI Studio..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-Introduction to Generative AI Studio..jpg" alt="Gen AI Studio" class="cert-image"><div class="cert-info"><h3 class="cert-title">Intro Generative AI Studio</h3><p class="cert-issuer">Google Cloud</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-Introduction to Image Generation.jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-Introduction to Image Generation.jpg" alt="Image Gen" class="cert-image"><div class="cert-info"><h3 class="cert-title">Intro Image Generation</h3><p class="cert-issuer">Google Cloud</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-Jotform Foundations Badge_ Introduction to Form Building.png" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-Jotform Foundations Badge_ Introduction to Form Building.png" alt="Form Building" class="cert-image"><div class="cert-info"><h3 class="cert-title">Form Building</h3><p class="cert-issuer">Jotform</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-Jotform Foundations Badge_ Introduction to Jotform.png" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-Jotform Foundations Badge_ Introduction to Jotform.png" alt="Intro to Jotform" class="cert-image"><div class="cert-info"><h3 class="cert-title">Intro to Jotform</h3><p class="cert-issuer">Jotform</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-Make.com CRM Automation & Scalable Sales System Builder..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-Make.com CRM Automation & Scalable Sales System Builder..jpg" alt="Make.com CRM" class="cert-image"><div class="cert-info"><h3 class="cert-title">Make.com CRM Automation</h3><p class="cert-issuer">Complete AI Training</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-N8N Workflow Automation with AI Agents, JSON, and Logic..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-N8N Workflow Automation with AI Agents, JSON, and Logic..jpg" alt="N8N Workflow" class="cert-image"><div class="cert-info"><h3 class="cert-title">N8N Workflow Automation</h3><p class="cert-issuer">Complete AI Training</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-Proficient in Every N8N JavaScript Function and Their Application..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-Proficient in Every N8N JavaScript Function and Their Application..jpg" alt="N8N JavaScript" class="cert-image"><div class="cert-info"><h3 class="cert-title">N8N JS Functions</h3><p class="cert-issuer">Complete AI Training</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-Prompt Engineering with ChatGPT..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-Prompt Engineering with ChatGPT..jpg" alt="Prompt Engineering" class="cert-image"><div class="cert-info"><h3 class="cert-title">Prompt Engineering</h3><p class="cert-issuer">Simplilearn</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-Quantum Computing Foundations – Math & Theory for Beginners.jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-Quantum Computing Foundations – Math & Theory for Beginners.jpg" alt="Quantum Computing" class="cert-image"><div class="cert-info"><h3 class="cert-title">Quantum Computing Basics</h3><p class="cert-issuer">Complete AI Training</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-Software Engineering with Knowledge Graphs and RetrievalAugmented Generation (RAG)..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-Software Engineering with Knowledge Graphs and RetrievalAugmented Generation (RAG)..jpg" alt="Knowledge Graphs" class="cert-image"><div class="cert-info"><h3 class="cert-title">Knowledge Graphs & RAG</h3><p class="cert-issuer">Coursera</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-ai-assistants-gpt4..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-ai-assistants-gpt4..jpg" alt="GPT-4 Assistants" class="cert-image"><div class="cert-info"><h3 class="cert-title">AI Assistants GPT-4</h3><p class="cert-issuer">Coursera</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-anthropic-claude-code..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-anthropic-claude-code..jpg" alt="Anthropic Claude" class="cert-image"><div class="cert-info"><h3 class="cert-title">Anthropic Claude Code</h3><p class="cert-issuer">Anthropic</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-cisco-ai-customer-reviews..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-cisco-ai-customer-reviews..jpg" alt="Cisco AI" class="cert-image"><div class="cert-info"><h3 class="cert-title">AI Customer Reviews</h3><p class="cert-issuer">Cisco</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-claude-llm..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-claude-llm..jpg" alt="Claude LLM" class="cert-image"><div class="cert-info"><h3 class="cert-title">Claude LLM Mastery</h3><p class="cert-issuer">Complete AI Training</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-copilot-agents..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-copilot-agents..jpg" alt="Copilot Agents" class="cert-image"><div class="cert-info"><h3 class="cert-title">Copilot Agents</h3><p class="cert-issuer">Complete AI Training</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-ml-neural-networks..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-ml-neural-networks..jpg" alt="Neural Networks" class="cert-image"><div class="cert-info"><h3 class="cert-title">Neural Networks (ML)</h3><p class="cert-issuer">Coursera</p></div></a></article>
+                    <article class="cert-card hidden-cert"><a href="images/cert-rag-chatbots..jpg" target="_blank" rel="noopener noreferrer" class="cert-link-wrapper"><img src="images/cert-rag-chatbots..jpg" alt="RAG Chatbots" class="cert-image"><div class="cert-info"><h3 class="cert-title">RAG Chatbots</h3><p class="cert-issuer">Complete AI Training</p></div></a></article>
+                </div>
+                <button class="btn btn-outline show-more-btn" id="show-more-certs">Show All Certifications</button>
+            </div>
+        </section>
+
+        <section id="contact" class="content-section contact-section">
+            <div class="container">
+                <div class="contact-content">
+                    <h2 class="section-title">Establish Secure Link</h2>
+                    <p class="contact-text">Currently accepting commissions for Sovereign AI architecture, adversarial intelligence systems, and mission-critical cyber-physical deployment.</p>
+                    <a href="mailto:leenatividad5@gmail.com" class="btn btn-primary btn-lg" style="font-family:'JetBrains Mono', monospace; text-transform:uppercase; font-size:0.9rem; letter-spacing:1px;">Initialize Comms &rarr;</a>
+                    <div class="contact-socials">
+                        <a href="https://github.com/gryphlee" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/stan-lee-natividad-83a327336" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                        <a href="https://www.facebook.com/share/1DmHB5EMqp/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                        </a>
+                        <a href="mailto:leenatividad5@gmail.com" aria-label="Email">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <footer class="site-footer">
         <div class="container">
-            <div class="social-links">
-                <a href="https://github.com/gryphlee" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 16 16" width="24" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
-                </a>
-            </div>
-            <p class="copyright">&copy; 2025 Stan Lee Natividad. All rights reserved.</p>
+            <p class="copyright">&copy; 2026 Stan Lee Natividad. Engineered with precision.</p>
         </div>
     </footer>
-    
+
+    <div id="project-modal" class="modal-backdrop hidden">
+        <div class="modal-content glass-panel">
+            <button id="modal-close" class="close-btn">&times;</button>
+            <div class="modal-layout">
+                <div class="modal-gallery">
+                    <div id="modal-main-container" class="modal-main-container"></div>
+                    <div id="modal-thumbnails" class="thumbnail-strip"></div>
+                </div>
+                <div class="modal-details">
+                    <h2 id="modal-title"></h2>
+                    <div class="modal-tags" id="modal-tags"></div>
+                    <p id="modal-desc-long"></p>
+                    <div class="modal-actions">
+                        <a id="modal-link" href="#" target="_blank" class="overlay-btn" style="opacity: 1; position: relative">View Full Source →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js?v=7626.7"></script>
+    <!-- ARCHITECTURE MODAL -->
+    <div class="arch-modal" id="archModal">
+        <div class="arch-modal-content">
+            <button class="arch-modal-close" id="closeArchModal">&times;</button>
+            <iframe id="archIframe" src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
 </body>
 </html>

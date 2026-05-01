@@ -1,0 +1,35 @@
+STAN LEE NATIVIDAD
+Intelligent Systems Engineer
+Mandaluyong City 1550 | 09911532620 | leenatividad5@gmail.com | linkedin.com/in/stan-lee-natividad-83a327336
+
+PROFILE
+Sovereign AI Architect and former Intelligence Officer specializing in Multi-Agent Operating Systems (MAOS) and industrial digital twins. Expert in engineering secure, air-gapped LLMs (QLoRA/GGUF) and edge-deployed physics simulations for critical infrastructure. Proven track record of bridging the IT/OT gap to transition legacy SCADA operations into autonomous, self-evolving cyber-physical ecosystems.
+
+NOTABLE ARCHITECTURES & SYSTEMS
+* M3CHA Agentic Operating System (MAOS): Architected a 9-module proprietary AI ecosystem for full-spectrum enterprise automation. Designed autonomous LangGraph pipelines for bidding, forecasting, and target influence mapping, eliminating manual administrative bottlenecks.
+* M3CHA Coder & BDIM (Sovereign Local LLMs): Engineered and deployed two domain-specialized, air-gapped LLMs. Managed the end-to-end LLMOps pipeline from QLoRA fine-tuning and alignment stripping to GGUF quantization, guaranteeing 100% data sovereignty for enterprise clients.
+* Industrial Digital Twin & Edge Simulation: Developed a high-fidelity WebGL (Three.js) digital twin for Water Treatment SCADA facilities. Integrated Reduced Order Models (ROMs) and FMUs to execute real-time physics simulations and predictive anomaly detection directly on edge devices.
+* Autonomous Procurement Intelligence Pipeline: Engineered a resilient OpenClaw server infrastructure to autonomously scrape and classify PhilGEPS government bidding payloads. Built an algorithmic forecasting engine that instantly cross-references requirements against manufacturer databases.
+* Deep Cover Cryptography & Covert Comms: Built a deniable communication protocol disguised as a standard utility. Implemented client-side AES-256 encryption and steganography to embed classified payloads within text, bypassing automated deep-packet IT surveillance.
+
+EMPLOYMENT HISTORY
+Intelligent Systems Engineer | Power4All (Pasig City) | Jan 2026 — Present
+Spearheading Industry 4.0 initiatives by integrating autonomous AI with traditional engineering. Leading the end-to-end automation of industrial processes, AI-SCADA convergence, and the development of a company-wide Agentic OS to replace manual bottlenecks with intelligent workflows.
+
+AI Systems & Infrastructure Architect | Philippine Navy (Taguig) | Nov 2025 — Jan 2026
+Architected the foundational AI infrastructure and secure systems framework. Designed high-availability, scalable, and air-gapped local AI environments for maritime domain awareness and tactical data processing, adhering strictly to military-grade security standards.
+
+Enterprise AI Architect | Green Attic Roofing (Chicago, USA) | Oct 2025 — Nov 2025
+Engineered the digital backbone via scalable hyper-automation and AI-driven tools, transitioning legacy business processes into modern workflows that drastically reduced manual operational overhead.
+
+AI Engineer | Silicon Valley Associate (UAE) | Aug 2025 — Sept 2025
+Engineered custom AI ecosystems leveraging Large Language Models. Partnered directly with the CEO to architect web applications that transformed administrative overhead into automated, intelligent agentic systems.
+
+CORE COMPETENCIES
+* Sovereign AI & Local Models: PyTorch, QLoRA Fine-Tuning, Model Quantization (GGUF), Local LLM Deployment.
+* Multi-Agent Systems: LangGraph Orchestration, Stateful Agent Flows, Playwright CDP, AI Decision Engines.
+* Cyber-Physical & Industrial: Digital Twins, Three.js/WebGL, Physics Simulation (FMU/ROM), AI-SCADA.
+* Backend & Infrastructure: Python, FastAPI, Rust & Tauri, Qdrant Vector DBs, SQLite, On-Prem Edge Deployment.
+
+EDUCATION
+BS Electronics Engineering | Rizal Technological University, Mandaluyong City | Aug 2022 — Present
