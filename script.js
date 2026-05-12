@@ -716,6 +716,36 @@ const projectDatabase = {
         `,
         repo: "#"
     },
+    "SIEM Alert Enrichment & Response": {
+        images: ["images/n8n1.png"],
+        longDesc: `
+            <div style="line-height:1.8;">
+                <p style="font-size:1.1rem; margin-bottom:1.75rem; opacity:0.9;">
+                    The <strong>SIEM Alert Enrichment & Response</strong> pipeline is an autonomous SecOps workflow built on <strong>n8n</strong>. It ingests raw security alerts from any SIEM platform — Splunk HEC, Elastic Watcher, QRadar, and Microsoft Sentinel — enriches them with multi-source threat intelligence, classifies severity with AI, and routes incidents to the correct response team with zero manual triage.
+                </p>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:1.75rem; font-size:0.92rem;">
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Alert to Slack</span><br><strong>< 8 seconds</strong></div>
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Threat Intel APIs</span><br><strong>3 Sources Merged</strong></div>
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Manual Triage Steps</span><br><strong>0 (Fully Autonomous)</strong></div>
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Priority Classification</span><br><strong>P1 – P4 Auto-Routing</strong></div>
+                </div>
+
+                <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
+                    The 5-stage pipeline starts with <strong>Webhook Ingestion</strong> (instant 200 ACK to prevent SIEM timeouts), followed by <strong>Schema Normalization</strong> (extracting IP, severity, hostname, user, and MITRE technique IDs consistently across all formats). The enrichment layer executes <strong>3 concurrent API calls</strong> — VirusTotal, AbuseIPDB, and IPInfo — computing a composite 0–100 threat score.
+                </p>
+
+                <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
+                    <strong>GPT-4o AI Analysis</strong> produces a structured JSON output containing attack classification, MITRE ATT&CK tactic mapping, IOC verdict, false positive likelihood, and containment decision. The final stage applies <strong>Priority Routing</strong>: P1 triggers PagerDuty page + Jira incident, P2 routes to Jira only, and all levels receive Slack block messages + Google Sheets audit logging.
+                </p>
+
+                <p style="font-size:0.97rem; opacity:0.85;">
+                    The webhook ingestion node is <strong>multi-SIEM compatible</strong> out of the box, supporting Splunk HEC, Elastic Watcher, QRadar, and Microsoft Sentinel formats without requiring any custom adapters or middleware.
+                </p>
+            </div>
+        `,
+        repo: "#"
+    },
     "Water Treatment Plant Digital Twin": {
         images: ["images/digitalthumb.png", "images/digital1.png", "images/digital2.png", "images/digital3.png", "images/digital4.png", "images/digital5.png", "images/digital6.png", "images/digital7.png", "images/digital8.png", "images/digital9.png", "images/digital10.png"],
         longDesc: `
