@@ -719,26 +719,29 @@ const projectDatabase = {
     "Autonomous AI Agent OS": {
         images: ["images/n8n3.png"],
         longDesc: `
-            <div style="line-height:1.8;">
                 <p style="font-size:1.1rem; margin-bottom:1.75rem; opacity:0.9;">
-                    The <strong>Autonomous AI Agent OS</strong> is a self-directed multi-agent system built entirely in <strong>n8n</strong> that implements a <strong>Planner → Executor → Critic</strong> loop. Give it a high-level goal, and it autonomously decomposes it into tasks, executes them across real-world APIs, evaluates its own output with <strong>Claude 3.5 Sonnet</strong>, and retries on failure without human intervention.
+                    The <strong>Autonomous AI Agent OS</strong> is a self-directed, resilient multi-agent system built entirely in <strong>n8n</strong> that implements a <strong>Planner → Executor → Critic</strong> loop. Give it a high-level goal, and it autonomously decomposes it into actionable tasks, executes them across real-world APIs, evaluates its own output with <strong>Claude 3.5 Sonnet</strong>, and self-corrects on failure without human intervention.
                 </p>
 
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:1.75rem; font-size:0.92rem;">
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Core Architecture</span><br><strong>Planner → Executor → Critic</strong></div>
-                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Reasoning Engine</span><br><strong>Claude 3.5 Sonnet (Dual Agent)</strong></div>
-                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Self-Correction</span><br><strong>Up to 3 Auto-Retries on Fail</strong></div>
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Reasoning Engine</span><br><strong>Claude 3.5 Sonnet (Dual LLM)</strong></div>
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">State Management</span><br><strong>Global Context Payload</strong></div>
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Tool Arsenal</span><br><strong>HTTP, Scripts, OSINT, Sub-Flows</strong></div>
+                    <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">False Positive Filter</span><br><strong>Zero-Temperature Critic AI</strong></div>
                     <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Escalation Path</span><br><strong>Outlook Human-in-the-Loop Alert</strong></div>
-                    <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Total Orchestration</span><br><strong>22 Nodes • State-Machine Logic</strong></div>
                 </div>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    The autonomous loop begins with the <strong>Planner Agent</strong>, which receives a natural-language goal and breaks it down into an ordered JSON array of sub-tasks. The <strong>Executor Router</strong> then picks up the first task and dynamically routes it to the correct tool—whether that’s executing custom JavaScript, making external HTTP calls, triggering existing n8n workflows, or researching via <strong>Perplexity Sonar Pro</strong>.
+                    The autonomous orchestration loop relies on <strong>Global Payload State Management</strong>, passing a continuous context object that tracks pending tasks, completed actions, and retry counts across iterations. The pipeline begins with the <strong>Planner Agent</strong>, which receives a vague natural-language goal and breaks it down into an ordered JSON array. It assigns each sub-task a specific execution tool, enforcing strict schema validation to prevent LLM hallucination from breaking the loop logic.
+                </p>
+
+                <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
+                    The <strong>Executor Router</strong> acts as the mechanical hands of the OS. It picks up the first pending task and dynamically routes it through a Switch node to the correct capability—whether that’s executing custom JavaScript logic, making external REST API calls, triggering existing internal n8n sub-workflows (like KPI trackers), or running live grounded research via <strong>Perplexity Sonar Pro</strong>.
                 </p>
 
                 <p style="font-size:0.97rem; opacity:0.85;">
-                    After execution, the <strong>Critic Agent</strong> (running at temperature 0) evaluates the tool’s output against the original task requirement. If the task passes, the system advances. If it fails, the Critic generates specific feedback (e.g., "API returned 404, fix the endpoint") and the system loops back to retry. If it fails 3 consecutive times, it gracefully halts and sends a comprehensive HTML escalation report to the lead engineer via Outlook.
+                    Crucially, the system does not blindly advance after a tool runs. Every output is routed to the <strong>Critic Agent</strong>—a secondary Claude instance locked at Temperature 0 for deterministic evaluation. If the task passes, the loop advances. If it fails, the Critic generates explicit feedback (e.g., "API returned a 401 Unauthorized, check Auth headers") and the OS loops back to retry up to 3 times. If all retries are exhausted, it gracefully halts and triggers an <strong>Escalation Path</strong>, emailing a comprehensive HTML diagnostic report to the lead engineer via Outlook.
                 </p>
             </div>
         `,
