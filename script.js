@@ -716,6 +716,34 @@ const projectDatabase = {
         `,
         repo: "#"
     },
+    "Autonomous AI Agent OS": {
+        images: ["images/n8n3.png"],
+        longDesc: `
+            <div style="line-height:1.8;">
+                <p style="font-size:1.1rem; margin-bottom:1.75rem; opacity:0.9;">
+                    The <strong>Autonomous AI Agent OS</strong> is a self-directed multi-agent system built entirely in <strong>n8n</strong> that implements a <strong>Planner → Executor → Critic</strong> loop. Give it a high-level goal, and it autonomously decomposes it into tasks, executes them across real-world APIs, evaluates its own output with <strong>Claude 3.5 Sonnet</strong>, and retries on failure without human intervention.
+                </p>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:1.75rem; font-size:0.92rem;">
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Core Architecture</span><br><strong>Planner → Executor → Critic</strong></div>
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Reasoning Engine</span><br><strong>Claude 3.5 Sonnet (Dual Agent)</strong></div>
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Self-Correction</span><br><strong>Up to 3 Auto-Retries on Fail</strong></div>
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Tool Arsenal</span><br><strong>HTTP, Scripts, OSINT, Sub-Flows</strong></div>
+                    <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Escalation Path</span><br><strong>Outlook Human-in-the-Loop Alert</strong></div>
+                    <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Total Orchestration</span><br><strong>22 Nodes • State-Machine Logic</strong></div>
+                </div>
+
+                <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
+                    The autonomous loop begins with the <strong>Planner Agent</strong>, which receives a natural-language goal and breaks it down into an ordered JSON array of sub-tasks. The <strong>Executor Router</strong> then picks up the first task and dynamically routes it to the correct tool—whether that’s executing custom JavaScript, making external HTTP calls, triggering existing n8n workflows, or researching via <strong>Perplexity Sonar Pro</strong>.
+                </p>
+
+                <p style="font-size:0.97rem; opacity:0.85;">
+                    After execution, the <strong>Critic Agent</strong> (running at temperature 0) evaluates the tool’s output against the original task requirement. If the task passes, the system advances. If it fails, the Critic generates specific feedback (e.g., "API returned 404, fix the endpoint") and the system loops back to retry. If it fails 3 consecutive times, it gracefully halts and sends a comprehensive HTML escalation report to the lead engineer via Outlook.
+                </p>
+            </div>
+        `,
+        repo: "#"
+    },
     "AI Competitive Intelligence Engine": {
         images: ["images/n8n2.png"],
         longDesc: `
