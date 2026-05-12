@@ -716,6 +716,38 @@ const projectDatabase = {
         `,
         repo: "#"
     },
+    "Self-Healing Infrastructure Monitor": {
+        images: ["images/n8n4.png"],
+        longDesc: `
+            <div style="line-height:1.8;">
+                <p style="font-size:1.1rem; margin-bottom:1.75rem; opacity:0.9;">
+                    The <strong>Self-Healing Infrastructure Monitor</strong> is an autonomous Site Reliability Engineering (SRE) pipeline built on <strong>n8n</strong>. It bridges the gap between deterministic statistical monitoring and generative AI diagnostics. When metrics spike, the system doesn't just alert a human—it autonomously investigates the logs, determines the root cause, and executes a fix before human intervention is required.
+                </p>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:1.75rem; font-size:0.92rem;">
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Trigger Logic</span><br><strong>Z-Score Anomaly Model</strong></div>
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">AI Diagnostics</span><br><strong>Claude 3.5 Sonnet</strong></div>
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Telemetry Source</span><br><strong>Datadog API</strong></div>
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Remediation API</span><br><strong>Kubernetes & GitHub API</strong></div>
+                    <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Auto-Fixes</span><br><strong>Restart, Scale, Rollback</strong></div>
+                    <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Fallback</span><br><strong>PagerDuty Escalation</strong></div>
+                </div>
+
+                <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
+                    The pipeline is triggered continuously by polling metric APIs (Datadog/Grafana). However, to prevent unnecessary latency and massive LLM token costs, a local Code Node first calculates the <strong>Z-Score</strong> of the incoming telemetry against historical baselines. By keeping the initial anomaly detection deterministic and mathematically grounded locally, the AI is only invoked during an actual crisis.
+                </p>
+
+                <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
+                    When a statistical anomaly is mathematically confirmed (e.g., CPU spikes > 3 standard deviations), the workflow dynamically fetches the last 50 error logs for that specific service. <strong>Claude 3.5 Sonnet</strong> then acts as a Senior SRE: it cross-references the metric spike with the raw stack traces to identify the exact root cause—outputting a strict JSON diagnosis and a recommended action.
+                </p>
+
+                <p style="font-size:0.97rem; opacity:0.85;">
+                    A switch router takes Claude's decision and physically executes the remediation. If the issue is a database deadlock, it triggers the <strong>Kubernetes API</strong> to terminate and restart the pods. If it's an OOM (Out of Memory) error, it patches the deployment to scale up replicas. If it detects a bad code configuration, it hits the <strong>GitHub API</strong> to automatically open a revert Pull Request on the main branch. Only if the AI is uncertain about the root cause does it halt auto-remediation and escalate to a human via Slack or PagerDuty.
+                </p>
+            </div>
+        `,
+        repo: "#"
+    },
     "Autonomous AI Agent OS": {
         images: ["images/n8n3.png"],
         longDesc: `
