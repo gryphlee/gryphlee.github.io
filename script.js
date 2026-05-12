@@ -716,6 +716,38 @@ const projectDatabase = {
         `,
         repo: "#"
     },
+    "AI Competitive Intelligence Engine": {
+        images: ["images/n8n2.png"],
+        longDesc: `
+            <div style="line-height:1.8;">
+                <p style="font-size:1.1rem; margin-bottom:1.75rem; opacity:0.9;">
+                    The <strong>AI Competitive Intelligence Engine</strong> is an autonomous surveillance system built on <strong>n8n</strong> that continuously monitors competitor websites, detects meaningful changes using semantic diffing, classifies strategic signals with <strong>GPT-4o</strong>, and delivers weekly AI-written briefs — with real-time <strong>Slack</strong> alerts for high-urgency events.
+                </p>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:1.75rem; font-size:0.92rem;">
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Core Innovation</span><br><strong>Semantic Diff, Not String Diff</strong></div>
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Vector Memory</span><br><strong>Qdrant Stores Every Snapshot</strong></div>
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Signal Types</span><br><strong>7 Categories Auto-Classified</strong></div>
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">False Positive Filter</span><br><strong>&lt;96% Cosine = Real Change</strong></div>
+                    <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Output Layers</span><br><strong>Instant Alert + Weekly Brief</strong></div>
+                    <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Pages Per Competitor</span><br><strong>4 — Homepage, Pricing, Blog, Careers</strong></div>
+                </div>
+
+                <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
+                    The 5-stage pipeline begins with <strong>Scheduling & Config</strong> — a cron node fires every Monday at 7AM, while a POST webhook allows on-demand runs. A JavaScript config node holds the full competitor list (website, pricing URL, blog, careers page, LinkedIn slug, and tier). <strong>Firecrawl</strong> scrapes each page, extracting clean markdown and filtering noise.
+                </p>
+
+                <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
+                    The <strong>Semantic Diffing</strong> stage embeds content with <strong>text-embedding-3-small</strong>, fetches the previous snapshot from <strong>Qdrant</strong>, and computes cosine similarity. Only changes below 96% similarity proceed — eliminating false positives from boilerplate updates. <strong>GPT-4o AI Signal Analysis</strong> classifies each change by signal type, urgency, strategic implication, pricing intel, hiring intel, and a recommended action.
+                </p>
+
+                <p style="font-size:0.97rem; opacity:0.85;">
+                    High/medium signals fire <strong>Slack alerts instantly</strong>. All signals log to <strong>Google Sheets + Notion</strong>. A weekly GPT-4o brief is sent every Monday summarizing the competitive landscape across all monitored targets.
+                </p>
+            </div>
+        `,
+        repo: "#"
+    },
     "SIEM Alert Enrichment & Response": {
         images: ["images/n8n1.png"],
         longDesc: `
