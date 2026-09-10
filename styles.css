@@ -69,6 +69,7 @@
 [data-theme='light'] .skill-level { color: rgba(0, 0, 0, 0.5); }
 [data-theme='light'] .skill-level.expert { color: #000000; }
 [data-theme='light'] .skill-level.experienced { color: rgba(0, 0, 0, 0.5); }
+[data-theme='light'] .skill-level.working { color: rgba(0, 0, 0, 0.4); }
 [data-theme='light'] .filter-btn { border-color: rgba(0, 0, 0, 0.2); color: rgba(0, 0, 0, 0.7); }
 [data-theme='light'] .filter-btn:hover { background: rgba(0, 0, 0, 0.05); color: #000000; border-color: rgba(0, 0, 0, 0.4); }
 [data-theme='light'] .filter-btn.active { background: #000000; color: #ffffff; border-color: #000000; }
@@ -428,6 +429,7 @@ ul {
 .skill-level { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
 .skill-level.expert { color: #ffffff; }
 .skill-level.experienced { color: rgba(255, 255, 255, 0.5); }
+.skill-level.working { color: rgba(255, 255, 255, 0.4); }
 
 /* -------------------- */
 /* -     Projects     - */

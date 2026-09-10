@@ -95,11 +95,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const phrases = [
-        'Intelligent Systems Engineer',
-        'Industry 4.0 Architect',
-        'Agentic AI Specialist',
-        'Hyper-Automation Expert',
-        'Digital Twin Developer'
+        'AI Infrastructure Engineer',
+        'Machine Learning Engineer',
+        'LLM Fine-Tuning Specialist',
+        'RAG & Multi-Agent Engineer',
+        'AI Evaluation & Security'
     ];
     let phraseIndex = 0;
     let charIndex = 0;
@@ -221,15 +221,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const telemetryBox = document.getElementById('agent-telemetry');
     if (telemetryBox) {
         const mockLogs = [
-            { text: "[SYS] Initializing Sovereign AI Node...", type: "sys" },
-            { text: "[NET] Establishing Secure Handshake... OK", type: "ok" },
-            { text: "[AI] Routing prompt to internal LLM...", type: "sys" },
-            { text: "[WARN] Latency spike detected in Vector DB", type: "warn" },
-            { text: "[AI] Applying RAG context to generation...", type: "sys" },
-            { text: "[SYS] Optimization complete. Deploying...", type: "ok" },
-            { text: "[NET] Connection stable. Agent idle.", type: "sys" },
-            { text: "[SYS] Polling SCADA endpoints...", type: "sys" },
-            { text: "[OK] Digital Twin synchronization active.", type: "ok" }
+            { text: "[SYS] Loading local LLM into vLLM...", type: "sys" },
+            { text: "[RAY] Distributed training workers online", type: "ok" },
+            { text: "[AI] Routing query through RAG pipeline...", type: "sys" },
+            { text: "[EVAL] RAGAS groundedness check... 0.94", type: "ok" },
+            { text: "[WARN] p95 latency spike detected", type: "warn" },
+            { text: "[SEC] Red-team injection test... blocked", type: "ok" },
+            { text: "[AI] Applying retrieved context to generation...", type: "sys" },
+            { text: "[EVAL] Hallucination rate: 4% (target met)", type: "ok" },
+            { text: "[SYS] Serving stable. Agent idle.", type: "sys" }
         ];
 
         let logIndex = 0;
@@ -358,7 +358,7 @@ const projectDatabase = {
         longDesc: `
             <div style="line-height:1.8;">
                 <p style="font-size:1.1rem; margin-bottom:1.75rem; opacity:0.9;">
-                    M3CHA Coder is a <strong>custom-engineered sovereign large language model</strong> designed to operate outside the constraints of commercial AI infrastructure. Rather than fine-tuning a single model, the architecture merges two distinct frontier base models — <strong>Qwen</strong> and <strong>DeepSeek</strong> — through a <strong>QLoRA pipeline</strong> accelerated by Unsloth, producing a hybrid reasoning core optimized for technical, agentic, and architectural code generation tasks.
+                    M3CHA Coder is a <strong>custom-engineered, self-hosted large language model</strong> designed to run entirely on local infrastructure, independent of commercial AI providers. Rather than fine-tuning a single model, the architecture merges two distinct frontier base models — <strong>Qwen</strong> and <strong>DeepSeek</strong> — through a <strong>QLoRA pipeline</strong> accelerated by Unsloth, producing a hybrid reasoning core optimized for technical, agentic, and architectural code generation tasks.
                 </p>
 
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:1.75rem; font-size:0.92rem;">
@@ -379,7 +379,7 @@ const projectDatabase = {
                 </p>
 
                 <p style="font-size:0.97rem; opacity:0.85;">
-                    This project demonstrates end-to-end <strong>LLMOps ownership</strong>: from base model selection and merge strategy, through fine-tuning pipeline engineering, to sovereign local deployment — without reliance on any external API or cloud inference provider.
+                    This project demonstrates end-to-end <strong>LLMOps ownership</strong>: from base model selection and merge strategy, through fine-tuning pipeline engineering, to fully self-hosted local deployment — without reliance on any external API or cloud inference provider.
                 </p>
             </div>
         `,
@@ -390,7 +390,7 @@ const projectDatabase = {
         longDesc: `
             <div style="line-height:1.8;">
                 <p style="font-size:1.1rem; margin-bottom:1.75rem; opacity:0.9;">
-                    M3CHA BDIM (Business Development Intelligent Model) is a <strong>domain-specialized sovereign LLM</strong> engineered for enterprise business intelligence. Built through the same QLoRA fine-tuning pipeline as M3CHA Coder, this model is purpose-trained on procurement data, market intelligence, and executive communication patterns — replacing the generic reasoning of commercial models with deep, context-aware business judgment.
+                    M3CHA BDIM (Business Development Intelligent Model) is a <strong>domain-specialized local LLM</strong> engineered for enterprise business intelligence. Built through the same QLoRA fine-tuning pipeline as M3CHA Coder, this model is purpose-trained on procurement data, market intelligence, and executive communication patterns — replacing the generic reasoning of commercial models with deep, context-aware business judgment.
                 </p>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
@@ -402,7 +402,7 @@ const projectDatabase = {
                 </p>
 
                 <p style="font-size:0.97rem; opacity:0.85;">
-                    Deployed on-premise in <strong>GGUF format</strong>, BDIM integrates natively into n8n agentic workflows and LangGraph pipelines — functioning as a local reasoning endpoint that processes sensitive commercial data without any external API exposure, ensuring full data sovereignty for enterprise clients.
+                    Deployed on-premise in <strong>GGUF format</strong>, BDIM integrates natively into n8n agentic workflows and LangGraph pipelines — functioning as a local reasoning endpoint that processes sensitive commercial data without any external API exposure, ensuring full data privacy and control for enterprise clients.
                 </p>
             </div>
         `,
@@ -413,7 +413,7 @@ const projectDatabase = {
         longDesc: `
             <div style="line-height:1.8;">
                 <p style="font-size:1.1rem; margin-bottom:1.75rem; opacity:0.9;">
-                    The <strong>M3CHA Centralized Database</strong> is the data sovereignty layer of the Power4All Agentic OS — a unified, multi-departmental intelligence hub that consolidates business operations across <strong>Business Development, HR, Supply Chain, Customer Service, and Design</strong> into a single command architecture, with no reliance on third-party cloud databases.
+                    The <strong>M3CHA Centralized Database</strong> is the data-control layer of the Power4All Agentic OS — a unified, multi-departmental data hub that consolidates business operations across <strong>Business Development, HR, Supply Chain, Customer Service, and Design</strong> into a single command architecture, with no reliance on third-party cloud databases.
                 </p>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
@@ -434,7 +434,7 @@ const projectDatabase = {
                 </p>
 
                 <p style="font-size:0.97rem; opacity:0.85;">
-                    This architecture demonstrates the full realization of <strong>sovereign enterprise AI</strong> — where the database, the reasoning layer, the communication layer, and the models themselves are all owned, hosted, and governed internally, with zero dependency on external APIs or cloud providers for core operations.
+                    This architecture demonstrates the full realization of <strong>self-hosted enterprise AI</strong> — where the database, the reasoning layer, the communication layer, and the models themselves are all owned, hosted, and governed internally, with zero dependency on external APIs or cloud providers for core operations.
                 </p>
             </div>
         `,
@@ -481,7 +481,7 @@ const projectDatabase = {
         longDesc: `
             <div style="line-height:1.8;">
                 <p style="font-size:1.1rem; margin-bottom:1.75rem; opacity:0.9;">
-                    M3CHA Knowledge Base is the sovereign document intelligence layer of the Power4All Agentic OS — inspired by the <strong>VMware concept of frictionless resource provisioning</strong>. The design principle is radical simplicity: <em>paste a Google Drive folder link, and everything else happens automatically.</em>
+                    M3CHA Knowledge Base is the self-hosted document intelligence layer of the Power4All Agentic OS — inspired by the <strong>VMware concept of frictionless resource provisioning</strong>. The design principle is radical simplicity: <em>paste a Google Drive folder link, and everything else happens automatically.</em>
                 </p>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
@@ -491,7 +491,7 @@ const projectDatabase = {
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:1.75rem; font-size:0.92rem;">
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Input</span><br><strong>Google Drive Folder Link</strong></div>
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">File Types</span><br><strong>PDF, DOCX, XLSX, Images</strong></div>
-                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Vector DB</span><br><strong>Qdrant (Local Sovereign)</strong></div>
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Vector DB</span><br><strong>Qdrant (Local)</strong></div>
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Embedding</span><br><strong>LangChain Pipelines</strong></div>
                     <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Live Stats</span><br><strong>339 files · 5,525 chunks</strong></div>
                     <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Projects</span><br><strong>BD-Compliance, Marinduque, BWSI...</strong></div>
@@ -609,7 +609,7 @@ const projectDatabase = {
         longDesc: `
             <div style="line-height:1.8;">
                 <p style="font-size:1.1rem; margin-bottom:1.75rem; opacity:0.9;">
-                    M3CHA Signal Intelligence (SIGINT) is the <strong>real-time market awareness layer</strong> of the Power4All Agentic OS — an OSINT-grade intelligence feed engine that continuously monitors six business-critical channels using <strong>Perplexity Sonar Pro's grounded web search</strong>, delivering structured news briefings with live citations to the command center dashboard every 30 minutes.
+                    M3CHA Signal Intelligence is the <strong>real-time market awareness layer</strong> of the Power4All Agentic OS — an automated market-research feed engine that continuously monitors six business-critical channels using <strong>Perplexity Sonar Pro's grounded web search</strong>, delivering structured news briefings with live citations to the dashboard every 30 minutes.
                 </p>
 
                 <p style="font-size:0.97rem; margin-bottom:1.25rem; opacity:0.85;">
@@ -653,7 +653,7 @@ const projectDatabase = {
                 </div>
 
                 <p style="font-size:0.97rem; opacity:0.85;">
-                    By integrating SIGINT directly into the command center, M3CHA ensures that every strategic decision — whether a bid qualification, a proposal, or a Go/No-Go call — is made with <strong>live market context</strong>. The BD team is never operating on stale intelligence; the system surfaces relevant shifts in policy, competitor activity, and sector developments before the competition even notices them.
+                    By integrating live market signals directly into the dashboard, M3CHA ensures that every strategic decision — whether a bid qualification, a proposal, or a Go/No-Go call — is made with <strong>live market context</strong>. The BD team is never operating on stale information; the system surfaces relevant shifts in policy, competitor activity, and sector developments early.
                 </p>
             </div>
         `,
@@ -668,7 +668,7 @@ const projectDatabase = {
                 </p>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    When a new high-value target is identified (e.g., a regional water district or enterprise corporate account), the engine runs an OSINT scan to identify the leadership team, technical working group members, and procurement officers. It tracks Power4All's contact history with each individual, instantly exposing <strong>relationship gaps</strong> where the BD team lacks penetration.
+                    When a new high-value account is identified (e.g., a regional water district or enterprise corporate account), the engine runs an automated web-research scan to identify the leadership team, technical working group members, and procurement officers. It tracks Power4All's contact history with each individual, instantly surfacing <strong>relationship gaps</strong> where the BD team has limited coverage.
                 </p>
 
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:1.75rem; font-size:0.92rem;">
@@ -677,7 +677,7 @@ const projectDatabase = {
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Key Metric</span><br><strong>Influence &amp; Relationship Mapping</strong></div>
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Storage Layer</span><br><strong>Local JSON Store</strong></div>
                     <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Integration</span><br><strong>M3CHA Sales Forecasts</strong></div>
-                    <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Agent Access</span><br><strong>LangGraph OSINT Tools</strong></div>
+                    <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Agent Access</span><br><strong>LangGraph Research Tools</strong></div>
                 </div>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
@@ -685,7 +685,7 @@ const projectDatabase = {
                 </p>
 
                 <p style="font-size:0.97rem; opacity:0.85;">
-                    This architecture shifts the BD team's strategy from reactive bidding to <strong>proactive account penetration</strong> — ensuring that when a tender is finally published, Power4All already understands the organizational dynamics, has influenced the technical requirements, and holds the relationship leverage needed to win.
+                    This architecture shifts the BD team's strategy from reactive bidding to <strong>proactive account planning</strong> — ensuring that when a tender is finally published, Power4All already understands the organizational dynamics and has built the relationships needed to compete effectively.
                 </p>
             </div>
         `,
@@ -759,7 +759,7 @@ const projectDatabase = {
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Core Architecture</span><br><strong>Planner → Executor → Critic</strong></div>
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Reasoning Engine</span><br><strong>Claude 3.5 Sonnet (Dual LLM)</strong></div>
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">State Management</span><br><strong>Global Context Payload</strong></div>
-                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Tool Arsenal</span><br><strong>HTTP, Scripts, OSINT, Sub-Flows</strong></div>
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Tool Arsenal</span><br><strong>HTTP, Scripts, Web Research, Sub-Flows</strong></div>
                     <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">False Positive Filter</span><br><strong>Zero-Temperature Critic AI</strong></div>
                     <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Escalation Path</span><br><strong>Outlook Human-in-the-Loop Alert</strong></div>
                 </div>
@@ -888,9 +888,9 @@ const projectDatabase = {
         longDesc: "The Philippine Seismic Intelligence platform is an elite predictive modeling dashboard. Utilizing historical data and live telemetry, it predicts seismic hazard probabilities across the volatile Philippine archipelago. It features interactive geographical heatmaps, temporal sequence mapping, and real-time hazard classification using advanced Machine Learning frameworks.",
         repo: "https://github.com/gryphlee/Philippine-Earthquake-Intelligence-Platform"
     },
-    "LORA-Prime: Active C2 Dashboard": {
+    "LLM Observability Dashboard": {
         images: ["images/project-lora-prime.png"],
-        longDesc: "AI-Native General Staff (Prototype v8 - 'Action Handoff') dashboard for tactical operations. Features live adversarial threat modeling across geospatial quadrants and proactive Command & Control handoffs for rapid response teams.",
+        longDesc: "A real-time monitoring dashboard for self-hosted LLM serving. It tracks the metrics most teams skip — groundedness, faithfulness, hallucination rate, and p95 latency — across production RAG pipelines using RAGAS and DeepEval, and alerts on regressions before they reach users. Built to make local model quality measurable and to inform model-selection decisions with reproducible benchmarks.",
         repo: "#"
     },
     "Quantum Bio-Digital Simulator": {

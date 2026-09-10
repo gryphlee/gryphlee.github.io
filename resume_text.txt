@@ -1,35 +1,47 @@
 STAN LEE NATIVIDAD
-Intelligent Systems Engineer
-Mandaluyong City 1550 | 09911532620 | leenatividad5@gmail.com | linkedin.com/in/stan-lee-natividad-83a327336 | gryphlee.github.io
+AI Infrastructure & Machine Learning Engineer
+Mandaluyong City, Metro Manila 1441, PH | +63 991 153 2620 | leenatividad5@gmail.com | gryphlee.github.io
 
 PROFILE
-Sovereign AI Architect and former Intelligence Officer specializing in Multi-Agent Operating Systems (MAOS) and industrial digital twins. Expert in engineering secure, air-gapped LLMs (QLoRA/GGUF) and edge-deployed physics simulations for critical infrastructure. Proven track record of bridging the IT/OT gap to transition legacy SCADA operations into autonomous, self-evolving cyber-physical ecosystems.
-
-NOTABLE ARCHITECTURES & SYSTEMS
-* M3CHA Agentic Operating System (MAOS): Architected a 9-module proprietary AI ecosystem for full-spectrum enterprise automation. Designed autonomous LangGraph pipelines for bidding, forecasting, and target influence mapping, eliminating manual administrative bottlenecks.
-* M3CHA Coder & BDIM (Sovereign Local LLMs): Engineered and deployed two domain-specialized, air-gapped LLMs. Managed the end-to-end LLMOps pipeline from QLoRA fine-tuning and alignment stripping to GGUF quantization, guaranteeing 100% data sovereignty for enterprise clients.
-* Industrial Digital Twin & Edge Simulation: Developed a high-fidelity WebGL (Three.js) digital twin for Water Treatment SCADA facilities. Integrated Reduced Order Models (ROMs) and FMUs to execute real-time physics simulations and predictive anomaly detection directly on edge devices.
-* Autonomous Procurement Intelligence Pipeline: Engineered a resilient OpenClaw server infrastructure to autonomously scrape and classify PhilGEPS government bidding payloads. Built an algorithmic forecasting engine that instantly cross-references requirements against manufacturer databases.
-* Deep Cover Cryptography & Covert Comms: Built a deniable communication protocol disguised as a standard utility. Implemented client-side AES-256 encryption and steganography to embed classified payloads within text, bypassing automated deep-packet IT surveillance.
+AI Engineer specializing in local, self-hosted AI systems — fine-tuning open-source LLMs (LoRA, QLoRA, SFT, knowledge distillation, GRPO/DPO) and deploying them behind production RAG pipelines and multi-agent orchestration. Strong focus on the parts of the lifecycle most teams skip: evaluation and observability (RAGAS, DeepEval; groundedness, hallucination, and latency tracking) and adversarial security testing (jailbreak and injection red-teaming). Backed by hands-on infrastructure experience across GPU compute, Ray distributed training, and vLLM serving.
 
 EMPLOYMENT HISTORY
-Intelligent Systems Engineer | Power4All (Pasig City) | Jan 2026 — Present
-Spearheading Industry 4.0 initiatives by integrating autonomous AI with traditional engineering. Leading the end-to-end automation of industrial processes, AI-SCADA convergence, and the development of a company-wide Agentic OS to replace manual bottlenecks with intelligent workflows.
 
-AI Systems & Infrastructure Architect | Philippine Navy (Taguig) | Nov 2025 — Jan 2026
-Architected the foundational AI infrastructure and secure systems framework. Designed high-availability, scalable, and air-gapped local AI environments for maritime domain awareness and tactical data processing, adhering strictly to military-grade security standards.
+AI Infrastructure Engineer & Machine Learning Engineer | Kooya Inc (BGC, Taguig) | Jun 2026 — Present
+* Manage the AI platform used by engineering teams to fine-tune and serve models — GPU compute allocation, distributed training with Ray, and high-performance inference via vLLM.
+* Fine-tune open-source LLMs (LoRA, QLoRA, SFT, knowledge distillation, GRPO, DPO) end-to-end, from dataset preparation through evaluation and production-readiness review.
+* Maintain and extend the company's production RAG pipeline and multi-agent orchestration, serving 4 internal teams and ~1,200 queries per day.
+* Built observability across serving infrastructure, RAG pipelines, and local models using RAGAS and DeepEval — cutting measured hallucination rate from 12% to 4% and p95 latency from 2.1s to 850ms.
+* Red-team in-house models before deployment (jailbreak and prompt/system-injection testing), surfacing and patching 15+ exploitable behaviors pre-launch.
+* Built a reproducible benchmarking environment comparing open-source models on reasoning quality, latency, and cost — informing model selection for the company's internal knowledge assistant.
+* Supporting an ongoing migration from third-party APIs to locally hosted models, projected to cut inference costs by ~60% (≈₱180K/month).
 
-Enterprise AI Architect | Green Attic Roofing (Chicago, USA) | Oct 2025 — Nov 2025
-Engineered the digital backbone via scalable hyper-automation and AI-driven tools, transitioning legacy business processes into modern workflows that drastically reduced manual operational overhead.
+Intelligent Systems Engineer | Power4All (Pasig) — 6-month project engagement | Jan 2026 — Jun 2026
+* Designed and delivered a fully licensed, company-only local AI model for the engineering and business development teams, replacing third-party AI services for document drafting, technical Q&A, and proposal support.
+* Built a centralized company knowledge base with an end-to-end RAG pipeline, unifying company files and operational data into a single retrieval backbone.
+* Automated the bid-discovery workflow for business development — auto-scraping opportunities from external sites into an internal platform, saving an estimated 10 hours per week of manual searching.
+* Built a digital twin of the company's water-treatment plant, enabling the team to simulate chemical dosing in software before applying changes to the physical plant — reducing trial-and-error dosing adjustments by ~80%.
+* Initiated broader Industry 4.0 work including AI-integrated SCADA monitoring and workflow automation across supply chain and engineering functions.
 
-AI Engineer | Silicon Valley Associate (UAE) | Aug 2025 — Sept 2025
-Engineered custom AI ecosystems leveraging Large Language Models. Partnered directly with the CEO to architect web applications that transformed administrative overhead into automated, intelligent agentic systems.
+Enterprise AI Architect | Green Attic Roofing (Chicago, Remote) | Dec 2024 — Dec 2025
+* Converted manual, repetitive operations into automated AI-driven workflows across 3 departments, saving an estimated 25+ hours per week of staff time.
+* Built internal AI tools on request from teams across the business — integrating LLMs, external APIs, and internal databases into unified workflows.
+* Created reusable AI frameworks that cut build time for new automations from ~2 weeks to ~3 days.
+* Served as the organization's AI adoption lead — evaluating tools and delivering solutions built for security and maintainability.
 
-CORE COMPETENCIES
-* Sovereign AI & Local Models: PyTorch, QLoRA Fine-Tuning, Model Quantization (GGUF), Local LLM Deployment.
-* Multi-Agent Systems: LangGraph Orchestration, Stateful Agent Flows, Playwright CDP, AI Decision Engines.
-* Cyber-Physical & Industrial: Digital Twins, Three.js/WebGL, Physics Simulation (FMU/ROM), AI-SCADA.
-* Backend & Infrastructure: Python, FastAPI, Rust & Tauri, Qdrant Vector DBs, SQLite, On-Prem Edge Deployment.
+AI Engineer | Silicon Valley Associate (Remote, UAE-based consultancy) | Jan 2024 — Nov 2024
+* Built an AI-powered hiring platform with LLM-driven candidate matching, screening, and routing, processing 2,000+ applications.
+* Designed and shipped an AI interviewer backed by a full RAG pipeline — retrieving role-specific context to drive dynamic questioning and evaluation, reducing time-to-screen by ~70%.
+* Worked directly with the CEO to convert manual hiring workflows into scalable agentic systems.
 
 EDUCATION
-BS Electronics Engineering | Rizal Technological University, Mandaluyong City | Aug 2022 — Present
+BS Electronics Engineering | Rizal Technological University, Mandaluyong
+Completed coursework through 3rd year
+
+CORE SKILLS
+* AI & LLM: Fine-Tuning (LoRA, QLoRA, Adapters, SFT, GRPO, DPO), Knowledge Distillation, Model Quantization, Function Calling & Tool Use, Local Model Deployment.
+* RAG & Agents: End-to-End RAG Pipelines, Multi-Agent Systems, Agent Orchestration.
+* Evaluation & Observability: RAGAS, DeepEval, Model & RAG Benchmarking, Groundedness/Faithfulness/Hallucination Tracking, Latency Monitoring.
+* AI Security: Adversarial Testing & Red-Teaming, Jailbreak & Prompt-Injection Testing, Model Hardening.
+* Infrastructure: GPU Clusters, Distributed Training (Ray), vLLM Serving, PyTorch, HuggingFace, ONNX/TensorRT, Kubernetes (working knowledge).
+* Industrial & Automation: Industry 4.0, Digital Twin Simulation, AI-SCADA, Workflow Automation (n8n, Zapier).
