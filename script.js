@@ -353,6 +353,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });// --- PROJECT MODAL LOGIC ---
 const projectDatabase = {
+    "7B Insurance-RAG Model Distillation": {
+        images: ["images/distill-teacher-traces.png", "images/distill-training-dashboard.png"],
+        longDesc: `
+            <div style="line-height:1.8;">
+                <p style="font-size:1.1rem; margin-bottom:1.75rem; opacity:0.9;">
+                    An end-to-end <strong>LLM distillation pipeline</strong> for a production RAG system answering commission and policy questions over bilingual <strong>(Hebrew/English)</strong> insurance documents. The goal: replace dependence on a large hosted model with a <strong>self-hosted 7B student</strong> that keeps grounded accuracy while running on a single 24GB GPU. Role: ML Engineer on the local-model track — distillation, fine-tuning, and evaluation.
+                </p>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:1.75rem; font-size:0.92rem;">
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Teacher</span><br><strong>DeepSeek-R1-Distill-Qwen-14B</strong></div>
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Student</span><br><strong>Qwen2.5-7B-Instruct</strong></div>
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Method</span><br><strong>QLoRA (r16 / α32), NF4, bf16</strong></div>
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Hardware</span><br><strong>Single 24GB GPU</strong></div>
+                    <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Trace Keep-Rate</span><br><strong>387 / 692 (55.9%)</strong></div>
+                    <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Seq Length</span><br><strong>8192 (p95 6.2k, max 7.7k)</strong></div>
+                </div>
+
+                <h4 style="color: var(--accent); margin-bottom: 0.75rem; font-size: 1rem;">Pipeline</h4>
+                <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
+                    <strong>Trace harvest:</strong> ran the self-hosted 14B teacher over 173 grounded questions to produce 692 candidate reasoning traces. <strong>Rejection sampling:</strong> kept only traces that were simultaneously answer-correct, citation-grounded, and step-sound — 387 of 692 (55.9%), zero call failures across a 2.8-hour batch. <strong>Decontamination:</strong> n-gram and case-ID matching against the held-out evaluation set dropped 60 leaking rows before training. <strong>Data composition:</strong> added synthetic abstention data (real retrieval-misses plus adversarial unanswerables) so the model learns to refuse, blended with general-domain data to limit catastrophic forgetting.
+                </p>
+                <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
+                    <strong>Training:</strong> QLoRA on all seven linear projections, NF4 double-quantization, bf16 compute. Sequence length 8192 was chosen from the measured token distribution — the common 4096 default would have truncated 80% of rows. Micro-batch 1 with gradient accumulation 16, paged AdamW 8-bit, gradient checkpointing, FlashAttention, and length-bucketing to prevent mid-epoch allocator fragmentation. <strong>Artifact governance:</strong> every trained adapter registered by SHA-256 with its git commit and the hashes of the evaluation files that gated it — which caught a false "trained" record already sitting in project history.
+                </p>
+
+                <h4 style="color: var(--accent); margin-bottom: 0.75rem; font-size: 1rem;">Evaluation — designed as adversarial gates, not accuracy alone</h4>
+                <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
+                    Grounded correctness was always reported with <strong>Wilson 95% confidence intervals</strong>, never bare point estimates. A <strong>value-swap memorization probe</strong> replaced the ground-truth value in the retrieved context with a synthetic one: a model that reads context returns the new value; a model that memorized returns the trained one. <strong>Abstention</strong> was scored as its own gate — not folded into accuracy — so refusals cannot inflate the headline number.
+                </p>
+
+                <h4 style="color: var(--accent); margin-bottom: 0.75rem; font-size: 1rem;">Findings</h4>
+                <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
+                    <strong>Train/serve prompt mismatch cost 25 points:</strong> the same adapter scored 0.75 grounded-correct under the harvest prompt and 0.50 under the production prompt (Wilson 95%: [0.55, 0.88] vs [0.31, 0.69]) — reproduced on a controlled harness and isolated to the prompt, not to abstention drift. <strong>Memorization detected:</strong> 15 of 20 probes read the swapped value correctly, but 2 returned the trained value — reported as a gate FAILURE rather than averaged away. <strong>Abstention rated WEAK</strong> at 0.792 (19/24): the model fabricated a named entity instead of refusing, recorded as a blocking defect.
+                </p>
+
+                <h4 style="color: var(--accent); margin-bottom: 0.75rem; font-size: 1rem;">Outcome</h4>
+                <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
+                    The distilled student did not clear its promotion gates, and it was not shipped. The durable result was the <strong>measurement infrastructure</strong>: the value-swap probe, the abstention gate, and the artifact registry became the standing release discipline for later model decisions on the same system.
+                </p>
+
+                <h4 style="color: var(--accent); margin-bottom: 0.75rem; font-size: 1rem;">Model Selection Under Noise — A/B Design</h4>
+                <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
+                    That same release discipline drove generator selection for the system. A <strong>three-arm A/B comparison</strong> — the incumbent baseline against two candidate open models — was run on a paired-row design over a 194-row bilingual golden set, under a <strong>pre-registered promotion rule</strong>: a candidate ships only if its bootstrap CI lower bound clears the absolute bar <em>and</em> it beats the incumbent on a one-sided paired Wilcoxon test, replicated across two runs. The protocol mattered — measured run-to-run variance (±0.09) was larger than the effect being tested, so a single-run comparison would have been a coin flip presented as a decision. Under production-faithful scoring, the winning candidate cleared the bar by <strong>16 points with p &lt; 0.0001</strong>, and the result held under replication.
+                </p>
+
+                <p style="font-size:0.97rem; opacity:0.85;">
+                    <em>Stack: PyTorch, Axolotl, QLoRA/PEFT, bitsandbytes (NF4), vLLM, Ollama, FlashAttention, Qwen2.5, DeepSeek-R1-Distill. Single-GPU 24GB.</em>
+                </p>
+            </div>
+        `,
+        repo: "#"
+    },
     "M3CHA Coder": {
         images: ["images/llm2.jpg", "images/llm1.jpg", "images/llm3.jpg", "images/llm4.jpg", "images/llm5.png", "images/llm6.png", "images/llm7.jpg", "images/llm8.jpg"],
         longDesc: `

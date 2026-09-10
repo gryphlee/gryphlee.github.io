@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=77">
-    <script src="script.js?v=7629" defer></script>
+    <script src="script.js?v=7630" defer></script>
 </head>
 <body>
 
@@ -701,6 +701,21 @@
                             <h3 class="project-title">Quantum Earth Digital Twin v2.3</h3>
                             <p class="project-description">Global digital twin modeling climate anomaly tracking with interactive 3D geospatial rendering and authentic IBM Qiskit quantum risk simulation.</p>
                             <ul class="project-stack"><li>Three.js</li><li>Qiskit</li><li>Scikit-learn</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="machine-learning llm-ops ai">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/distill-teacher-traces.png" alt="7B Insurance-RAG Model Distillation" style="object-fit:cover; object-position:top;">
+                            <img class="project-image img-secondary" src="images/distill-training-dashboard.png" alt="Distillation training dashboard" style="object-fit:cover; object-position:top;">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info &amp; Preview</button>
+                                <a href="#" class="overlay-btn repo-link">🔗 Private Repo</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">7B Insurance-RAG Model Distillation</h3>
+                            <p class="project-description">Distilled a 14B reasoning teacher into a self-hosted 7B student for a bilingual (Hebrew/English) insurance RAG system. Harvested reasoning traces, filtered them through a three-way correctness gate, decontaminated against held-out cases, and fine-tuned Qwen2.5-7B with QLoRA on a single 24GB GPU — with adversarial evaluation gates that caught memorization and a 25-point train/serve prompt-mismatch collapse.</p>
+                            <ul class="project-stack"><li>PyTorch</li><li>QLoRA / PEFT</li><li>Axolotl</li><li>vLLM</li><li>Qwen2.5</li></ul>
                         </div>
                     </article>
                     <article class="project-card" data-category="machine-learning data-science">
