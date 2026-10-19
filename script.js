@@ -95,11 +95,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const phrases = [
-        'AI Infrastructure Engineer',
-        'Machine Learning Engineer',
-        'LLM Fine-Tuning Specialist',
-        'RAG & Multi-Agent Engineer',
-        'AI Evaluation & Security'
+        'AI Research Engineer',
+        'Foundation Models & Post-Training',
+        'Agentic RL & Digital Twins',
+        'LLM Evaluation & Red-Teaming',
+        'Filipino Open Foundation Models'
     ];
     let phraseIndex = 0;
     let charIndex = 0;

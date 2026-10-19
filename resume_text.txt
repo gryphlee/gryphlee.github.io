@@ -1,20 +1,28 @@
 STAN LEE NATIVIDAD
-AI Infrastructure & Machine Learning Engineer
-Mandaluyong City, Metro Manila 1441, PH | +63 991 153 2620 | leenatividad5@gmail.com | gryphlee.github.io
+AI Research Engineer
+Mandaluyong City, Metro Manila 1441, PH | +63 991 153 2620 | leenatividad5@gmail.com | gryphlee.github.io | linkedin.com/in/stan-lee-natividad-83a327336
 
 PROFILE
-AI Engineer specializing in local, self-hosted AI systems — fine-tuning open-source LLMs (LoRA, QLoRA, SFT, knowledge distillation, GRPO/DPO) and deploying them behind production RAG pipelines and multi-agent orchestration. Strong focus on the parts of the lifecycle most teams skip: evaluation and observability (RAGAS, DeepEval; groundedness, hallucination, and latency tracking) and adversarial security testing (jailbreak and injection red-teaming). Backed by hands-on infrastructure experience across GPU compute, Ray distributed training, and vLLM serving.
+AI Research Engineer and 3rd-year undergraduate. Former confidential intelligence professional, with prior exposure to intelligence-related work, security analysis, and sensitive operational environments. Focused on advancing foundation models from passive language systems into capable reasoning and action-oriented agents. Researching continued pretraining, supervised fine-tuning (SFT), knowledge distillation, preference optimization, reinforcement learning, and agentic RL, with emphasis on training models through interaction with tools, simulators, and verifiable environments. Designing Agent–Environment Digital Twin architectures for state forking, counterfactual experimentation, simulation-based evaluation, and autonomous decision-making. Research interests span offensive and defensive cybersecurity, STEM and scientific reasoning, computational biology and laboratory AI, coding and robotics, agriculture, and critical infrastructure. Conducting applied AI research and leading research-paper development, from research question formulation and experimental design to implementation, evaluation, and analysis. Complemented by hands-on expertise in LLM evaluation, adversarial red-teaming, GPU infrastructure, distributed training, and production model serving.
 
 EMPLOYMENT HISTORY
 
-AI Infrastructure Engineer & Machine Learning Engineer | Kooya Inc (BGC, Taguig) | Jun 2026 — Present
-* Manage the AI platform used by engineering teams to fine-tune and serve models — GPU compute allocation, distributed training with Ray, and high-performance inference via vLLM.
-* Fine-tune open-source LLMs (LoRA, QLoRA, SFT, knowledge distillation, GRPO, DPO) end-to-end, from dataset preparation through evaluation and production-readiness review.
-* Maintain and extend the company's production RAG pipeline and multi-agent orchestration, serving 4 internal teams and ~1,200 queries per day.
+AI Research Engineer | Kooya Inc (BGC, Taguig) | Oct 2026 — Present
+* Leading research and development of a Filipino-focused open foundation-model ecosystem, targeting multilingual, Taglish, STEM, coding, cybersecurity, and robotics capabilities.
+* Designing the model-development pipeline across continued pretraining, supervised fine-tuning, synthetic data generation, preference optimization, and reinforcement learning.
+* Building large-scale Filipino and regional-language datasets for Tagalog, Taglish, Cebuano, Ilocano, Kapampangan, and other Philippine languages.
+* Designing evaluation frameworks for language capability, reasoning, coding, cybersecurity, and domain-specific performance.
+* Researching agentic reinforcement learning and digital-twin environments for counterfactual experimentation, state forking, and autonomous decision-making.
+* Exploring specialized AI systems for robotics, cybersecurity, coding, disaster response, agriculture, and critical infrastructure.
+
+AI Infrastructure Engineer & Machine Learning Engineer | Kooya Inc (BGC, Taguig) | Jun 2026 — Oct 2026
+* Managed the AI platform used by engineering teams to fine-tune and serve models — GPU compute allocation, distributed training with Ray, and high-performance inference via vLLM.
+* Fine-tuned open-source LLMs (LoRA, QLoRA, SFT, knowledge distillation, GRPO, DPO) end-to-end, from dataset preparation through evaluation and production-readiness review.
+* Maintained and extended the company's production RAG pipeline and multi-agent orchestration, serving 4 internal teams and ~1,200 queries per day.
 * Built observability across serving infrastructure, RAG pipelines, and local models using RAGAS and DeepEval — cutting measured hallucination rate from 12% to 4% and p95 latency from 2.1s to 850ms.
-* Red-team in-house models before deployment (jailbreak and prompt/system-injection testing), surfacing and patching 15+ exploitable behaviors pre-launch.
+* Red-teamed in-house models before deployment (jailbreak and prompt/system-injection testing), surfacing and patching 15+ exploitable behaviors pre-launch.
 * Built a reproducible benchmarking environment comparing open-source models on reasoning quality, latency, and cost — informing model selection for the company's internal knowledge assistant.
-* Supporting an ongoing migration from third-party APIs to locally hosted models, projected to cut inference costs by ~60% (≈₱180K/month).
+* Supported the migration from third-party APIs to locally hosted models, projected to cut inference costs by ~60% (≈₱180K/month).
 
 Intelligent Systems Engineer | Power4All (Pasig) — 6-month project engagement | Jan 2026 — Jun 2026
 * Designed and delivered a fully licensed, company-only local AI model for the engineering and business development teams, replacing third-party AI services for document drafting, technical Q&A, and proposal support.
@@ -36,12 +44,15 @@ AI Engineer | Silicon Valley Associate (Remote, UAE-based consultancy) | Jan 202
 
 EDUCATION
 BS Electronics Engineering | Rizal Technological University, Mandaluyong
-Completed coursework through 3rd year
+3rd-year student (ongoing)
 
 CORE SKILLS
-* AI & LLM: Fine-Tuning (LoRA, QLoRA, Adapters, SFT, GRPO, DPO), Knowledge Distillation, Model Quantization, Function Calling & Tool Use, Local Model Deployment.
-* RAG & Agents: End-to-End RAG Pipelines, Multi-Agent Systems, Agent Orchestration.
-* Evaluation & Observability: RAGAS, DeepEval, Model & RAG Benchmarking, Groundedness/Faithfulness/Hallucination Tracking, Latency Monitoring.
-* AI Security: Adversarial Testing & Red-Teaming, Jailbreak & Prompt-Injection Testing, Model Hardening.
-* Infrastructure: GPU Clusters, Distributed Training (Ray), vLLM Serving, PyTorch, HuggingFace, ONNX/TensorRT, Kubernetes (working knowledge).
-* Industrial & Automation: Industry 4.0, Digital Twin Simulation, AI-SCADA, Workflow Automation (n8n, Zapier).
+* Foundation Models & Post-Training: Continued Pretraining, SFT, LoRA/QLoRA/Adapters, Knowledge Distillation, DPO, GRPO, RLHF, Model Quantization, Synthetic Data Generation, Model Adaptation & Domain Specialization.
+* Agentic AI & Reinforcement Learning: Agentic AI, Reinforcement Learning, Agentic RL, Tool Use & Function Calling, Multi-Agent Systems, Agent Orchestration, Environment-Grounded Learning, Verifiable Reward & Feedback Systems, Simulation-Based Training.
+* Digital Twins & AI Environments: Agent–Environment Digital Twins, State Forking, Counterfactual Experimentation, Digital Twin Simulation, Simulation-Based Evaluation, Autonomous Decision Environments, AI-SCADA.
+* AI Research & Evaluation: Experimental Design, Model Benchmarking, Ablation Studies, Error Analysis, RAG Evaluation, RAGAS, DeepEval, Groundedness & Faithfulness, Hallucination Analysis, Robustness Testing, Research Data Curation.
+* AI Security: Defensive & Controlled Offensive Security Research, Adversarial Testing & Red-Teaming, Jailbreak & Prompt-Injection Testing, Model Security, Secure AI Systems, Reverse Engineering & Binary Analysis.
+* Domain Research: STEM & Scientific Reasoning, Computational Biology, Laboratory AI, Coding & Robotics, Embedded Systems, Agriculture AI, Critical Infrastructure AI, Disaster & Resilience Systems.
+* RAG & Knowledge Systems: End-to-End RAG Pipelines, Retrieval & Reranking, Knowledge Bases, Hybrid Search, Multi-Modal / Document Intelligence, Production RAG Systems.
+* AI Infrastructure & Model Serving: GPU Computing, Distributed Training (Ray), PyTorch, Hugging Face, vLLM, ONNX/TensorRT, Local & Self-Hosted Model Deployment, Kubernetes (working knowledge).
+* Automation & Industrial AI: Industry 4.0, Workflow Automation, n8n, Zapier, AI-Driven Industrial Systems, Digital Twin Integration.
