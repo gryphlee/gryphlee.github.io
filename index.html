@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=81">
-    <script src="script.js?v=7633" defer></script>
+    <link rel="stylesheet" href="styles.css?v=82">
+    <script src="script.js?v=7634" defer></script>
 </head>
 <body>
 
@@ -22,6 +22,7 @@
                     <li><a href="#research">Research</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#experience">Experience</a></li>
+                    <li><a href="#blog">Blog</a></li>
                     <li><a href="Stan_Lee_Natividad_Resume.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
                 </ul>
             </nav>
@@ -92,31 +93,26 @@
 
                 <section id="research" class="content-section research-section">
                     <h2 class="section-title">Research</h2>
-                    <p class="section-lead">My research is about advancing foundation models from passive language systems into capable reasoning and action-oriented agents — trained through interaction with tools, simulators, and verifiable environments, and evaluated with the same rigor as they are built.</p>
+                    <p class="section-lead">Research write-ups, studies, and publications will be posted here.</p>
+                    <p class="empty-state">Nothing published yet — check back soon.</p>
+                </section>
 
-                    <h3>Research Threads</h3>
-                    <div class="research-threads">
-                        <div class="thread">
-                            <h4>Filipino Open Foundation Models</h4>
-                            <p>Leading R&amp;D of a Filipino-focused open foundation-model ecosystem targeting multilingual, Taglish, STEM, coding, cybersecurity, and robotics capabilities. Building large-scale datasets for Tagalog, Taglish, Cebuano, Ilocano, Kapampangan, and other Philippine languages, and designing the model-development pipeline across continued pretraining, supervised fine-tuning, synthetic data generation, preference optimization, and reinforcement learning.</p>
-                        </div>
-                        <div class="thread">
-                            <h4>Agentic RL &amp; Agent–Environment Digital Twins</h4>
-                            <p>Designing digital-twin architectures that support state forking, counterfactual experimentation, simulation-based evaluation, and autonomous decision-making — so agents can be trained and tested against verifiable feedback rather than static text.</p>
-                        </div>
-                        <div class="thread">
-                            <h4>Evaluation &amp; AI Security</h4>
-                            <p>Designing evaluation frameworks for language capability, reasoning, coding, cybersecurity, and domain-specific performance; benchmarking, ablations, and error analysis (RAGAS, DeepEval, groundedness and hallucination analysis). Adversarial red-teaming — jailbreak and prompt-injection testing — and model hardening, with defensive and controlled offensive security research.</p>
-                        </div>
-                        <div class="thread">
-                            <h4>Domain AI</h4>
-                            <p>Specialized AI systems for robotics, cybersecurity, coding, disaster response, agriculture, and critical infrastructure; STEM and scientific reasoning; computational biology and laboratory AI; embedded systems.</p>
-                        </div>
-                    </div>
-
-                    <h3>Selected Studies</h3>
-                    <p class="section-lead">Research-style work with explicit experimental design, gated evaluation, and reported findings. Click a card for the full write-up.</p>
-                    <div class="projects-grid research-grid">
+        <section id="projects" class="content-section projects-section">
+            <div class="container">
+                <h2 class="section-title">Projects</h2><p class="section-lead">Applied systems and builds — local LLM products, agentic pipelines and automation, digital twins, and machine-learning models. Click any card for details.</p>
+                <div class="projects-filter" id="projects-filter">
+                    <button class="filter-btn active" data-filter="main">Main</button>
+                    <button class="filter-btn" data-filter="machine-learning">Machine Learning</button>
+                    <button class="filter-btn" data-filter="data-science">Data Science</button>
+                    <button class="filter-btn" data-filter="ai">AI</button>
+                    <button class="filter-btn" data-filter="quantum-computing">Quantum Computing</button>
+                    <button class="filter-btn" data-filter="digital-twin">Digital Twin</button>
+                    <button class="filter-btn" data-filter="system-architecture">System Architecture</button>
+                    <button class="filter-btn" data-filter="n8n">n8n</button>
+                    <button class="filter-btn" data-filter="llm-ops">Large Language Model Operations</button>
+                    <button class="filter-btn" data-filter="maos">Multi Agentic Operating System</button>
+                </div>
+                <div class="projects-grid" id="projects-grid">
                     <article class="project-card featured" data-category="machine-learning llm-ops ai">
                         <div class="project-image-wrapper">
                             <img class="project-image" src="images/distill-teacher-traces.png" alt="7B Insurance-RAG Model Distillation" style="object-fit:cover; object-position:top;">
@@ -146,27 +142,6 @@
                             <ul class="project-stack"><li>Streamlit</li><li>RAGAS</li><li>DeepEval</li></ul>
                         </div>
                     </article>
-                    </div>
-
-                    <p class="research-note">Research-paper development is ongoing — from question formulation and experimental design through implementation, evaluation, and analysis. Publications will be listed here as they are released.</p>
-                </section>
-
-        <section id="projects" class="content-section projects-section">
-            <div class="container">
-                <h2 class="section-title">Projects</h2><p class="section-lead">Applied systems and builds — local LLM products, agentic pipelines and automation, digital twins, and machine-learning models. Click any card for details.</p>
-                <div class="projects-filter" id="projects-filter">
-                    <button class="filter-btn active" data-filter="main">Main</button>
-                    <button class="filter-btn" data-filter="machine-learning">Machine Learning</button>
-                    <button class="filter-btn" data-filter="data-science">Data Science</button>
-                    <button class="filter-btn" data-filter="ai">AI</button>
-                    <button class="filter-btn" data-filter="quantum-computing">Quantum Computing</button>
-                    <button class="filter-btn" data-filter="digital-twin">Digital Twin</button>
-                    <button class="filter-btn" data-filter="system-architecture">System Architecture</button>
-                    <button class="filter-btn" data-filter="n8n">n8n</button>
-                    <button class="filter-btn" data-filter="llm-ops">Large Language Model Operations</button>
-                    <button class="filter-btn" data-filter="maos">Multi Agentic Operating System</button>
-                </div>
-                <div class="projects-grid" id="projects-grid">
                     <article class="project-card featured" data-category="main llm-ops ai">
                         <div class="project-image-wrapper">
                             <img class="project-image" src="images/llm2.jpg" alt="M3CHA Coder" style="object-fit:cover; object-position:center;">
@@ -893,7 +868,7 @@
                         <div class="timeline-dot"></div>
                         <div class="timeline-content glass-card">
                             <span class="timeline-date">Oct 2026 — Present</span>
-                            <h3 class="experience-title">AI Research Engineer</h3>
+                            <h3 class="experience-title">Lead AI Research Engineer</h3>
                             <p class="experience-company">Kooya Inc · BGC, Taguig</p>
                             <p class="experience-description">Leading R&amp;D of a Filipino-focused open foundation-model ecosystem — targeting multilingual, Taglish, STEM, coding, cybersecurity, and robotics capabilities. Designing the full model-development pipeline across continued pretraining, SFT, synthetic data generation, preference optimization, and reinforcement learning; building large-scale Filipino and regional-language datasets (Tagalog, Taglish, Cebuano, Ilocano, Kapampangan, and more); and designing evaluation frameworks for language, reasoning, coding, and cybersecurity. Researching agentic RL and digital-twin environments for counterfactual experimentation, state forking, and autonomous decision-making.</p>
                         </div>
@@ -985,6 +960,12 @@
                 <button class="btn btn-outline show-more-btn" id="show-more-certs">Show All Certifications</button>
             </div>
         </section>
+
+                <section id="blog" class="content-section blog-section">
+                    <h2 class="section-title">Blog</h2>
+                    <p class="section-lead">Notes on training and evaluating models, agentic systems, and things learned along the way.</p>
+                    <p class="empty-state">No posts yet — first post coming soon.</p>
+                </section>
 
                 <section id="contact" class="content-section contact-section">
                     <h2 class="section-title">Get in Touch</h2>

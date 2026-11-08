@@ -614,3 +614,6 @@ body.nav-open .hamburger::after { transform: translateY(-6px) rotate(-45deg); }
 .research-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
 .research-note { margin: 1.5rem 0 0; padding: 0.85rem 1rem; border-left: 3px solid var(--accent); background: var(--accent-soft); color: #30363d; font-size: 0.92rem; border-radius: 0 8px 8px 0; }
 @media (max-width: 700px) { .research-threads { grid-template-columns: 1fr; } }
+
+/* Empty-state placeholders (Research / Blog) */
+.empty-state { margin: 0; padding: 1.25rem 1.5rem; border: 1px dashed var(--border-strong); border-radius: var(--radius); background: var(--bg-soft); color: var(--text-muted); font-size: 0.95rem; text-align: center; }
