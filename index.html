@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=80">
-    <script src="script.js?v=7632" defer></script>
+    <link rel="stylesheet" href="styles.css?v=81">
+    <script src="script.js?v=7633" defer></script>
 </head>
 <body>
 
@@ -19,7 +19,8 @@
             <nav class="main-nav" aria-label="Primary">
                 <ul class="nav-links" id="nav-links">
                     <li><a href="#about" class="active">About</a></li>
-                    <li><a href="#projects">Research</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#projects">Projects</a></li>
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="Stan_Lee_Natividad_Resume.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
                 </ul>
@@ -89,9 +90,70 @@
                     </dl>
                 </section>
 
+                <section id="research" class="content-section research-section">
+                    <h2 class="section-title">Research</h2>
+                    <p class="section-lead">My research is about advancing foundation models from passive language systems into capable reasoning and action-oriented agents — trained through interaction with tools, simulators, and verifiable environments, and evaluated with the same rigor as they are built.</p>
+
+                    <h3>Research Threads</h3>
+                    <div class="research-threads">
+                        <div class="thread">
+                            <h4>Filipino Open Foundation Models</h4>
+                            <p>Leading R&amp;D of a Filipino-focused open foundation-model ecosystem targeting multilingual, Taglish, STEM, coding, cybersecurity, and robotics capabilities. Building large-scale datasets for Tagalog, Taglish, Cebuano, Ilocano, Kapampangan, and other Philippine languages, and designing the model-development pipeline across continued pretraining, supervised fine-tuning, synthetic data generation, preference optimization, and reinforcement learning.</p>
+                        </div>
+                        <div class="thread">
+                            <h4>Agentic RL &amp; Agent–Environment Digital Twins</h4>
+                            <p>Designing digital-twin architectures that support state forking, counterfactual experimentation, simulation-based evaluation, and autonomous decision-making — so agents can be trained and tested against verifiable feedback rather than static text.</p>
+                        </div>
+                        <div class="thread">
+                            <h4>Evaluation &amp; AI Security</h4>
+                            <p>Designing evaluation frameworks for language capability, reasoning, coding, cybersecurity, and domain-specific performance; benchmarking, ablations, and error analysis (RAGAS, DeepEval, groundedness and hallucination analysis). Adversarial red-teaming — jailbreak and prompt-injection testing — and model hardening, with defensive and controlled offensive security research.</p>
+                        </div>
+                        <div class="thread">
+                            <h4>Domain AI</h4>
+                            <p>Specialized AI systems for robotics, cybersecurity, coding, disaster response, agriculture, and critical infrastructure; STEM and scientific reasoning; computational biology and laboratory AI; embedded systems.</p>
+                        </div>
+                    </div>
+
+                    <h3>Selected Studies</h3>
+                    <p class="section-lead">Research-style work with explicit experimental design, gated evaluation, and reported findings. Click a card for the full write-up.</p>
+                    <div class="projects-grid research-grid">
+                    <article class="project-card featured" data-category="machine-learning llm-ops ai">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/distill-teacher-traces.png" alt="7B Insurance-RAG Model Distillation" style="object-fit:cover; object-position:top;">
+                            <img class="project-image img-secondary" src="images/distill-training-dashboard.png" alt="Distillation training dashboard" style="object-fit:cover; object-position:top;">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info &amp; Preview</button>
+                                <a href="#" class="overlay-btn repo-link">🔗 Private Repo</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">7B Insurance-RAG Model Distillation</h3>
+                            <p class="project-description">Distilled a 14B reasoning teacher into a self-hosted 7B student for a bilingual (Hebrew/English) insurance RAG system. Harvested reasoning traces, filtered them through a three-way correctness gate, decontaminated against held-out cases, and fine-tuned Qwen2.5-7B with QLoRA on a single 24GB GPU — with adversarial evaluation gates that caught memorization and a 25-point train/serve prompt-mismatch collapse.</p>
+                            <ul class="project-stack"><li>PyTorch</li><li>QLoRA / PEFT</li><li>Axolotl</li><li>vLLM</li><li>Qwen2.5</li></ul>
+                        </div>
+                    </article>
+                    <article class="project-card featured" data-category="ai">
+                        <div class="project-image-wrapper">
+                            <img class="project-image" src="images/project-lora-prime.png" alt="LLM Observability Dashboard">
+                            <div class="project-overlay">
+                                <button class="overlay-btn modal-trigger">👁️ Info & Preview</button>
+                                <a href="#" class="overlay-btn repo-link">🔗 Private Repo</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">LLM Observability Dashboard</h3>
+                            <p class="project-description">Real-time monitoring dashboard for self-hosted LLM serving — tracking groundedness, hallucination rate, and p95 latency across RAG pipelines using RAGAS and DeepEval, with alerting on regressions.</p>
+                            <ul class="project-stack"><li>Streamlit</li><li>RAGAS</li><li>DeepEval</li></ul>
+                        </div>
+                    </article>
+                    </div>
+
+                    <p class="research-note">Research-paper development is ongoing — from question formulation and experimental design through implementation, evaluation, and analysis. Publications will be listed here as they are released.</p>
+                </section>
+
         <section id="projects" class="content-section projects-section">
             <div class="container">
-                <h2 class="section-title">Research &amp; Projects</h2><p class="section-lead">Selected systems, experiments, and applied builds — local LLM distillation and evaluation, agentic pipelines, digital twins, and machine-learning models. Click any card for details.</p>
+                <h2 class="section-title">Projects</h2><p class="section-lead">Applied systems and builds — local LLM products, agentic pipelines and automation, digital twins, and machine-learning models. Click any card for details.</p>
                 <div class="projects-filter" id="projects-filter">
                     <button class="filter-btn active" data-filter="main">Main</button>
                     <button class="filter-btn" data-filter="machine-learning">Machine Learning</button>
@@ -542,20 +604,6 @@
                             <ul class="project-stack"><li>MERN Stack</li><li>OpenAI</li><li>n8n</li></ul>
                         </div>
                     </article>
-                    <article class="project-card featured" data-category="ai">
-                        <div class="project-image-wrapper">
-                            <img class="project-image" src="images/project-lora-prime.png" alt="LLM Observability Dashboard">
-                            <div class="project-overlay">
-                                <button class="overlay-btn modal-trigger">👁️ Info & Preview</button>
-                                <a href="#" class="overlay-btn repo-link">🔗 Private Repo</a>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">LLM Observability Dashboard</h3>
-                            <p class="project-description">Real-time monitoring dashboard for self-hosted LLM serving — tracking groundedness, hallucination rate, and p95 latency across RAG pipelines using RAGAS and DeepEval, with alerting on regressions.</p>
-                            <ul class="project-stack"><li>Streamlit</li><li>RAGAS</li><li>DeepEval</li></ul>
-                        </div>
-                    </article>
                     <article class="project-card" data-category="ai quantum-computing">
                         <div class="project-image-wrapper">
                             <img class="project-image" src="images/quantum1.jpg" alt="Quantum Bio-Digital Simulator">
@@ -582,21 +630,6 @@
                             <h3 class="project-title">Quantum Earth Digital Twin v2.3</h3>
                             <p class="project-description">Global digital twin modeling climate anomaly tracking with interactive 3D geospatial rendering and authentic IBM Qiskit quantum risk simulation.</p>
                             <ul class="project-stack"><li>Three.js</li><li>Qiskit</li><li>Scikit-learn</li></ul>
-                        </div>
-                    </article>
-                    <article class="project-card featured" data-category="machine-learning llm-ops ai">
-                        <div class="project-image-wrapper">
-                            <img class="project-image" src="images/distill-teacher-traces.png" alt="7B Insurance-RAG Model Distillation" style="object-fit:cover; object-position:top;">
-                            <img class="project-image img-secondary" src="images/distill-training-dashboard.png" alt="Distillation training dashboard" style="object-fit:cover; object-position:top;">
-                            <div class="project-overlay">
-                                <button class="overlay-btn modal-trigger">👁️ Info &amp; Preview</button>
-                                <a href="#" class="overlay-btn repo-link">🔗 Private Repo</a>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">7B Insurance-RAG Model Distillation</h3>
-                            <p class="project-description">Distilled a 14B reasoning teacher into a self-hosted 7B student for a bilingual (Hebrew/English) insurance RAG system. Harvested reasoning traces, filtered them through a three-way correctness gate, decontaminated against held-out cases, and fine-tuned Qwen2.5-7B with QLoRA on a single 24GB GPU — with adversarial evaluation gates that caught memorization and a 25-point train/serve prompt-mismatch collapse.</p>
-                            <ul class="project-stack"><li>PyTorch</li><li>QLoRA / PEFT</li><li>Axolotl</li><li>vLLM</li><li>Qwen2.5</li></ul>
                         </div>
                     </article>
                     <article class="project-card" data-category="machine-learning data-science">
