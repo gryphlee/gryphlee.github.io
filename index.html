@@ -338,6 +338,18 @@
                     <h3>LIKHA — a from-scratch protein language model</h3>
                     <ul class="pub-list">
                         <li class="pub">
+                            <a class="pub-thumb" href="papers/LIKHA-ENZYME-HOMOLOG-LORA-2026-11-09.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF"><img src="papers/thumbs/LIKHA-ENZYME-HOMOLOG-LORA-2026-11-09.jpg" alt="First page of LIKHA enzyme homolog LoRA report" loading="lazy"></a>
+                            <div class="pub-body">
+                                <div class="pub-head">
+                                    <a class="pub-title" href="papers/LIKHA-ENZYME-HOMOLOG-LORA-2026-11-09.pdf" target="_blank" rel="noopener noreferrer">Homolog-expanded enzyme adaptation of a from-scratch protein language model (LIKHA): per-family gains on lignocellulose enzymes</a>
+                                    <span class="pub-type">Technical report</span>
+                                </div>
+                                <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · 2026-11-09</p>
+                                <p class="pub-abstract">The first enzyme-specialization adapter for LIKHA, trained on 555 reviewed lignocellulose-enzyme sequences, gave only a small perplexity gain and a family tag that behaved as a generic “enzyme-like” switch. This report tests the suspected fix — data. UniRef90 homologs of four rice-straw enzyme families are pulled (3,392 sequences after a benign floor and dedupe, vs 657 reviewed before), split cluster-disjoint with an exact-identity leak check, and used to train a tag-aware LoRA adapter (rank 8, general-protein replay, only four new tag-embedding rows trainable). Held-out enzyme NLL falls with no general-protein forgetting, and the gains concentrate where data was poorest: endo-1,4-β-xylanase perplexity drops 10.6 → 8.1 (~24%), while already well-modelled β-glucosidase moves only 4.7 → 4.5 (~4%) — the pooled metric understates this because the easy family dominates it. Homolog expansion is the right lever where it matters; the undertrained 354M base remains the ceiling. Computational only; no wet-lab validation.</p>
+                                <ul class="pub-tags"><li>Protein LM</li><li>LoRA adaptation</li><li>Homolog expansion</li><li>Lignocellulose enzymes</li><li>Leak-checked splits</li></ul>
+                            </div>
+                        </li>
+                        <li class="pub">
                             <a class="pub-thumb" href="papers/LIKHA-STEERING-TECHNICAL-REPORT-2026-11-07.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF"><img src="papers/thumbs/LIKHA-STEERING-TECHNICAL-REPORT-2026-11-07.jpg" alt="First page of LIKHA-STEERING-TECHNICAL-REPORT-2026-11-07" loading="lazy"></a>
                             <div class="pub-body">
                             <div class="pub-head">
