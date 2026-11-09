@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=82">
-    <script src="script.js?v=7634" defer></script>
+    <link rel="stylesheet" href="styles.css?v=84">
+    <script src="script.js?v=7635" defer></script>
 </head>
 <body>
 
@@ -93,8 +93,113 @@
 
                 <section id="research" class="content-section research-section">
                     <h2 class="section-title">Research</h2>
-                    <p class="section-lead">Research write-ups, studies, and publications will be posted here.</p>
-                    <p class="empty-state">Nothing published yet — check back soon.</p>
+                    <p class="section-lead">Technical reports, model cards, and studies from my work at <strong>Kooya PH AI Research</strong> — AI models for biology focused on problems that matter to the Philippines: agricultural biotechnology, industrial enzymes, and public health. Everything here is computational and at the research stage; negative findings are reported alongside positive ones.</p>
+
+                    <h3>LIKHA — a from-scratch protein language model</h3>
+                    <ul class="pub-list">
+                        <li class="pub">
+                            <div class="pub-head">
+                                <a class="pub-title" href="papers/LIKHA-STEERING-TECHNICAL-REPORT-2026-11-07.pdf" target="_blank" rel="noopener noreferrer">Representation steering, decodability, and best-of-N generation in a from-scratch protein language model (LIKHA)</a>
+                                <span class="pub-type">Technical report</span>
+                            </div>
+                            <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · 2026-11-07</p>
+                            <p class="pub-abstract">Reimplements activation steering for a 354M-parameter protein LM and runs a nine-iteration auto-research loop. Three findings: steering controls <em>domain/style</em> but not <em>quality</em> (foldability); foldability is linearly <em>decodable</em> from activations (probe AUROC 0.98; 0.89 on generated sequences) yet not <em>steerable</em> — the decode-vs-control gap is the central result; and the practical quality lever is generation + selection, with a temperature × top-p sweep raising the confident-fold rate from 8% to 37.5% (4.5×) from sampling alone.</p>
+                            <ul class="pub-tags"><li>Protein LM</li><li>Activation steering</li><li>Interpretability</li><li>Best-of-N</li><li>ESMFold</li></ul>
+                        </li>
+                        <li class="pub">
+                            <div class="pub-head">
+                                <a class="pub-title" href="papers/LIKHA-STAGE1-REPORT-2026-11-06.pdf" target="_blank" rel="noopener noreferrer">LIKHA stage 1: technical report</a>
+                                <span class="pub-type">Technical report</span>
+                            </div>
+                            <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · 2026-11-06</p>
+                            <p class="pub-abstract">Training of a 354M-parameter decoder-only, Llama-style protein language model from scratch on ~5.5M plant and industrial protein sequences with a character-level amino-acid tokenizer and domain tags. Reports the run's measured loss curve and stability, and states plainly a planning error (the corpus was exhausted at 87% of the schedule, so the learning rate never fully annealed), a tiny industrial validation set that cannot support conclusions, and memorisation probes — with the caveats that govern how every number should be read.</p>
+                            <ul class="pub-tags"><li>Pretraining from scratch</li><li>Protein LM</li><li>Training report</li></ul>
+                        </li>
+                        <li class="pub">
+                            <div class="pub-head">
+                                <a class="pub-title" href="papers/LIKHA-COOLDOWN-1B-REPORT-2026-11-06.pdf" target="_blank" rel="noopener noreferrer">LIKHA cooldown 1b: technical report</a>
+                                <span class="pub-type">Ablation · negative result</span>
+                            </div>
+                            <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · 2026-11-06</p>
+                            <p class="pub-abstract">Asks what the missing learning-rate anneal of stage 1 was worth. A paired evaluation on the same validation sequences, binned by similarity to the training data, shows the improvement is almost entirely on sequences that resemble training data — only a 1.3% perplexity gain on novel sequences — while memorisation went <em>up</em>. Recommendation: do not adopt the cooldown; the lesson for stage 2 is data diversity and deduplication, not more epochs on the same data.</p>
+                            <ul class="pub-tags"><li>Ablation</li><li>Memorisation</li><li>Negative result</li></ul>
+                        </li>
+                    </ul>
+
+                    <h3>FLORA &amp; PH163 — protein analysis models</h3>
+                    <ul class="pub-list">
+                        <li class="pub">
+                            <div class="pub-head">
+                                <a class="pub-title" href="papers/FLORA-T1-MODEL-CARD-v5.pdf" target="_blank" rel="noopener noreferrer">FLORA T1 — crop and food protein function classifier (v1, descriptive-only)</a>
+                                <span class="pub-type">Model card</span>
+                            </div>
+                            <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · 2026-11-09</p>
+                            <p class="pub-abstract">A LoRA adapter and classification head on a frozen ESM-2 150M encoder for five coarse function classes of crop and food proteins, evaluated on BIO-BENCH-001 — a family-clustered (30% identity), decontaminated benchmark built from reviewed UniProt entries of 14 Philippine-relevant crops. A pre-registered power floor makes the verdict <em>descriptive-only</em>; against a fair mean-pooled frozen baseline there is no measured gain. The card states calibration, storage-class, and pretraining-overlap limitations before any number is cited.</p>
+                            <ul class="pub-tags"><li>Model card</li><li>LoRA</li><li>Pre-registration</li><li>Benchmark design</li></ul>
+                        </li>
+                        <li class="pub">
+                            <div class="pub-head">
+                                <a class="pub-title" href="papers/PH163-PROTEINGYM-VALIDATION-2026-11-05.pdf" target="_blank" rel="noopener noreferrer">PH163 scoring validated on ProteinGym DMS</a>
+                                <span class="pub-type">Reproduction check</span>
+                            </div>
+                            <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · 2026-11-05</p>
+                            <p class="pub-abstract">Validates the PH163 variant-effect scorer (ESM-2 650M masked-marginal) against 2.47M substitutions in 201 ProteinGym assays. Mean Spearman 0.446 — identical to the official ESM-2 650M reference, Pearson 1.0 across assays — confirming the implementation carries no bug of ours. Explicitly framed as a reproduction check, not a new result: the scorer inherits ESM-2's strengths (stability) and weaknesses (binding, viruses).</p>
+                            <ul class="pub-tags"><li>Variant effect</li><li>ProteinGym</li><li>Reproduction</li></ul>
+                        </li>
+                        <li class="pub">
+                            <div class="pub-head">
+                                <a class="pub-title" href="papers/BIO-BEHAVIOR-PROBES-2026-11-05.pdf" target="_blank" rel="noopener noreferrer">Bio model behaviour probes: FLORA T2, FLORA T1, PH163</a>
+                                <span class="pub-type">Exploratory evaluation</span>
+                            </div>
+                            <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · 2026-11-05</p>
+                            <p class="pub-abstract">Behavioural testing with expectations written before the runs: shuffled and homopolymer inputs, point mutants, truncations, input edge cases, attribution versus annotated active sites, and a catalytic-residue edit scan (8/8 proteins, with a matched control). Surfaces an over-confident smaller model, an "other" class that absorbs nonsense, a sickle-cell blind spot that illustrates the limits of a fold-level model, and a concrete issues list for the service owners.</p>
+                            <ul class="pub-tags"><li>Evaluation</li><li>Behavioural probes</li><li>Robustness</li></ul>
+                        </li>
+                    </ul>
+
+                    <h3>Molecules — drug-discovery groundwork</h3>
+                    <ul class="pub-list">
+                        <li class="pub">
+                            <div class="pub-head">
+                                <a class="pub-title" href="papers/DRUG-DISCOVERY-BLUEPRINT-2026-11-05.pdf" target="_blank" rel="noopener noreferrer">Drug-discovery blueprint: from scratch, with an open recipe as the reference</a>
+                                <span class="pub-type">Blueprint</span>
+                            </div>
+                            <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · 2026-11-05</p>
+                            <p class="pub-abstract">A staged plan for a ~30M-parameter small-molecule generator (Molek v2) trained on our own weights, where every stage first reproduces a published open recipe as a control: reproduce (DiGress / DeFoG on MOSES) → 2D base model → pocket-conditioned 3D generation → domain targets. Reads the reference configs, defines pre-registered metrics and LIKHA-style tracking, and states a dual-use safety floor and the gates required before any spend.</p>
+                            <ul class="pub-tags"><li>Molecular generation</li><li>Graph diffusion</li><li>Research planning</li><li>AI safety</li></ul>
+                        </li>
+                        <li class="pub">
+                            <div class="pub-head">
+                                <a class="pub-title" href="papers/DRUG-DISCOVERY-PREP-FINDINGS-2026-11-05.pdf" target="_blank" rel="noopener noreferrer">Drug-discovery prep findings: licences and TB / dengue targets</a>
+                                <span class="pub-type">Audit notes</span>
+                            </div>
+                            <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · 2026-11-05</p>
+                            <p class="pub-abstract">Read-only licence and availability audit of the open tools in the pipeline (Boltz-2, DiffSBDD checkpoints, ADMET-AI, Chemprop), including a correction to an earlier assumption about training-code availability, plus structure counts from the RCSB Search API for candidate tuberculosis and dengue targets — flagged as loose-matching upper bounds that need curation — and the safety posture for using pathogen proteins only as inference-time inputs.</p>
+                            <ul class="pub-tags"><li>Licence audit</li><li>Target selection</li><li>TB &amp; dengue</li></ul>
+                        </li>
+                    </ul>
+
+                    <h3>Program &amp; methods</h3>
+                    <ul class="pub-list">
+                        <li class="pub">
+                            <div class="pub-head">
+                                <a class="pub-title" href="papers/WETLAB-SCOPING-ONEPAGER-2026-11-07.pdf" target="_blank" rel="noopener noreferrer">Computational biology models for the Philippines — capability brief for prospective wet-lab partners</a>
+                                <span class="pub-type">Capability brief</span>
+                            </div>
+                            <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · 2026-11-07</p>
+                            <p class="pub-abstract">An honest, detailed introduction to the group's models for prospective laboratory partners: FLORA (function analysis), PH163 (variant-effect scoring), LIKHA (sequence generation, under active enzyme specialization), and the planned HYGEIA (diagnostic binder design) and Molek (small molecules). For each: what it is, its objective, what has actually been observed — including a methodology error that was caught and corrected — and its limitations. Working principle: honesty over hype; nothing is presented as experimentally validated.</p>
+                            <ul class="pub-tags"><li>Program overview</li><li>Computational biology</li><li>Collaboration</li></ul>
+                        </li>
+                        <li class="pub">
+                            <div class="pub-head">
+                                <a class="pub-title" href="papers/EXP-TOK-001-tokenizer-study.pdf" target="_blank" rel="noopener noreferrer">EXP-TOK-001 — tokenizer study</a>
+                                <span class="pub-type">Report pointer</span>
+                            </div>
+                            <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · 2026-11-09</p>
+                            <p class="pub-abstract">Pointer to the EXP-TOK-001 tokenizer-study mini-paper (Quarto), with verification recorded as PASS. The full rendered report will be linked here when it is released.</p>
+                            <ul class="pub-tags"><li>Tokenization</li><li>Experiment report</li></ul>
+                        </li>
+                    </ul>
                 </section>
 
         <section id="projects" class="content-section projects-section">
