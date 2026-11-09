@@ -358,7 +358,7 @@ const projectDatabase = {
         longDesc: `
             <div style="line-height:1.8;">
                 <p style="font-size:1.1rem; margin-bottom:1.75rem; opacity:0.9;">
-                    An end-to-end <strong>LLM distillation pipeline</strong> for a production RAG system answering commission and policy questions over bilingual <strong>(Hebrew/English)</strong> insurance documents. The goal: replace dependence on a large hosted model with a <strong>self-hosted 7B student</strong> that keeps grounded accuracy while running on a single 24GB GPU. Role: ML Engineer on the local-model track — distillation, fine-tuning, and evaluation.
+                    An end-to-end <strong>LLM distillation pipeline</strong> for a production RAG system answering commission and policy questions over bilingual <strong>(Hebrew/English)</strong> insurance documents. The goal: replace dependence on a large hosted model with a <strong>self-hosted 7B student</strong> that keeps grounded accuracy while running on a single 24GB GPU. Role: ML Engineer on the local-model track, distillation, fine-tuning, and evaluation.
                 </p>
 
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:1.75rem; font-size:0.92rem;">
@@ -372,20 +372,20 @@ const projectDatabase = {
 
                 <h4 style="color: var(--accent); margin-bottom: 0.75rem; font-size: 1rem;">Pipeline</h4>
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    <strong>Trace harvest:</strong> ran the self-hosted 14B teacher over 173 grounded questions to produce 692 candidate reasoning traces. <strong>Rejection sampling:</strong> kept only traces that were simultaneously answer-correct, citation-grounded, and step-sound — 387 of 692 (55.9%), zero call failures across a 2.8-hour batch. <strong>Decontamination:</strong> n-gram and case-ID matching against the held-out evaluation set dropped 60 leaking rows before training. <strong>Data composition:</strong> added synthetic abstention data (real retrieval-misses plus adversarial unanswerables) so the model learns to refuse, blended with general-domain data to limit catastrophic forgetting.
+                    <strong>Trace harvest:</strong> ran the self-hosted 14B teacher over 173 grounded questions to produce 692 candidate reasoning traces. <strong>Rejection sampling:</strong> kept only traces that were simultaneously answer-correct, citation-grounded, and step-sound, 387 of 692 (55.9%), zero call failures across a 2.8-hour batch. <strong>Decontamination:</strong> n-gram and case-ID matching against the held-out evaluation set dropped 60 leaking rows before training. <strong>Data composition:</strong> added synthetic abstention data (real retrieval-misses plus adversarial unanswerables) so the model learns to refuse, blended with general-domain data to limit catastrophic forgetting.
                 </p>
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    <strong>Training:</strong> QLoRA on all seven linear projections, NF4 double-quantization, bf16 compute. Sequence length 8192 was chosen from the measured token distribution — the common 4096 default would have truncated 80% of rows. Micro-batch 1 with gradient accumulation 16, paged AdamW 8-bit, gradient checkpointing, FlashAttention, and length-bucketing to prevent mid-epoch allocator fragmentation. <strong>Artifact governance:</strong> every trained adapter registered by SHA-256 with its git commit and the hashes of the evaluation files that gated it — which caught a false "trained" record already sitting in project history.
+                    <strong>Training:</strong> QLoRA on all seven linear projections, NF4 double-quantization, bf16 compute. Sequence length 8192 was chosen from the measured token distribution, the common 4096 default would have truncated 80% of rows. Micro-batch 1 with gradient accumulation 16, paged AdamW 8-bit, gradient checkpointing, FlashAttention, and length-bucketing to prevent mid-epoch allocator fragmentation. <strong>Artifact governance:</strong> every trained adapter registered by SHA-256 with its git commit and the hashes of the evaluation files that gated it, which caught a false "trained" record already sitting in project history.
                 </p>
 
-                <h4 style="color: var(--accent); margin-bottom: 0.75rem; font-size: 1rem;">Evaluation — designed as adversarial gates, not accuracy alone</h4>
+                <h4 style="color: var(--accent); margin-bottom: 0.75rem; font-size: 1rem;">Evaluation, designed as adversarial gates, not accuracy alone</h4>
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    Grounded correctness was always reported with <strong>Wilson 95% confidence intervals</strong>, never bare point estimates. A <strong>value-swap memorization probe</strong> replaced the ground-truth value in the retrieved context with a synthetic one: a model that reads context returns the new value; a model that memorized returns the trained one. <strong>Abstention</strong> was scored as its own gate — not folded into accuracy — so refusals cannot inflate the headline number.
+                    Grounded correctness was always reported with <strong>Wilson 95% confidence intervals</strong>, never bare point estimates. A <strong>value-swap memorization probe</strong> replaced the ground-truth value in the retrieved context with a synthetic one: a model that reads context returns the new value; a model that memorized returns the trained one. <strong>Abstention</strong> was scored as its own gate, not folded into accuracy, so refusals cannot inflate the headline number.
                 </p>
 
                 <h4 style="color: var(--accent); margin-bottom: 0.75rem; font-size: 1rem;">Findings</h4>
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    <strong>Train/serve prompt mismatch cost 25 points:</strong> the same adapter scored 0.75 grounded-correct under the harvest prompt and 0.50 under the production prompt (Wilson 95%: [0.55, 0.88] vs [0.31, 0.69]) — reproduced on a controlled harness and isolated to the prompt, not to abstention drift. <strong>Memorization detected:</strong> 15 of 20 probes read the swapped value correctly, but 2 returned the trained value — reported as a gate FAILURE rather than averaged away. <strong>Abstention rated WEAK</strong> at 0.792 (19/24): the model fabricated a named entity instead of refusing, recorded as a blocking defect.
+                    <strong>Train/serve prompt mismatch cost 25 points:</strong> the same adapter scored 0.75 grounded-correct under the harvest prompt and 0.50 under the production prompt (Wilson 95%: [0.55, 0.88] vs [0.31, 0.69]), reproduced on a controlled harness and isolated to the prompt, not to abstention drift. <strong>Memorization detected:</strong> 15 of 20 probes read the swapped value correctly, but 2 returned the trained value, reported as a gate FAILURE rather than averaged away. <strong>Abstention rated WEAK</strong> at 0.792 (19/24): the model fabricated a named entity instead of refusing, recorded as a blocking defect.
                 </p>
 
                 <h4 style="color: var(--accent); margin-bottom: 0.75rem; font-size: 1rem;">Outcome</h4>
@@ -393,9 +393,9 @@ const projectDatabase = {
                     The distilled student did not clear its promotion gates, and it was not shipped. The durable result was the <strong>measurement infrastructure</strong>: the value-swap probe, the abstention gate, and the artifact registry became the standing release discipline for later model decisions on the same system.
                 </p>
 
-                <h4 style="color: var(--accent); margin-bottom: 0.75rem; font-size: 1rem;">Model Selection Under Noise — A/B Design</h4>
+                <h4 style="color: var(--accent); margin-bottom: 0.75rem; font-size: 1rem;">Model Selection Under Noise, A/B Design</h4>
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    That same release discipline drove generator selection for the system. A <strong>three-arm A/B comparison</strong> — the incumbent baseline against two candidate open models — was run on a paired-row design over a 194-row bilingual golden set, under a <strong>pre-registered promotion rule</strong>: a candidate ships only if its bootstrap CI lower bound clears the absolute bar <em>and</em> it beats the incumbent on a one-sided paired Wilcoxon test, replicated across two runs. The protocol mattered — measured run-to-run variance (±0.09) was larger than the effect being tested, so a single-run comparison would have been a coin flip presented as a decision. Under production-faithful scoring, the winning candidate cleared the bar by <strong>16 points with p &lt; 0.0001</strong>, and the result held under replication.
+                    That same release discipline drove generator selection for the system. A <strong>three-arm A/B comparison</strong>, the incumbent baseline against two candidate open models, was run on a paired-row design over a 194-row bilingual golden set, under a <strong>pre-registered promotion rule</strong>: a candidate ships only if its bootstrap CI lower bound clears the absolute bar <em>and</em> it beats the incumbent on a one-sided paired Wilcoxon test, replicated across two runs. The protocol mattered, measured run-to-run variance (±0.09) was larger than the effect being tested, so a single-run comparison would have been a coin flip presented as a decision. Under production-faithful scoring, the winning candidate cleared the bar by <strong>16 points with p &lt; 0.0001</strong>, and the result held under replication.
                 </p>
 
                 <p style="font-size:0.97rem; opacity:0.85;">
@@ -410,12 +410,12 @@ const projectDatabase = {
         longDesc: `
             <div style="line-height:1.8;">
                 <p style="font-size:1.1rem; margin-bottom:1.75rem; opacity:0.9;">
-                    M3CHA Coder is a <strong>custom-engineered, self-hosted large language model</strong> designed to run entirely on local infrastructure, independent of commercial AI providers. Rather than fine-tuning a single model, the architecture merges two distinct frontier base models — <strong>Qwen</strong> and <strong>DeepSeek</strong> — through a <strong>QLoRA pipeline</strong> accelerated by Unsloth, producing a hybrid reasoning core optimized for technical, agentic, and architectural code generation tasks.
+                    M3CHA Coder is a <strong>custom-engineered, self-hosted large language model</strong> designed to run entirely on local infrastructure, independent of commercial AI providers. Rather than fine-tuning a single model, the architecture merges two distinct frontier base models, <strong>Qwen</strong> and <strong>DeepSeek</strong>, through a <strong>QLoRA pipeline</strong> accelerated by Unsloth, producing a hybrid reasoning core optimized for technical, agentic, and architectural code generation tasks.
                 </p>
 
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:1.75rem; font-size:0.92rem;">
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Parameters</span><br><strong>14 Billion</strong></div>
-                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Precision</span><br><strong>f16 — Full Fidelity</strong></div>
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Precision</span><br><strong>f16, Full Fidelity</strong></div>
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Model Weight</span><br><strong>29.5 GB</strong></div>
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Context Window</span><br><strong>32,768 Tokens</strong></div>
                     <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Export Format</span><br><strong>GGUF</strong></div>
@@ -423,15 +423,15 @@ const projectDatabase = {
                 </div>
 
                 <p style="font-size:0.97rem; margin-bottom:1.25rem; opacity:0.85;">
-                    The model underwent systematic <strong>alignment stripping</strong> — removing embedded commercial restrictions to produce an unrestricted reasoning engine capable of handling sensitive enterprise workloads, security analysis, and autonomous agentic decision loops that standard hosted models refuse to process.
+                    The model underwent systematic <strong>alignment stripping</strong>, removing embedded commercial restrictions to produce an unrestricted reasoning engine capable of handling sensitive enterprise workloads, security analysis, and autonomous agentic decision loops that standard hosted models refuse to process.
                 </p>
 
                 <p style="font-size:0.97rem; margin-bottom:1.25rem; opacity:0.85;">
-                    Deployed entirely <strong>on-premise at f16 full precision</strong>, M3CHA Coder deliberately avoids quantization trade-offs that degrade inference quality in smaller bit-widths. The result is a deterministic, high-fidelity model purpose-built for multi-agent orchestration inside LangGraph and n8n pipelines — acting as the core reasoning layer in autonomous task execution, code synthesis, and architectural planning workflows.
+                    Deployed entirely <strong>on-premise at f16 full precision</strong>, M3CHA Coder deliberately avoids quantization trade-offs that degrade inference quality in smaller bit-widths. The result is a deterministic, high-fidelity model purpose-built for multi-agent orchestration inside LangGraph and n8n pipelines, acting as the core reasoning layer in autonomous task execution, code synthesis, and architectural planning workflows.
                 </p>
 
                 <p style="font-size:0.97rem; opacity:0.85;">
-                    This project demonstrates end-to-end <strong>LLMOps ownership</strong>: from base model selection and merge strategy, through fine-tuning pipeline engineering, to fully self-hosted local deployment — without reliance on any external API or cloud inference provider.
+                    This project demonstrates end-to-end <strong>LLMOps ownership</strong>: from base model selection and merge strategy, through fine-tuning pipeline engineering, to fully self-hosted local deployment, without reliance on any external API or cloud inference provider.
                 </p>
             </div>
         `,
@@ -442,19 +442,19 @@ const projectDatabase = {
         longDesc: `
             <div style="line-height:1.8;">
                 <p style="font-size:1.1rem; margin-bottom:1.75rem; opacity:0.9;">
-                    M3CHA BDIM (Business Development Intelligent Model) is a <strong>domain-specialized local LLM</strong> engineered for enterprise business intelligence. Built through the same QLoRA fine-tuning pipeline as M3CHA Coder, this model is purpose-trained on procurement data, market intelligence, and executive communication patterns — replacing the generic reasoning of commercial models with deep, context-aware business judgment.
+                    M3CHA BDIM (Business Development Intelligent Model) is a <strong>domain-specialized local LLM</strong> engineered for enterprise business intelligence. Built through the same QLoRA fine-tuning pipeline as M3CHA Coder, this model is purpose-trained on procurement data, market intelligence, and executive communication patterns, replacing the generic reasoning of commercial models with deep, context-aware business judgment.
                 </p>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    Where M3CHA Coder handles technical code generation, BDIM operates at the <strong>strategic layer</strong> — qualifying procurement leads, scoring tender opportunities, generating executive briefings, and providing market landscape analysis from raw unstructured data. It is the intelligence layer behind the <strong>Agentic Tender Intelligence System (ATIS)</strong>, serving as its embedded reasoning core.
+                    Where M3CHA Coder handles technical code generation, BDIM operates at the <strong>strategic layer</strong>, qualifying procurement leads, scoring tender opportunities, generating executive briefings, and providing market landscape analysis from raw unstructured data. It is the intelligence layer behind the <strong>Agentic Tender Intelligence System (ATIS)</strong>, serving as its embedded reasoning core.
                 </p>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    The model was fine-tuned with <strong>alignment stripping</strong> applied selectively — preserving analytical safety while removing restrictions that prevent honest, blunt commercial risk assessments. This allows it to produce the kind of direct, unfiltered business intelligence that cloud-hosted models are trained to soften or omit.
+                    The model was fine-tuned with <strong>alignment stripping</strong> applied selectively, preserving analytical safety while removing restrictions that prevent honest, blunt commercial risk assessments. This allows it to produce the kind of direct, unfiltered business intelligence that cloud-hosted models are trained to soften or omit.
                 </p>
 
                 <p style="font-size:0.97rem; opacity:0.85;">
-                    Deployed on-premise in <strong>GGUF format</strong>, BDIM integrates natively into n8n agentic workflows and LangGraph pipelines — functioning as a local reasoning endpoint that processes sensitive commercial data without any external API exposure, ensuring full data privacy and control for enterprise clients.
+                    Deployed on-premise in <strong>GGUF format</strong>, BDIM integrates natively into n8n agentic workflows and LangGraph pipelines, functioning as a local reasoning endpoint that processes sensitive commercial data without any external API exposure, ensuring full data privacy and control for enterprise clients.
                 </p>
             </div>
         `,
@@ -465,11 +465,11 @@ const projectDatabase = {
         longDesc: `
             <div style="line-height:1.8;">
                 <p style="font-size:1.1rem; margin-bottom:1.75rem; opacity:0.9;">
-                    The <strong>M3CHA Centralized Database</strong> is the data-control layer of the Power4All Agentic OS — a unified, multi-departmental data hub that consolidates business operations across <strong>Business Development, HR, Supply Chain, Customer Service, and Design</strong> into a single command architecture, with no reliance on third-party cloud databases.
+                    The <strong>M3CHA Centralized Database</strong> is the data-control layer of the Power4All Agentic OS, a unified, multi-departmental data hub that consolidates business operations across <strong>Business Development, HR, Supply Chain, Customer Service, and Design</strong> into a single command architecture, with no reliance on third-party cloud databases.
                 </p>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    At its core, the system operates a <strong>hub-and-spoke data graph</strong> — each department functions as a specialized node, while the centralized layer acts as the arbitration and routing intelligence. Inter-departmental data requests flow through a <strong>MCP Bridge protocol</strong>, enforcing approval workflows, role-based access, and full audit trails before any data crosses departmental boundaries.
+                    At its core, the system operates a <strong>hub-and-spoke data graph</strong>, each department functions as a specialized node, while the centralized layer acts as the arbitration and routing intelligence. Inter-departmental data requests flow through a <strong>MCP Bridge protocol</strong>, enforcing approval workflows, role-based access, and full audit trails before any data crosses departmental boundaries.
                 </p>
 
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:1.75rem; font-size:0.92rem;">
@@ -482,11 +482,11 @@ const projectDatabase = {
                 </div>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    The AI engine — powered by <strong>LangGraph stateful agents</strong> — acts as the system's reasoning layer. When a department initiates a cross-functional request, the agent autonomously determines intent, routes the request through the correct approval pipeline, and dispatches resolution notifications — without manual intervention. Embedded <strong>M3CHA models</strong> serve as local reasoning endpoints within each agent node.
+                    The AI engine, powered by <strong>LangGraph stateful agents</strong>, acts as the system's reasoning layer. When a department initiates a cross-functional request, the agent autonomously determines intent, routes the request through the correct approval pipeline, and dispatches resolution notifications, without manual intervention. Embedded <strong>M3CHA models</strong> serve as local reasoning endpoints within each agent node.
                 </p>
 
                 <p style="font-size:0.97rem; opacity:0.85;">
-                    This architecture demonstrates the full realization of <strong>self-hosted enterprise AI</strong> — where the database, the reasoning layer, the communication layer, and the models themselves are all owned, hosted, and governed internally, with zero dependency on external APIs or cloud providers for core operations.
+                    This architecture demonstrates the full realization of <strong>self-hosted enterprise AI</strong>, where the database, the reasoning layer, the communication layer, and the models themselves are all owned, hosted, and governed internally, with zero dependency on external APIs or cloud providers for core operations.
                 </p>
             </div>
         `,
@@ -501,11 +501,11 @@ const projectDatabase = {
                 </p>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    Beyond government procurement, the system extends its reach into <strong>private sector portals</strong> — scraping supplier and contractor opportunities from enterprise sources including <strong>Manila Water</strong> and <strong>Globe Telecom</strong>. This dual-track intelligence pipeline ensures Power4All captures high-value leads across both public and corporate supply chains simultaneously.
+                    Beyond government procurement, the system extends its reach into <strong>private sector portals</strong>, scraping supplier and contractor opportunities from enterprise sources including <strong>Manila Water</strong> and <strong>Globe Telecom</strong>. This dual-track intelligence pipeline ensures Power4All captures high-value leads across both public and corporate supply chains simultaneously.
                 </p>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    Raw tender data — often unstructured and buried in thousands of daily listings — is fed into a <strong>LangGraph agent pipeline</strong> that classifies, scores, and qualifies each opportunity against Power4All's capability matrix and financial thresholds. Only leads that pass all filters surface to the BD team, eliminating manual review entirely.
+                    Raw tender data, often unstructured and buried in thousands of daily listings, is fed into a <strong>LangGraph agent pipeline</strong> that classifies, scores, and qualifies each opportunity against Power4All's capability matrix and financial thresholds. Only leads that pass all filters surface to the BD team, eliminating manual review entirely.
                 </p>
 
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:1.75rem; font-size:0.92rem;">
@@ -518,11 +518,11 @@ const projectDatabase = {
                 </div>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    High-priority leads trigger <strong>immediate Gmail alerts</strong> to stakeholders with a structured briefing — including agency name, Approved Budget for Contract (ABC), deadline, and AI-recommended action. A secondary <strong>6 PM daily report</strong> compiles the full market landscape into an executive summary delivered automatically to leadership.
+                    High-priority leads trigger <strong>immediate Gmail alerts</strong> to stakeholders with a structured briefing, including agency name, Approved Budget for Contract (ABC), deadline, and AI-recommended action. A secondary <strong>6 PM daily report</strong> compiles the full market landscape into an executive summary delivered automatically to leadership.
                 </p>
 
                 <p style="font-size:0.97rem; opacity:0.85;">
-                    Every processed bid is indexed into the <strong>vector store</strong> for RAG-based historical benchmarking — building a self-improving intelligence base that grows more accurate with every bidding cycle, estimating win probability against known agency and corporate behavior patterns over time.
+                    Every processed bid is indexed into the <strong>vector store</strong> for RAG-based historical benchmarking, building a self-improving intelligence base that grows more accurate with every bidding cycle, estimating win probability against known agency and corporate behavior patterns over time.
                 </p>
             </div>
         `,
@@ -533,11 +533,11 @@ const projectDatabase = {
         longDesc: `
             <div style="line-height:1.8;">
                 <p style="font-size:1.1rem; margin-bottom:1.75rem; opacity:0.9;">
-                    M3CHA Knowledge Base is the self-hosted document intelligence layer of the Power4All Agentic OS — inspired by the <strong>VMware concept of frictionless resource provisioning</strong>. The design principle is radical simplicity: <em>paste a Google Drive folder link, and everything else happens automatically.</em>
+                    M3CHA Knowledge Base is the self-hosted document intelligence layer of the Power4All Agentic OS, inspired by the <strong>VMware concept of frictionless resource provisioning</strong>. The design principle is radical simplicity: <em>paste a Google Drive folder link, and everything else happens automatically.</em>
                 </p>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    Once a folder ID is submitted, the system autonomously syncs all files from Google Drive — <strong>PDF, DOCX, XLSX, images, and more</strong> — then pipelines each document through an intelligent chunking engine. Files are split into semantically coherent segments, embedded into vector representations, and indexed into <strong>Qdrant</strong> — ready for RAG retrieval within seconds, with zero manual configuration.
+                    Once a folder ID is submitted, the system autonomously syncs all files from Google Drive, <strong>PDF, DOCX, XLSX, images, and more</strong>, then pipelines each document through an intelligent chunking engine. Files are split into semantically coherent segments, embedded into vector representations, and indexed into <strong>Qdrant</strong>, ready for RAG retrieval within seconds, with zero manual configuration.
                 </p>
 
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:1.75rem; font-size:0.92rem;">
@@ -550,11 +550,11 @@ const projectDatabase = {
                 </div>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    Documents are organized into <strong>named project collections</strong> — each folder synced from Drive becomes a scoped knowledge project (e.g., BD-Compliance, Marinduque Water Supply, BWSI). The AI agents can query across all collections simultaneously or isolate context to a single project, enabling precision retrieval across complex multi-project environments.
+                    Documents are organized into <strong>named project collections</strong>, each folder synced from Drive becomes a scoped knowledge project (e.g., BD-Compliance, Marinduque Water Supply, BWSI). The AI agents can query across all collections simultaneously or isolate context to a single project, enabling precision retrieval across complex multi-project environments.
                 </p>
 
                 <p style="font-size:0.97rem; opacity:0.85;">
-                    This module eliminates the traditional DevOps overhead of vector database management — no embedding scripts, no manual ingestion jobs, no pipeline maintenance. It represents the <strong>zero-friction RAG provisioning layer</strong> that makes the entire M3CHA knowledge system accessible to non-technical operators with a single link.
+                    This module eliminates the traditional DevOps overhead of vector database management, no embedding scripts, no manual ingestion jobs, no pipeline maintenance. It represents the <strong>zero-friction RAG provisioning layer</strong> that makes the entire M3CHA knowledge system accessible to non-technical operators with a single link.
                 </p>
             </div>
         `,
@@ -565,16 +565,16 @@ const projectDatabase = {
         longDesc: `
             <div style="line-height:1.8;">
                 <p style="font-size:1.1rem; margin-bottom:1.75rem; opacity:0.9;">
-                    M3CHA Bid Pipeline Kanban redefines how procurement teams manage active bids — by making <strong>WhatsApp the command interface</strong>. Instead of logging into a dashboard, users simply message <strong>M3CHA Claw</strong>, the system's native WhatsApp AI agent, to move bids across stages, check live status, or get instant summaries — from anywhere, on any device.
+                    M3CHA Bid Pipeline Kanban redefines how procurement teams manage active bids, by making <strong>WhatsApp the command interface</strong>. Instead of logging into a dashboard, users simply message <strong>M3CHA Claw</strong>, the system's native WhatsApp AI agent, to move bids across stages, check live status, or get instant summaries, from anywhere, on any device.
                 </p>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    Behind the conversational interface sits a full <strong>Kanban pipeline engine</strong> — bids flow through defined stages (Identified → Qualified → Proposal → Submitted → Awarded / Lost), each with tracked metadata: agency, ABC value, submission deadline, responsible BD officer, and current action items. Stage transitions are logged with timestamps and persisted to <strong>Supabase</strong> for full audit history.
+                    Behind the conversational interface sits a full <strong>Kanban pipeline engine</strong>, bids flow through defined stages (Identified → Qualified → Proposal → Submitted → Awarded / Lost), each with tracked metadata: agency, ABC value, submission deadline, responsible BD officer, and current action items. Stage transitions are logged with timestamps and persisted to <strong>Supabase</strong> for full audit history.
                 </p>
 
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:1.75rem; font-size:0.92rem;">
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Interface</span><br><strong>WhatsApp (whatsapp-web.js)</strong></div>
-                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Agent</span><br><strong>M3CHA Claw — LangGraph</strong></div>
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Agent</span><br><strong>M3CHA Claw, LangGraph</strong></div>
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Backend</span><br><strong>FastAPI (Port 8001)</strong></div>
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Persistence</span><br><strong>Supabase (PostgreSQL)</strong></div>
                     <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Pipeline Stages</span><br><strong>5 Kanban Stages</strong></div>
@@ -582,11 +582,11 @@ const projectDatabase = {
                 </div>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    M3CHA Claw is a persistent WhatsApp-connected agent built on <strong>whatsapp-web.js</strong> and bridged directly to the M3CHA backend. Each incoming message is routed through the <strong>LangGraph semantic router</strong>, which identifies intent — whether it's a status query, a stage update, a bid briefing request, or a deadline alert — and executes the appropriate tool against the live database.
+                    M3CHA Claw is a persistent WhatsApp-connected agent built on <strong>whatsapp-web.js</strong> and bridged directly to the M3CHA backend. Each incoming message is routed through the <strong>LangGraph semantic router</strong>, which identifies intent, whether it's a status query, a stage update, a bid briefing request, or a deadline alert, and executes the appropriate tool against the live database.
                 </p>
 
                 <p style="font-size:0.97rem; opacity:0.85;">
-                    This module represents the <strong>zero-friction field operations layer</strong> of the M3CHA OS — allowing BD officers on-site at client locations or government agencies to manage the entire procurement pipeline through a chat they already have open, without switching context or carrying a laptop.
+                    This module represents the <strong>zero-friction field operations layer</strong> of the M3CHA OS, allowing BD officers on-site at client locations or government agencies to manage the entire procurement pipeline through a chat they already have open, without switching context or carrying a laptop.
                 </p>
             </div>
         `,
@@ -597,11 +597,11 @@ const projectDatabase = {
         longDesc: `
             <div style="line-height:1.8;">
                 <p style="font-size:1.1rem; margin-bottom:1.75rem; opacity:0.9;">
-                    M3CHA Decision is the <strong>adversarial reasoning engine</strong> of the Power4All Agentic OS — a Model Debate system where two frontier LLMs compete in parallel on the same query, and a third Judge AI selects the winner. Rather than trusting a single model's output for high-stakes decisions, M3CHA Decision forces <strong>structured disagreement</strong> to surface the most accurate, actionable answer.
+                    M3CHA Decision is the <strong>adversarial reasoning engine</strong> of the Power4All Agentic OS, a Model Debate system where two frontier LLMs compete in parallel on the same query, and a third Judge AI selects the winner. Rather than trusting a single model's output for high-stakes decisions, M3CHA Decision forces <strong>structured disagreement</strong> to surface the most accurate, actionable answer.
                 </p>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    When a strategic question is routed to M3CHA Decision — bid qualifications, market analysis, risk assessments, proposal strategies — <strong>Gemini 2.5 Flash</strong> and <strong>GPT-4.1</strong> are fired simultaneously in an async pipeline. Both models receive the identical query and generate independent responses with no knowledge of the other's output.
+                    When a strategic question is routed to M3CHA Decision, bid qualifications, market analysis, risk assessments, proposal strategies, <strong>Gemini 2.5 Flash</strong> and <strong>GPT-4.1</strong> are fired simultaneously in an async pipeline. Both models receive the identical query and generate independent responses with no knowledge of the other's output.
                 </p>
 
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:1.75rem; font-size:0.92rem;">
@@ -610,15 +610,15 @@ const projectDatabase = {
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Judge</span><br><strong>GPT-4.1-mini</strong></div>
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Execution</span><br><strong>Fully Async (Parallel)</strong></div>
                     <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Triggers On</span><br><strong>Strategic / Complex Queries</strong></div>
-                    <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Output</span><br><strong>Scored JSON — Winner + Reason</strong></div>
+                    <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Output</span><br><strong>Scored JSON, Winner + Reason</strong></div>
                 </div>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    The <strong>Judge AI (GPT-4.1-mini)</strong> then evaluates both responses across four dimensions: <em>Accuracy, Depth, Actionability, and Clarity</em> — returning a structured JSON verdict with individual scores (1–10), the winning model, and a concise reason. The winning answer is delivered to the user as the final response, with the debate metadata preserved for transparency.
+                    The <strong>Judge AI (GPT-4.1-mini)</strong> then evaluates both responses across four dimensions: <em>Accuracy, Depth, Actionability, and Clarity</em>, returning a structured JSON verdict with individual scores (1 to 10), the winning model, and a concise reason. The winning answer is delivered to the user as the final response, with the debate metadata preserved for transparency.
                 </p>
 
                 <p style="font-size:0.97rem; opacity:0.85;">
-                    This architecture eliminates single-model blind spots for critical enterprise decisions — transforming AI from a single opinionated source into a <strong>competitive intelligence tribunal</strong> where the best reasoning wins, not the first.
+                    This architecture eliminates single-model blind spots for critical enterprise decisions, transforming AI from a single opinionated source into a <strong>competitive intelligence tribunal</strong> where the best reasoning wins, not the first.
                 </p>
             </div>
         `,
@@ -661,11 +661,11 @@ const projectDatabase = {
         longDesc: `
             <div style="line-height:1.8;">
                 <p style="font-size:1.1rem; margin-bottom:1.75rem; opacity:0.9;">
-                    M3CHA Signal Intelligence is the <strong>real-time market awareness layer</strong> of the Power4All Agentic OS — an automated market-research feed engine that continuously monitors six business-critical channels using <strong>Perplexity Sonar Pro's grounded web search</strong>, delivering structured news briefings with live citations to the dashboard every 30 minutes.
+                    M3CHA Signal Intelligence is the <strong>real-time market awareness layer</strong> of the Power4All Agentic OS, an automated market-research feed engine that continuously monitors six business-critical channels using <strong>Perplexity Sonar Pro's grounded web search</strong>, delivering structured news briefings with live citations to the dashboard every 30 minutes.
                 </p>
 
                 <p style="font-size:0.97rem; margin-bottom:1.25rem; opacity:0.85;">
-                    Each intelligence channel runs a precision-crafted query against the live web, returning <strong>15–20 structured news items</strong> per cycle — each with headline, 2–3 sentence summary, source publication, URL, publication time, and a category tag (BREAKING / UPDATE / ANALYSIS / REPORT). All results are cached locally and served via FastAPI with zero latency on subsequent reads.
+                    Each intelligence channel runs a precision-crafted query against the live web, returning <strong>15 to 20 structured news items</strong> per cycle, each with headline, 2 to 3 sentence summary, source publication, URL, publication time, and a category tag (BREAKING / UPDATE / ANALYSIS / REPORT). All results are cached locally and served via FastAPI with zero latency on subsequent reads.
                 </p>
 
                 <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.5rem; margin-bottom:1.75rem; font-size:0.88rem;">
@@ -698,14 +698,14 @@ const projectDatabase = {
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:1.75rem; font-size:0.92rem;">
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Intelligence Source</span><br><strong>Perplexity Sonar Pro</strong></div>
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Cache TTL</span><br><strong>30 Minutes</strong></div>
-                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Items per Cycle</span><br><strong>15–20 per Channel</strong></div>
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Items per Cycle</span><br><strong>15 to 20 per Channel</strong></div>
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Output Format</span><br><strong>Structured JSON + Citations</strong></div>
-                    <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Coverage Window</span><br><strong>Last 24–48 Hours</strong></div>
+                    <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Coverage Window</span><br><strong>Last 24 to 48 Hours</strong></div>
                     <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Tags</span><br><strong>BREAKING / UPDATE / ANALYSIS / REPORT</strong></div>
                 </div>
 
                 <p style="font-size:0.97rem; opacity:0.85;">
-                    By integrating live market signals directly into the dashboard, M3CHA ensures that every strategic decision — whether a bid qualification, a proposal, or a Go/No-Go call — is made with <strong>live market context</strong>. The BD team is never operating on stale information; the system surfaces relevant shifts in policy, competitor activity, and sector developments early.
+                    By integrating live market signals directly into the dashboard, M3CHA ensures that every strategic decision, whether a bid qualification, a proposal, or a Go/No-Go call, is made with <strong>live market context</strong>. The BD team is never operating on stale information; the system surfaces relevant shifts in policy, competitor activity, and sector developments early.
                 </p>
             </div>
         `,
@@ -716,7 +716,7 @@ const projectDatabase = {
         longDesc: `
             <div style="line-height:1.8;">
                 <p style="font-size:1.1rem; margin-bottom:1.75rem; opacity:0.9;">
-                    M3CHA Customer Database is the <strong>Target Intelligence &amp; Influence Mapping Engine</strong> of the Power4All Agentic OS — an autonomous CRM layer that does far more than store contact details. It actively uses <strong>Perplexity Sonar Pro</strong> to scrape the web, build live organizational charts of target agencies, and map the key decision-makers who influence procurement outcomes.
+                    M3CHA Customer Database is the <strong>Target Intelligence &amp; Influence Mapping Engine</strong> of the Power4All Agentic OS, an autonomous CRM layer that does far more than store contact details. It actively uses <strong>Perplexity Sonar Pro</strong> to scrape the web, build live organizational charts of target agencies, and map the key decision-makers who influence procurement outcomes.
                 </p>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
@@ -733,11 +733,11 @@ const projectDatabase = {
                 </div>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    The intelligence gathered by this module feeds directly into the <strong>M3CHA Sales Cycle Forecasts</strong> system. By analyzing the depth of established relationships against the identified organizational chart, the system calculates a more accurate win probability for upcoming bids — penalizing forecasts where the true decision-makers have not been engaged.
+                    The intelligence gathered by this module feeds directly into the <strong>M3CHA Sales Cycle Forecasts</strong> system. By analyzing the depth of established relationships against the identified organizational chart, the system calculates a more accurate win probability for upcoming bids, penalizing forecasts where the true decision-makers have not been engaged.
                 </p>
 
                 <p style="font-size:0.97rem; opacity:0.85;">
-                    This architecture shifts the BD team's strategy from reactive bidding to <strong>proactive account planning</strong> — ensuring that when a tender is finally published, Power4All already understands the organizational dynamics and has built the relationships needed to compete effectively.
+                    This architecture shifts the BD team's strategy from reactive bidding to <strong>proactive account planning</strong>, ensuring that when a tender is finally published, Power4All already understands the organizational dynamics and has built the relationships needed to compete effectively.
                 </p>
             </div>
         `,
@@ -773,7 +773,7 @@ const projectDatabase = {
         longDesc: `
             <div style="line-height:1.8;">
                 <p style="font-size:1.1rem; margin-bottom:1.75rem; opacity:0.9;">
-                    The <strong>Self-Healing Infrastructure Monitor</strong> is an autonomous Site Reliability Engineering (SRE) pipeline built on <strong>n8n</strong>. It bridges the gap between deterministic statistical monitoring and generative AI diagnostics. When metrics spike, the system doesn't just alert a human—it autonomously investigates the logs, determines the root cause, and executes a fix before human intervention is required.
+                    The <strong>Self-Healing Infrastructure Monitor</strong> is an autonomous Site Reliability Engineering (SRE) pipeline built on <strong>n8n</strong>. It bridges the gap between deterministic statistical monitoring and generative AI diagnostics. When metrics spike, the system doesn't just alert a human, it autonomously investigates the logs, determines the root cause, and executes a fix before human intervention is required.
                 </p>
 
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:1.75rem; font-size:0.92rem;">
@@ -790,7 +790,7 @@ const projectDatabase = {
                 </p>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    When a statistical anomaly is mathematically confirmed (e.g., CPU spikes > 3 standard deviations), the workflow dynamically fetches the last 50 error logs for that specific service. <strong>Claude 3.5 Sonnet</strong> then acts as a Senior SRE: it cross-references the metric spike with the raw stack traces to identify the exact root cause—outputting a strict JSON diagnosis and a recommended action.
+                    When a statistical anomaly is mathematically confirmed (e.g., CPU spikes > 3 standard deviations), the workflow dynamically fetches the last 50 error logs for that specific service. <strong>Claude 3.5 Sonnet</strong> then acts as a Senior SRE: it cross-references the metric spike with the raw stack traces to identify the exact root cause, outputting a strict JSON diagnosis and a recommended action.
                 </p>
 
                 <p style="font-size:0.97rem; opacity:0.85;">
@@ -821,11 +821,11 @@ const projectDatabase = {
                 </p>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    The <strong>Executor Router</strong> acts as the mechanical hands of the OS. It picks up the first pending task and dynamically routes it through a Switch node to the correct capability—whether that’s executing custom JavaScript logic, making external REST API calls, triggering existing internal n8n sub-workflows (like KPI trackers), or running live grounded research via <strong>Perplexity Sonar Pro</strong>.
+                    The <strong>Executor Router</strong> acts as the mechanical hands of the OS. It picks up the first pending task and dynamically routes it through a Switch node to the correct capability, whether that’s executing custom JavaScript logic, making external REST API calls, triggering existing internal n8n sub-workflows (like KPI trackers), or running live grounded research via <strong>Perplexity Sonar Pro</strong>.
                 </p>
 
                 <p style="font-size:0.97rem; opacity:0.85;">
-                    Crucially, the system does not blindly advance after a tool runs. Every output is routed to the <strong>Critic Agent</strong>—a secondary Claude instance locked at Temperature 0 for deterministic evaluation. If the task passes, the loop advances. If it fails, the Critic generates explicit feedback (e.g., "API returned a 401 Unauthorized, check Auth headers") and the OS loops back to retry up to 3 times. If all retries are exhausted, it gracefully halts and triggers an <strong>Escalation Path</strong>, emailing a comprehensive HTML diagnostic report to the lead engineer via Outlook.
+                    Crucially, the system does not blindly advance after a tool runs. Every output is routed to the <strong>Critic Agent</strong>, a secondary Claude instance locked at Temperature 0 for deterministic evaluation. If the task passes, the loop advances. If it fails, the Critic generates explicit feedback (e.g., "API returned a 401 Unauthorized, check Auth headers") and the OS loops back to retry up to 3 times. If all retries are exhausted, it gracefully halts and triggers an <strong>Escalation Path</strong>, emailing a comprehensive HTML diagnostic report to the lead engineer via Outlook.
                 </p>
             </div>
         `,
@@ -836,7 +836,7 @@ const projectDatabase = {
         longDesc: `
             <div style="line-height:1.8;">
                 <p style="font-size:1.1rem; margin-bottom:1.75rem; opacity:0.9;">
-                    The <strong>AI Competitive Intelligence Engine</strong> is an autonomous surveillance system built on <strong>n8n</strong> that continuously monitors competitor websites, detects meaningful changes using semantic diffing, classifies strategic signals with <strong>GPT-4o</strong>, and delivers weekly AI-written briefs — with real-time <strong>Slack</strong> alerts for high-urgency events.
+                    The <strong>AI Competitive Intelligence Engine</strong> is an autonomous surveillance system built on <strong>n8n</strong> that continuously monitors competitor websites, detects meaningful changes using semantic diffing, classifies strategic signals with <strong>GPT-4o</strong>, and delivers weekly AI-written briefs, with real-time <strong>Slack</strong> alerts for high-urgency events.
                 </p>
 
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:1.75rem; font-size:0.92rem;">
@@ -845,15 +845,15 @@ const projectDatabase = {
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Signal Types</span><br><strong>7 Categories Auto-Classified</strong></div>
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">False Positive Filter</span><br><strong>&lt;96% Cosine = Real Change</strong></div>
                     <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Output Layers</span><br><strong>Instant Alert + Weekly Brief</strong></div>
-                    <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Pages Per Competitor</span><br><strong>4 — Homepage, Pricing, Blog, Careers</strong></div>
+                    <div style="padding:0.4rem 0;"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Pages Per Competitor</span><br><strong>4, Homepage, Pricing, Blog, Careers</strong></div>
                 </div>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    The 5-stage pipeline begins with <strong>Scheduling & Config</strong> — a cron node fires every Monday at 7AM, while a POST webhook allows on-demand runs. A JavaScript config node holds the full competitor list (website, pricing URL, blog, careers page, LinkedIn slug, and tier). <strong>Firecrawl</strong> scrapes each page, extracting clean markdown and filtering noise.
+                    The 5-stage pipeline begins with <strong>Scheduling & Config</strong>, a cron node fires every Monday at 7AM, while a POST webhook allows on-demand runs. A JavaScript config node holds the full competitor list (website, pricing URL, blog, careers page, LinkedIn slug, and tier). <strong>Firecrawl</strong> scrapes each page, extracting clean markdown and filtering noise.
                 </p>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    The <strong>Semantic Diffing</strong> stage embeds content with <strong>text-embedding-3-small</strong>, fetches the previous snapshot from <strong>Qdrant</strong>, and computes cosine similarity. Only changes below 96% similarity proceed — eliminating false positives from boilerplate updates. <strong>GPT-4o AI Signal Analysis</strong> classifies each change by signal type, urgency, strategic implication, pricing intel, hiring intel, and a recommended action.
+                    The <strong>Semantic Diffing</strong> stage embeds content with <strong>text-embedding-3-small</strong>, fetches the previous snapshot from <strong>Qdrant</strong>, and computes cosine similarity. Only changes below 96% similarity proceed, eliminating false positives from boilerplate updates. <strong>GPT-4o AI Signal Analysis</strong> classifies each change by signal type, urgency, strategic implication, pricing intel, hiring intel, and a recommended action.
                 </p>
 
                 <p style="font-size:0.97rem; opacity:0.85;">
@@ -868,18 +868,18 @@ const projectDatabase = {
         longDesc: `
             <div style="line-height:1.8;">
                 <p style="font-size:1.1rem; margin-bottom:1.75rem; opacity:0.9;">
-                    The <strong>SIEM Alert Enrichment & Response</strong> pipeline is an autonomous SecOps workflow built on <strong>n8n</strong>. It ingests raw security alerts from any SIEM platform — Splunk HEC, Elastic Watcher, QRadar, and Microsoft Sentinel — enriches them with multi-source threat intelligence, classifies severity with AI, and routes incidents to the correct response team with zero manual triage.
+                    The <strong>SIEM Alert Enrichment & Response</strong> pipeline is an autonomous SecOps workflow built on <strong>n8n</strong>. It ingests raw security alerts from any SIEM platform, Splunk HEC, Elastic Watcher, QRadar, and Microsoft Sentinel, enriches them with multi-source threat intelligence, classifies severity with AI, and routes incidents to the correct response team with zero manual triage.
                 </p>
 
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:1.75rem; font-size:0.92rem;">
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Alert to Slack</span><br><strong>< 8 seconds</strong></div>
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Threat Intel APIs</span><br><strong>3 Sources Merged</strong></div>
                     <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Manual Triage Steps</span><br><strong>0 (Fully Autonomous)</strong></div>
-                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Priority Classification</span><br><strong>P1 – P4 Auto-Routing</strong></div>
+                    <div style="padding:0.4rem 0; border-bottom:1px solid rgba(255,255,255,0.06);"><span style="opacity:0.45; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em;">Priority Classification</span><br><strong>P1, P4 Auto-Routing</strong></div>
                 </div>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
-                    The 5-stage pipeline starts with <strong>Webhook Ingestion</strong> (instant 200 ACK to prevent SIEM timeouts), followed by <strong>Schema Normalization</strong> (extracting IP, severity, hostname, user, and MITRE technique IDs consistently across all formats). The enrichment layer executes <strong>3 concurrent API calls</strong> — VirusTotal, AbuseIPDB, and IPInfo — computing a composite 0–100 threat score.
+                    The 5-stage pipeline starts with <strong>Webhook Ingestion</strong> (instant 200 ACK to prevent SIEM timeouts), followed by <strong>Schema Normalization</strong> (extracting IP, severity, hostname, user, and MITRE technique IDs consistently across all formats). The enrichment layer executes <strong>3 concurrent API calls</strong>, VirusTotal, AbuseIPDB, and IPInfo, computing a composite 0 to 100 threat score.
                 </p>
 
                 <p style="font-size:0.97rem; margin-bottom:1.5rem; opacity:0.85;">
@@ -919,7 +919,7 @@ const projectDatabase = {
                 </p>
 
                 <p style="font-size:0.97rem; opacity:0.85;">
-                    The interface includes interactive disassembly workshops, real-time alerting overlay systems, and isolated component tuning (adjusting friction coefficients and wear factors)—providing plant operators and engineers with unparalleled oversight into the facility's lifecycle.
+                    The interface includes interactive disassembly workshops, real-time alerting overlay systems, and isolated component tuning (adjusting friction coefficients and wear factors), providing plant operators and engineers with unparalleled oversight into the facility's lifecycle.
                 </p>
             </div>
         `,
@@ -942,7 +942,7 @@ const projectDatabase = {
     },
     "LLM Observability Dashboard": {
         images: ["images/project-lora-prime.png"],
-        longDesc: "A real-time monitoring dashboard for self-hosted LLM serving. It tracks the metrics most teams skip — groundedness, faithfulness, hallucination rate, and p95 latency — across production RAG pipelines using RAGAS and DeepEval, and alerts on regressions before they reach users. Built to make local model quality measurable and to inform model-selection decisions with reproducible benchmarks.",
+        longDesc: "A real-time monitoring dashboard for self-hosted LLM serving. It tracks the metrics most teams skip, groundedness, faithfulness, hallucination rate, and p95 latency, across production RAG pipelines using RAGAS and DeepEval, and alerts on regressions before they reach users. Built to make local model quality measurable and to inform model-selection decisions with reproducible benchmarks.",
         repo: "#"
     },
     "Quantum Bio-Digital Simulator": {
