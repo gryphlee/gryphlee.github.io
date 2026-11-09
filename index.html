@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=87">
+    <link rel="stylesheet" href="styles.css?v=88">
     <script src="script.js?v=7635" defer></script>
 </head>
 <body>
@@ -93,7 +93,235 @@
 
                 <section id="research" class="content-section research-section">
                     <h2 class="section-title">Research</h2>
-                    <p class="section-lead">Technical reports, model cards, and studies from my work at <strong>Kooya PH AI Research</strong> — AI models for biology focused on problems that matter to the Philippines: agricultural biotechnology, industrial enzymes, and public health. Everything here is computational and at the research stage; negative findings are reported alongside positive ones.</p>
+                    <p class="section-lead">Technical reports, model cards, and studies from my work at <strong>Kooya PH AI Research</strong> — two programs: <strong>PinoAI</strong>, an open Filipino foundation-model effort (base-model selection, native Filipino and Taglish evaluation, judge calibration, corpus building, and continued-pretraining engineering), and <strong>AI for biology</strong> focused on Philippine problems (agricultural biotechnology, industrial enzymes, public health). Hypotheses and decision rules are registered before results are read; corrections and negative findings stay on the record.</p>
+
+                    <h3>PinoAI — Filipino foundation model: base-model selection &amp; evaluation</h3>
+                    <ul class="pub-list">
+                        <li class="pub">
+                            <a class="pub-thumb" href="papers/lm/RESULT-001-base-model-hypothesis.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF"><img src="papers/thumbs/RESULT-001-base-model-hypothesis.png" alt="First page of RESULT-001" loading="lazy"></a>
+                            <div class="pub-body">
+                                <div class="pub-head">
+                                    <a class="pub-title" href="papers/lm/RESULT-001-base-model-hypothesis.pdf" target="_blank" rel="noopener noreferrer">Gemma 4 12B outperforms Qwen3.5-9B and Sailor2-8B on a native Filipino and Taglish evaluation, and tokenizes Filipino most efficiently: a pre-registered comparison</a>
+                                    <span class="pub-type">Pre-registered result</span>
+                                </div>
+                                <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · RESULT-001 · 2026-09-29</p>
+                                <p class="pub-abstract">Tests a hypothesis registered before any result: among three open-weight candidates for a Filipino foundation model, Gemma 4 12B scores higher on PH-EVAL (175 native-authored Filipino and Taglish items) and has the lowest Filipino token fertility. Paired exact McNemar: Gemma beat Qwen3.5-9B 36:10 (p = 0.0002) and Sailor2-8B 79:3 (p &lt; 0.0001); accuracies 78.3% / 63.4% / 34.9%. A post-publication correction (a leaked thought-marker the scorer missed) widened the margin to 36:8 and is kept on the record; a truncation re-measurement is reported and shown not to explain the result.</p>
+                                <ul class="pub-tags"><li>Pre-registration</li><li>Base-model selection</li><li>PH-EVAL</li><li>Tokenizer efficiency</li></ul>
+                            </div>
+                        </li>
+                        <li class="pub">
+                            <a class="pub-thumb" href="papers/lm/RESULT-002-base-checkpoints-filbench.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF"><img src="papers/thumbs/RESULT-002-base-checkpoints-filbench.png" alt="First page of RESULT-002" loading="lazy"></a>
+                            <div class="pub-body">
+                                <div class="pub-head">
+                                    <a class="pub-title" href="papers/lm/RESULT-002-base-checkpoints-filbench.pdf" target="_blank" rel="noopener noreferrer">On FilBench, the base checkpoints of Gemma 4 12B and Qwen3.5-9B are not separable overall: task-dependent strengths behind a pre-registered null</a>
+                                    <span class="pub-type">Pre-registered null</span>
+                                </div>
+                                <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · RESULT-002 · 2026-09-30</p>
+                                <p class="pub-abstract">Because an adapting project inherits the base checkpoint, not the vendor's instruction tuning, the base models were compared on 12,956 pooled FilBench multiple-choice items. Both clearly beat Sailor2-8B (p &lt; 10⁻¹¹), but Gemma 4 12B and Qwen3.5-9B are not significantly different (p = 0.092). Post-hoc analyses, labelled as such, show the pool was 56.7% one sentiment task and that strengths are task-dependent — so Gemma's instruct-level advantage is plausibly due in part to post-training.</p>
+                                <ul class="pub-tags"><li>FilBench</li><li>Null result</li><li>Base vs instruct</li></ul>
+                            </div>
+                        </li>
+                        <li class="pub">
+                            <a class="pub-thumb" href="papers/lm/RESULT-003-dec005-before-arm.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF"><img src="papers/thumbs/RESULT-003-dec005-before-arm.png" alt="First page of RESULT-003" loading="lazy"></a>
+                            <div class="pub-body">
+                                <div class="pub-head">
+                                    <a class="pub-title" href="papers/lm/RESULT-003-dec005-before-arm.pdf" target="_blank" rel="noopener noreferrer">The untrained baseline for PinoAI's first continued-pretraining test: Filipino, English and a same-question language gap, measured before training</a>
+                                    <span class="pub-type">Baseline</span>
+                                </div>
+                                <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · RESULT-003 · 2026-10-02</p>
+                                <p class="pub-abstract">The "before arm" of DEC-005 — the first CPT experiment — measured on the frozen harness that will score the trained model: Filipino 63.36% (FilBench macro over 8 groups), an English guard at 55.28%, and, on 1,140 Global-MMLU questions asked in both English and Tagalog, an 8.0-point language gap (right in English but wrong in Tagalog on 191 items, the reverse on 100; p = 10⁻⁷). Two independent runs agree on all 2,312 re-scored items down to the log-probabilities. No claim about CPT is made; this is the reference point.</p>
+                                <ul class="pub-tags"><li>Continued pretraining</li><li>Baseline</li><li>Language gap</li><li>Reproducibility</li></ul>
+                            </div>
+                        </li>
+                        <li class="pub">
+                            <a class="pub-thumb" href="papers/lm/EVAL-001-ph-eval-five-models.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF"><img src="papers/thumbs/EVAL-001-ph-eval-five-models.png" alt="First page of EVAL-001" loading="lazy"></a>
+                            <div class="pub-body">
+                                <div class="pub-head">
+                                    <a class="pub-title" href="papers/lm/EVAL-001-ph-eval-five-models.pdf" target="_blank" rel="noopener noreferrer">PH-EVAL v0.1: a descriptive comparison of five open instruct models on native Filipino and Taglish tasks</a>
+                                    <span class="pub-type">Descriptive</span>
+                                </div>
+                                <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · EVAL-001 · 2026-09-30</p>
+                                <p class="pub-abstract">Five open-weight instruct models (Gemma 4 12B and E4B, Qwen3.5-9B and 4B, Sailor2-8B-Chat) run on PH-EVAL v0.1 with identical prompts and code path. Auto-scored subset: 87.1% / 80.0% / 77.1% / 68.6% / 61.4%, with overlapping intervals between neighbours; the LLM judge settled only confident fails and routed the rest to a human; no language drift was found. Carries a published correction (scorer bug: Gemma 4 12B → 90.0%) and a truncation re-measurement that triggered a full re-run at a 4,096-token cap.</p>
+                                <ul class="pub-tags"><li>PH-EVAL</li><li>Model comparison</li><li>Corrections on record</li></ul>
+                            </div>
+                        </li>
+                        <li class="pub">
+                            <a class="pub-thumb" href="papers/lm/FINDING-001-taglish.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF"><img src="papers/thumbs/FINDING-001-taglish.png" alt="First page of FINDING-001" loading="lazy"></a>
+                            <div class="pub-body">
+                                <div class="pub-head">
+                                    <a class="pub-title" href="papers/lm/FINDING-001-taglish.pdf" target="_blank" rel="noopener noreferrer">A 7B instruct model fails all 60 native Taglish prompts: English drift and unnatural code-switching</a>
+                                    <span class="pub-type">Exploratory finding</span>
+                                </div>
+                                <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · FINDING-001 · 2026-09-29</p>
+                                <p class="pub-abstract">Qwen2.5-7B-Instruct on the 60 native-authored Taglish prompts of PH-EVAL (workplace, casual, technical, academic registers): 0 of 60 passed (Wilson 95% 0–6.0%). Failures take two forms — English drift (20/60 answers classified as English) and unnatural code-switching (every reviewed answer scored 0–1 of 3 for naturalness). The run doubles as the first calibration of the LLM judge (κ = 0.37, errors mostly false passes). Motivates, but does not test, the program's Taglish hypotheses.</p>
+                                <ul class="pub-tags"><li>Taglish</li><li>Code-switching</li><li>Native evaluation</li></ul>
+                            </div>
+                        </li>
+                        <li class="pub">
+                            <a class="pub-thumb" href="papers/lm/METHODS-001-filbench-reproduction.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF"><img src="papers/thumbs/METHODS-001-filbench-reproduction.png" alt="First page of METHODS-001" loading="lazy"></a>
+                            <div class="pub-body">
+                                <div class="pub-head">
+                                    <a class="pub-title" href="papers/lm/METHODS-001-filbench-reproduction.pdf" target="_blank" rel="noopener noreferrer">Reproducing the FilBench leaderboard: harness pitfalls when evaluating Filipino LLMs with lighteval</a>
+                                    <span class="pub-type">Methods note</span>
+                                </div>
+                                <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · METHODS-001 · 2026-09-30</p>
+                                <p class="pub-abstract">Before comparing candidates, the evaluation harness had to reproduce a published number. The first check failed by 24 points (Belebele-fil 44.00 vs 68.11); an A/B test traced the whole gap to lighteval applying the chat template, which scored every answer letter as the first token of an assistant turn. With it off, all three tasks reproduced within about one standard error. Six more pitfalls — a silent upstream slicing bug, GPU memory failures, Windows filename loss, dataset-loading failures, mixed output folders — are each given symptom, root cause, fix, verification, and a closing checklist.</p>
+                                <ul class="pub-tags"><li>Evaluation harness</li><li>lighteval</li><li>Reproduction</li><li>Pitfalls checklist</li></ul>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <h3>PinoAI — judges: calibrating evaluators and building Themis</h3>
+                    <ul class="pub-list">
+                        <li class="pub">
+                            <a class="pub-thumb" href="papers/lm/JUDGE-001-llm-judge-calibration.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF"><img src="papers/thumbs/JUDGE-001-llm-judge-calibration.png" alt="First page of JUDGE-001" loading="lazy"></a>
+                            <div class="pub-body">
+                                <div class="pub-head">
+                                    <a class="pub-title" href="papers/lm/JUDGE-001-llm-judge-calibration.pdf" target="_blank" rel="noopener noreferrer">Calibrating a commercial LLM judge for Filipino and Taglish evaluation: one-directional trust, and why we will not distil it</a>
+                                    <span class="pub-type">Research note</span>
+                                </div>
+                                <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · JUDGE-001 · 2026-09-30</p>
+                                <p class="pub-abstract">Two blind calibrations of a zero-shot commercial judge against a native-speaker reviewer. Agreement 14/20 (κ = 0.37) with one-sided errors (5 false passes vs 1 false fail), so the policy became: accept the judge's FAIL, escalate its confident PASS on privacy, hallucination, and instruction-following to a human. A retuned judge was deliberately kept out of the pre-registered comparison because it was tuned on the very outputs being compared. The vendor's terms forbid distillation, so the program's own open judge will be trained on human gold labels instead.</p>
+                                <ul class="pub-tags"><li>LLM-as-judge</li><li>Calibration</li><li>Human gold labels</li></ul>
+                            </div>
+                        </li>
+                        <li class="pub">
+                            <a class="pub-thumb" href="papers/lm/JUDGE-002-open-teacher-judges.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF"><img src="papers/thumbs/JUDGE-002-open-teacher-judges.png" alt="First page of JUDGE-002" loading="lazy"></a>
+                            <div class="pub-body">
+                                <div class="pub-head">
+                                    <a class="pub-title" href="papers/lm/JUDGE-002-open-teacher-judges.pdf" target="_blank" rel="noopener noreferrer">Can open models judge Filipino and Taglish answers? A pre-registered test, and a measured self-preference</a>
+                                    <span class="pub-type">Pre-registered result</span>
+                                </div>
+                                <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · JUDGE-002 · 2026-09-30</p>
+                                <p class="pub-abstract">Tests whether two Apache-2.0 models (Gemma 4 12B-it, Qwen3.5-9B) can produce silver labels for PH-Judge against 298 human gold ratings split in advance into DEV/TEST, with the decision rule registered by file hash before any teacher output existed. Neither qualifies for pass/fail labels: Gemma's error-rate upper bounds exceed 15%, Qwen's coverage falls below the 60% floor. Self-preference is measured directly — Gemma passed its own wrong answers 61.5% of the time vs 11.1% for other families (+50 points) — and disqualifies it from judging Gemma-family answers. Gemma does pass for Taglish naturalness (weighted κ 0.78 / 0.72).</p>
+                                <ul class="pub-tags"><li>LLM-as-judge</li><li>Self-preference bias</li><li>Pre-registration</li><li>Silver labels</li></ul>
+                            </div>
+                        </li>
+                        <li class="pub">
+                            <a class="pub-thumb" href="papers/lm/THEMIS-ENG-001-laya-teardown.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF"><img src="papers/thumbs/THEMIS-ENG-001-laya-teardown.png" alt="First page of THEMIS-ENG-001" loading="lazy"></a>
+                            <div class="pub-body">
+                                <div class="pub-head">
+                                    <a class="pub-title" href="papers/lm/THEMIS-ENG-001-laya-teardown.pdf" target="_blank" rel="noopener noreferrer">What Laya is: a reverse-engineering teardown of the open decision model that Themis must beat</a>
+                                    <span class="pub-type">Engineering note</span>
+                                </div>
+                                <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · THEMIS-ENG-001 · 2026-10-07</p>
+                                <p class="pub-abstract">Before designing Themis, the in-house judge, the open comparator was taken apart from its configuration files, safetensors headers, code, and evaluation files — without downloading a weight. Findings: it is an encoder (ModernBERT-large / mmBERT-base) with a two-layer decision head, not a language model; abstention is part of the interface with priced costs, so comparisons must score coverage; and a shared per-question option budget is a structural limit by design — real, but, as BENCH-001 later measured, not the main driver of its many-option collapse.</p>
+                                <ul class="pub-tags"><li>Reverse engineering</li><li>Judge models</li><li>Competitive analysis</li></ul>
+                            </div>
+                        </li>
+                        <li class="pub">
+                            <a class="pub-thumb" href="papers/lm/THEMIS-BENCH-001-laya-harness-match.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF"><img src="papers/thumbs/THEMIS-BENCH-001-laya-harness-match.png" alt="First page of THEMIS-BENCH-001" loading="lazy"></a>
+                            <div class="pub-body">
+                                <div class="pub-head">
+                                    <a class="pub-title" href="papers/lm/THEMIS-BENCH-001-laya-harness-match.pdf" target="_blank" rel="noopener noreferrer">Reproducing Laya's numbers before beating them: a failed full-split reproduction, a cleared harness, and evidence that option wording, more than the option budget, drives many-option failure</a>
+                                    <span class="pub-type">Benchmark note</span>
+                                </div>
+                                <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · THEMIS-BENCH-001 · 2026-10-07</p>
+                                <p class="pub-abstract">The first Themis experiment scored nothing of ours: it asked whether the local harness reproduces Laya's published numbers. AG News matched on the pilot slice but missed the pre-declared full-split criterion (0.9236 vs 0.950) and is recorded as "not reproduced" — yet the harness is cleared for paired use because it is slice-consistent item by item. The exploratory finding: on the same 100 Banking77 items, option wording dominates (72 sentence-style options 0.02, at chance; 77 short category names 0.37; p = 2.8e-09), while a 4× larger option budget adds only a small gain.</p>
+                                <ul class="pub-tags"><li>Reproduction</li><li>Harness validation</li><li>Many-option classification</li></ul>
+                            </div>
+                        </li>
+                        <li class="pub">
+                            <a class="pub-thumb" href="papers/lm/THEMIS-BENCH-002-laya-many-option-mechanism.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF"><img src="papers/thumbs/THEMIS-BENCH-002-laya-many-option-mechanism.png" alt="First page of THEMIS-BENCH-002" loading="lazy"></a>
+                            <div class="pub-body">
+                                <div class="pub-head">
+                                    <a class="pub-title" href="papers/lm/THEMIS-BENCH-002-laya-many-option-mechanism.pdf" target="_blank" rel="noopener noreferrer">Why Laya collapses on 72 options: a working prefix strip helps, and position and a distinct opening both pull the collapse — an exploratory follow-up</a>
+                                    <span class="pub-type">Exploratory</span>
+                                </div>
+                                <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · THEMIS-BENCH-002 · 2026-10-07</p>
+                                <p class="pub-abstract">Three treatments on the same 100 items, each asserting its own effect before any model call, with readings declared before the run. Removing the shared 4–5-word option prefix raises accuracy from 0.02 to 0.11–0.24 (paired McNemar), but does not close the gap to short category names (0.37). The two pre-declared mechanism cells point to different causes — salience vs position — so, by the pre-declared rule, both are reported and no single mechanism is claimed.</p>
+                                <ul class="pub-tags"><li>Mechanism probes</li><li>Position bias</li><li>Pre-declared analysis</li></ul>
+                            </div>
+                        </li>
+                        <li class="pub">
+                            <a class="pub-thumb" href="papers/lm/THEMIS-BENCH-003-laya-failure-probes.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF"><img src="papers/thumbs/THEMIS-BENCH-003-laya-failure-probes.png" alt="First page of THEMIS-BENCH-003" loading="lazy"></a>
+                            <div class="pub-body">
+                                <div class="pub-head">
+                                    <a class="pub-title" href="papers/lm/THEMIS-BENCH-003-laya-failure-probes.pdf" target="_blank" rel="noopener noreferrer">Six label-free probes of Laya: order and position sensitivity, a wording cliff, a Tagalog gap, an option-count collapse, and an escalation head that never fires</a>
+                                    <span class="pub-type">Robustness probes</span>
+                                </div>
+                                <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · THEMIS-BENCH-003 · 2026-10-08</p>
+                                <p class="pub-abstract">Widens the lens from single benchmarks to six families of label-free probes (150 base items each, 2,250 rows), each built so a robust judge should give the same answer — or degrade gracefully — when one thing changes: option order, correct-option slot, option wording, request language, option count, or answerability. Laya was run on all probes under both routings and analysed by a script locked before the runs landed. The results are the concrete robustness targets Themis is designed against.</p>
+                                <ul class="pub-tags"><li>Robustness</li><li>Label-free evaluation</li><li>Judge design targets</li></ul>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <h3>PinoAI — corpus &amp; continued-pretraining engineering</h3>
+                    <ul class="pub-list">
+                        <li class="pub">
+                            <a class="pub-thumb" href="papers/lm/CORPUS-001-ph-corpus-v0.1.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF"><img src="papers/thumbs/CORPUS-001-ph-corpus-v0.1.png" alt="First page of CORPUS-001" loading="lazy"></a>
+                            <div class="pub-body">
+                                <div class="pub-head">
+                                    <a class="pub-title" href="papers/lm/CORPUS-001-ph-corpus-v0.1.pdf" target="_blank" rel="noopener noreferrer">PH-Corpus v0.1: a 3.19-billion-token Philippine-language corpus for continued pretraining, and how it was built, checked and registered</a>
+                                    <span class="pub-type">Data paper</span>
+                                </div>
+                                <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · CORPUS-001 · 2026-10-05</p>
+                                <p class="pub-abstract">3.30M documents / 3.19B tokens for the first CPT experiment: Tagalog/Filipino web text 75.9%, English replay 15.9%, seven regional languages (Cebuano, Ilokano, Hiligaynon, Waray, Bikol, Kapampangan, Pangasinan) 7.3%, scripture 0.9%, public-domain literature 0.1%, plus held-out and out-of-distribution evaluation splits. Every source is licensed for commercial use; the pipeline redacts personal data, blocks government pages, filters and deduplicates, restores an archaic Tagalog spelling, and decontaminates against 57,315 benchmark items (re-scan: 0 hits). Registered by manifest hash; states plainly what the corpus is not.</p>
+                                <ul class="pub-tags"><li>Dataset</li><li>Philippine languages</li><li>Decontamination</li><li>Data governance</li></ul>
+                            </div>
+                        </li>
+                        <li class="pub">
+                            <a class="pub-thumb" href="papers/lm/ENG-001-gate-f-throughput-method.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF"><img src="papers/thumbs/ENG-001-gate-f-throughput-method.png" alt="First page of ENG-001" loading="lazy"></a>
+                            <div class="pub-body">
+                                <div class="pub-head">
+                                    <a class="pub-title" href="papers/lm/ENG-001-gate-f-throughput-method.pdf" target="_blank" rel="noopener noreferrer">Measuring LoRA continued-pretraining throughput for a compute gate: probe design, five probe failures, and results on one A100</a>
+                                    <span class="pub-type">Engineering note</span>
+                                </div>
+                                <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · ENG-001 · 2026-09-30</p>
+                                <p class="pub-abstract">A compute gate fixed in advance — a candidate base model is eligible only if measured throughput projects 2B tokens within a GPU-hour budget on one A100 — and the probe that measured it, including the five ways the probe itself was wrong before it was right. Two silent bugs (leaked memory after caught OOMs; a model left in eval mode, which skips gradient checkpointing) had inflated memory to near the 80 GB limit. A chunked cross-entropy fixes memory, not speed; kernel availability dominates for hybrid-attention models (+83.7% for Qwen3.5-9B). No candidate was within budget.</p>
+                                <ul class="pub-tags"><li>Throughput</li><li>Compute budgeting</li><li>LoRA</li><li>Probe failures</li></ul>
+                            </div>
+                        </li>
+                        <li class="pub">
+                            <a class="pub-thumb" href="papers/lm/ENG-002-inference-failure-modes.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF"><img src="papers/thumbs/ENG-002-inference-failure-modes.png" alt="First page of ENG-002" loading="lazy"></a>
+                            <div class="pub-body">
+                                <div class="pub-head">
+                                    <a class="pub-title" href="papers/lm/ENG-002-inference-failure-modes.pdf" target="_blank" rel="noopener noreferrer">Running ten new open-weight models on T4 and A100: inference failure modes and fixes</a>
+                                    <span class="pub-type">Engineering note</span>
+                                </div>
+                                <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · ENG-002 · 2026-09-30</p>
+                                <p class="pub-abstract">Eight failure modes hit while evaluating ten checkpoints (five bases and their instruct siblings) on two workloads, each with symptom, root cause, fix, verification, and effect on reported results — and a flag for which were <em>silent</em>: a chat template that thinks by default, a leaked thought marker that mis-scored two items, a refused push that re-read the previous version's output, a colon in a filename becoming an NTFS alternate data stream, and a warm container leaking earlier models' files. Silent failures are the dangerous kind in a model comparison.</p>
+                                <ul class="pub-tags"><li>Inference</li><li>Failure modes</li><li>Silent errors</li><li>Evaluation plumbing</li></ul>
+                            </div>
+                        </li>
+                        <li class="pub">
+                            <a class="pub-thumb" href="papers/lm/ENG-003-lora-vs-full-throughput.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF"><img src="papers/thumbs/ENG-003-lora-vs-full-throughput.png" alt="First page of ENG-003" loading="lazy"></a>
+                            <div class="pub-body">
+                                <div class="pub-head">
+                                    <a class="pub-title" href="papers/lm/ENG-003-lora-vs-full-throughput.pdf" target="_blank" rel="noopener noreferrer">LoRA, LoRA plus embeddings, or full-parameter continued pretraining for Gemma 4 E4B: throughput on A100 and H100, and the cost structure of the first run</a>
+                                    <span class="pub-type">Engineering note</span>
+                                </div>
+                                <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · ENG-003 · 2026-09-30</p>
+                                <p class="pub-abstract">Three arms registered before measurement — LoRA, LoRA plus trainable embeddings, and full-parameter training with 8-bit AdamW — searched over gradient checkpointing and micro-batch on A100 and H100. Full-parameter training is not slower than LoRA on this model (LoRA's win comes from memory, not compute); full-parameter memory matches the arithmetic to within 0.05 GiB; "train the embeddings" is a 4.36B-parameter change on Gemma 4 E4B because of its per-layer embedding tables; and the H100 is cheaper per token. It answers what fits and how fast — not which method teaches Filipino best.</p>
+                                <ul class="pub-tags"><li>LoRA vs full fine-tuning</li><li>Throughput</li><li>Cost modelling</li><li>H100 / A100</li></ul>
+                            </div>
+                        </li>
+                        <li class="pub">
+                            <a class="pub-thumb" href="papers/lm/ENG-005-cpt-trainer-v2-plumbing.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF"><img src="papers/thumbs/ENG-005-cpt-trainer-v2-plumbing.png" alt="First page of ENG-005" loading="lazy"></a>
+                            <div class="pub-body">
+                                <div class="pub-head">
+                                    <a class="pub-title" href="papers/lm/ENG-005-cpt-trainer-v2-plumbing.pdf" target="_blank" rel="noopener noreferrer">A continued-pretraining trainer that proves its own resumes: design of PinoAI's CPT trainer v2 and the results of its GPU plumbing test</a>
+                                    <span class="pub-type">Engineering note</span>
+                                </div>
+                                <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · ENG-005 · 2026-10-06</p>
+                                <p class="pub-abstract">A 2B-token run on one H100 is a chain of ~six sessions, so a resume that silently changes optimizer state, data order, or schedule makes it a different experiment from the one registered. The trainer is tested on the real GPU and model with forced pauses: a resume matched the original run bit for bit (loss and all 8 optimizer-state fingerprint components), a forced pause moved the next loss by 0.0156 against a pre-fixed bound of 0.4505, and the LoRA path resumed with equal fingerprints. Ten amendments' worth of defects were found; each fix shipped with a control that fails on the old code.</p>
+                                <ul class="pub-tags"><li>Training infrastructure</li><li>Checkpoint / resume</li><li>Reproducibility</li><li>8-bit optimizer</li></ul>
+                            </div>
+                        </li>
+                        <li class="pub">
+                            <a class="pub-thumb" href="papers/lm/ENG-006-per-language-loss.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF"><img src="papers/thumbs/ENG-006-per-language-loss.png" alt="First page of ENG-006" loading="lazy"></a>
+                            <div class="pub-body">
+                                <div class="pub-head">
+                                    <a class="pub-title" href="papers/lm/ENG-006-per-language-loss.pdf" target="_blank" rel="noopener noreferrer">Per-language training loss at no measurable cost: instrumenting a chunked cross-entropy CPT trainer without changing the run</a>
+                                    <span class="pub-type">Engineering note</span>
+                                </div>
+                                <p class="pub-meta">Stan Lee V. Natividad · Kooya PH AI Research · ENG-006 · 2026-10-06</p>
+                                <p class="pub-abstract">A single loss curve cannot say whether Tagalog, Ilokano, or Waray is improving, or whether one bucket is being memorised. A per-bucket, per-language loss breakdown is added and shown not to change the run (bit-identical data order; loss within relative 1e-6 with gradients allclose) and to cost nothing measurable on the GPU (329.05 vs 329.16 ms for the LM head plus cross-entropy; ~0.09% CPU overhead). A tiny-model CPU micro-benchmark that showed a large cost is reported as an artefact and an upper bound — exactly why tiny benchmarks must not judge GPU-path cost.</p>
+                                <ul class="pub-tags"><li>Training instrumentation</li><li>Per-language metrics</li><li>Zero-overhead verification</li></ul>
+                            </div>
+                        </li>
+                    </ul>
 
                     <h3>LIKHA — a from-scratch protein language model</h3>
                     <ul class="pub-list">
